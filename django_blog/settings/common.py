@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -23,14 +23,14 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
+STATIC_PATH = os.path.join(BASE_DIR,'static').replace('\\', '/')
+
 TEMPLATE_DIRS =  (
-    os.path.join(BASE_DIR,'apps/blog/template').replace('\\','/'),        
+    os.path.join(BASE_DIR, 'templates').replace('\\','/'),        
+    os.path.join(BASE_DIR, 'django_blog/apps/blog/templates').replace('\\','/'),        
 )
 
-print os.path.join(BASE_DIR,'apps/blog/template').replace('\\','/'),        
-
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -42,7 +42,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_blog.apps.blog',
-    'bootstrap3',
 )
 
 MIDDLEWARE_CLASSES = (
