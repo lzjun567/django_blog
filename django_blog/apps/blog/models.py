@@ -39,7 +39,4 @@ class Tag(models.Model):
         return self.title
 
 
-#class FlatPageForm(forms.ModelForm):
-#    content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
-#    class Meta:
-#        model = Blog
+

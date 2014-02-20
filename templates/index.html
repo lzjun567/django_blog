@@ -48,56 +48,25 @@
 
         <div class="row">
             <div class="col-lg-8">
-
+                
+                {% for blog in blogs %}
                 <!-- blog entry -->
-                <h1><a href="#">A Blog Home Template for Bootstrap 3</a>
+                <h1><a href="#">{{blog.title}}</a>
                 </h1>
                 <p class="lead">by <a href="index.php">Start Bootstrap</a>
                 </p>
                 <hr>
                 <p>
-                    <span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
+                <span class="glyphicon glyphicon-time"></span> Posted on {{blog.add_time}}</p>
+                <!-- <img src="http://placehold.it/900x300" class="img-responsive"> --!>
                 <hr>
-                <img src="http://placehold.it/900x300" class="img-responsive">
-                <hr>
-                <p>This is a very basic starter template for a blog homepage. It makes use of Glyphicons that are built into Bootstrap 3, and it makes use of the Pager at the bottom of the page. Make sure you get the Glyphicons files by downloading the entire
-                    <code>/fonts</code>directory that you can download in the source files or at <a href="http://getbootstrap.com">getbootstrap.com</a>. That directory has all of the web fonts in it which makes Glyphicons work.</p>
+                {{blog.content | safe}} 
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
 
-                <!-- second blog entry -->
-                <h1><a href="#">Another Blog Post</a>
-                </h1>
-                <p class="lead">by <a href="index.php">Start Bootstrap</a>
-                </p>
-                <hr>
-                <p>
-                    <span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:45 PM</p>
-                <hr>
-                <img src="http://placehold.it/900x300" class="img-responsive">
-                <hr>
-                <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science...</p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-                <hr>
-
-                <!-- third blog entry -->
-                <h1><a href="#">Third Blog Post Entry</a>
-                </h1>
-                <p class="lead">by <a href="index.php">Start Bootstrap</a>
-                </p>
-                <hr>
-                <p>
-                    <span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:45 PM</p>
-                <hr>
-                <img src="http://placehold.it/900x300" class="img-responsive">
-                <hr>
-                <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science...</p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-                <hr>
-
+                {% endfor %} 
+                
                 <!-- pager -->
                 <ul class="pager">
                     <li class="previous"><a href="#">&larr; Older</a>
