@@ -23,24 +23,49 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-STATIC_PATH = os.path.join(BASE_DIR,'static').replace('\\', '/')
+STATIC_URL = '/static/'
+
+#for deployment, collects the static files into STATIC_ROOT
+STATIC_ROOT = os.path.join(BASE_DIR, 'collectedstatic')
+
+STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, "static"),
+)
 
 TEMPLATE_DIRS =  (
     os.path.join(BASE_DIR, 'templates').replace('\\','/'),        
     os.path.join(BASE_DIR, 'django_blog/apps/blog/templates').replace('\\','/'),        
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.request',
+    'django.core.context_processors.i18n',
+    'django.contrib.messages.context_processors.messages',
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+)
+
+AMDIN_MEDIA_PREFIX = STATIC_URL + 'grappelli/'
+
 ALLOWED_HOSTS = []
 
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'reversion',
+    'grappelli.dashboard',
+    'grappelli',
+    'django.contrib.admin',
     'django_blog.apps.blog',
 )
 
@@ -80,9 +105,3 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-
-STATIC_URL = '/static/'

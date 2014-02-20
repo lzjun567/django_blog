@@ -8,9 +8,8 @@
     <meta name="author" content="">
 
     <title>Blog Home Template for Bootstrap 3</title>
-
-    <link href="/site_media/css/bootstrap.css" rel="stylesheet">
-    <link href="/site_media/css/django-blog.css" rel="stylesheet">
+    <link href="{{ STATIC_URL}}css/bootstrap.css" rel="stylesheet">
+    <link href="{{ STATIC_URL}}css/django-blog.css" rel="stylesheet">
 
 </head>
 
@@ -173,8 +172,8 @@
     </div>
     <!-- /.container -->
 
-    <script src="/site_media/js/jquery-1.10.2.js"></script>
-    <script src="/site_media/js/bootstrap.js"></script>
+    <script src="{{STATIC_URL}}js/jquery-1.10.2.js"></script>
+    <script src="{{STATIC_URL}}js/bootstrap.js"></script>
 
 </body>
 

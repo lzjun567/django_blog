@@ -1,9 +1,9 @@
 #! encoding=utf-8
 from django.contrib import admin
-
+import reversion
 from .models import Tag, Blog, Category
 
-class BlogAdmin(admin.ModelAdmin):
+class BlogAdmin(reversion.VersionAdmin):
     list_display = ('id', 'title', 'add_time', 'update_time')
     search_fields = ('title',)
     ordering = ('-add_time', )

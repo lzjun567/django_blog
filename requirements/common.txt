@@ -1,3 +1,7 @@
 Django==1.6.2
 South==0.8.4
 MySQL-python
+django-xadmin
+django-reversion
+django-grappelli==2.5.1
+
