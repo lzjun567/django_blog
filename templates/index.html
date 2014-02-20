@@ -8,8 +8,9 @@
     <meta name="author" content="">
 
     <title>Blog Home Template for Bootstrap 3</title>
-    <link href="{{ STATIC_URL}}css/bootstrap.css" rel="stylesheet">
-    <link href="{{ STATIC_URL}}css/django-blog.css" rel="stylesheet">
+    {% load staticfiles %}
+    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "css/django-blog.css" %}" rel="stylesheet">
 
 </head>
 

@@ -28,9 +28,9 @@ STATIC_URL = '/static/'
 #for deployment, collects the static files into STATIC_ROOT
 STATIC_ROOT = os.path.join(BASE_DIR, 'collectedstatic')
 
-STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, "static"),
-)
+#STATICFILES_DIRS = (
+#        os.path.join(BASE_DIR, "static"),
+#)
 
 TEMPLATE_DIRS =  (
     os.path.join(BASE_DIR, 'templates').replace('\\','/'),        
@@ -44,12 +44,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
 )
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-)
-
-AMDIN_MEDIA_PREFIX = STATIC_URL + 'grappelli/'
+#STATICFILES_FINDERS = (
+#    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    'django.contrib.staticfiles.finders.FileSystemFinder',
+#)
 
 ALLOWED_HOSTS = []
 
@@ -63,10 +61,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'crispy_forms',
     'reversion',
-    'grappelli.dashboard',
-    'grappelli',
     'django.contrib.admin',
     'django_blog.apps.blog',
+    'tinymce',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -105,3 +102,19 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+#TINYMCE_JS_URL = 'http://debug.example.org/tiny_mce/tiny_mce_src.js'
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': "table,spellchecker,paste,searchreplace",
+    #'plugins': [
+    #        "advlist autolink lists link image charmap print preview anchor",
+    #        "searchreplace visualblocks code fullscreen",
+    #        "insertdatetime media table contextmenu paste moxiemanager"
+    #    ],
+    #'theme': "simple",
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 10,
+}
+TINYMCE_SPELLCHECKER = True
+#TINYMCE_COMPRESSOR = True
+
