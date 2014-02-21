@@ -1,13 +1,12 @@
 #! coding=utf-8
 from django.contrib import admin
 from django import forms
-from tinymce.widgets import TinyMCE
 import reversion
 from .models import Tag, Blog, Category
+from pagedown.widgets import AdminPagedownWidget
 
-
-class FlatPageForm(forms.ModelForm):
-    content = forms.CharField(widget=TinyMCE(attrs={'cols': 150, 'rows': 30}))
+class BlogForm(forms.ModelForm):
+    content = forms.CharField(widget=AdminPagedownWidget())
     class Meta:
         model = Blog
 
@@ -16,10 +15,9 @@ class BlogAdmin(reversion.VersionAdmin):
     search_fields = ('title',)
     ordering = ('-add_time', )
     list_per_page = 60
-    form = FlatPageForm
+    form = BlogForm
     class Media:
         pass
-        #js = ('js/textarea.js','tiny_mce/tiny_mce.js')
 
 class TagAdmin(admin.ModelAdmin):
     pass 

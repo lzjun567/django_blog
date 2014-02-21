@@ -4,12 +4,10 @@ from django.contrib.auth.models import User
 
 from tinymce import models as tinymce_models
 from django import forms
-from tinymce.widgets import TinyMCE
 
 class Blog(models.Model):
     title = models.CharField(u'标题', max_length=150, db_index=True, unique=True)
     content = models.TextField(u'内容')
-    #content = tinymce_models.HTMLField(u'内容')
     add_time = models.DateTimeField(u'创建时间', auto_now_add=True)
     update_time = models.DateTimeField(u'修改时间', auto_now=True)
     access_count  = models.IntegerField(u'访问次数', default=1)
@@ -25,6 +23,10 @@ class Category(models.Model):
     大分类
     '''
     title = models.CharField(u'名称', max_length=50, db_index=True,unique=True)
+
+    class Meta:
+        verbose_name = (u'类别')
+        ordering = ['title',]
 
     def __unicode__(self):
         return self.title

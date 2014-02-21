@@ -60,7 +60,8 @@
                 <span class="glyphicon glyphicon-time"></span> Posted on {{blog.add_time}}</p>
                 <!-- <img src="http://placehold.it/900x300" class="img-responsive"> --!>
                 <hr>
-                {{blog.content | safe}} 
+                {% load myapp_markup %}
+                {{blog.content | md2}} 
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>

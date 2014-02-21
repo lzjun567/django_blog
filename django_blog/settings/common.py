@@ -64,6 +64,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django_blog.apps.blog',
     'tinymce',
+    'pagedown',
 )
 
 MIDDLEWARE_CLASSES = (

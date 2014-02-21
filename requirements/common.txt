@@ -4,3 +4,7 @@ MySQL-python
 django-reversion
 django-grappelli==2.5.1
 django-tinymce==1.5.2
+markdown2
+pygments
+django-pagedown
+
