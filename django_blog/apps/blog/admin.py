@@ -21,20 +21,14 @@ def submit_row(context):
 class BlogAdmin(reversion.VersionAdmin):
 
     list_display = ('title', 'published', 'last_update','access_count')
-    fields = ('title', 'content', ('is_public', 'is_top'), 'category', 'tags')
+    fields = ('title','snippet', 'content', ('is_public', 'is_top'), ('category', 'tags'), 'author')
     exclude = ('publish_time', 'published')
     search_fields = ('title',)
     ordering = ('-add_time', )
     list_per_page = 60
     form = BlogForm
-
-    extra_context = {
-              'show_save_and_add_another': False,
-                'show_save_and_continue': False
-                }
     
-
-
+    
     def create_time(self, obj):
         return obj.add_time.strftime('%Y-%m-%d')
     create_time.short_description = u"创建时间"
@@ -43,8 +37,6 @@ class BlogAdmin(reversion.VersionAdmin):
         return obj.update_time.strftime('%Y-%m-%d')
     last_update.short_description = u"最后更新时间"
 
-
-    
     def response_change(self, request, obj):
         '''保存为草稿，这种方法很蠢，please fix me'''
         #FIXME

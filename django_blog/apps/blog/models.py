@@ -7,7 +7,8 @@ from django import forms
 
 class Blog(models.Model):
     title = models.CharField(u'标题', max_length=150, db_index=True, unique=True)
-    content = models.TextField(u'内容')
+    snippet = models.CharField(u'摘要', max_length=500, default='') 
+    content = models.TextField(u'内容',)
     add_time = models.DateTimeField(u'创建时间', auto_now_add=True)
     publish_time = models.DateTimeField(u'发表时间', null=True)
     published = models.BooleanField(u'发布', default=False)
@@ -16,7 +17,8 @@ class Blog(models.Model):
     update_time = models.DateTimeField(u'修改时间', auto_now=True)
     access_count  = models.IntegerField(u'浏览量', default=1, editable=False)
     category = models.ForeignKey('Category', verbose_name=u'所属分类')
-    tags = models.ManyToManyField('Tag', verbose_name=u'标签集合')
+    tags = models.ManyToManyField('Tag', verbose_name=u'标签集合', null=True, blank=True)
+    tags.help_text = ''
     author = models.ForeignKey(User, verbose_name=u'作者')
 
     
