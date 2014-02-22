@@ -1,4 +1,5 @@
 """
+/app
 Django settings for django_blog project.
 
 For more information on this file, see
@@ -54,6 +55,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -61,10 +63,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'crispy_forms',
     'reversion',
-    'django.contrib.admin',
     'django_blog.apps.blog',
-    'tinymce',
     'pagedown',
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
