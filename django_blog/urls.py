@@ -7,8 +7,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'django_blog.views.home', name='home'),
-    url(r'^blog/', include(apps.blog.urls)),
+    url(r'^$', 'apps.blog.views.index', name='home'),
+    url(r'^blog/', include('apps.blog.urls', namespace='blog')),
     #url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     #url(r'^grappelli/',include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),

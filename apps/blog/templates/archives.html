@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}FooFish的自话自说---文章存档{% endblock %}
+{% block content %}
+<ul class="list-group">
+    {% for blog in blogs %}
+    <li class=""><a href="{% url 'blog:blog_detail' blog.id blog.blog_link %}">{{blog.title}}<span>{{blog.publish_time }}</span></a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+ 

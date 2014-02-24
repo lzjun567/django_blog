@@ -18,16 +18,17 @@ def submit_row(context):
 
 
 
+
 class BlogAdmin(reversion.VersionAdmin):
 
-    list_display = ('title', 'published', 'last_update','access_count')
-    fields = ('title','snippet', 'content', ('is_public', 'is_top'), ('category', 'tags'), 'author')
-    exclude = ('publish_time', 'published')
+    list_display = ('title', 'status', 'last_update','access_count')
+    fields = ('title','snippet', 'content', ('is_public', 'is_top',), 'category', 'author', 'status', 'tags')
+    exclude = ('publish_time',) 
     search_fields = ('title',)
     ordering = ('-add_time', )
     list_per_page = 60
     form = BlogForm
-    
+    actions = ['make_published']
     
     def create_time(self, obj):
         return obj.add_time.strftime('%Y-%m-%d')
@@ -37,14 +38,19 @@ class BlogAdmin(reversion.VersionAdmin):
         return obj.update_time.strftime('%Y-%m-%d')
     last_update.short_description = u"最后更新时间"
 
-    def response_change(self, request, obj):
-        '''保存为草稿，这种方法很蠢，please fix me'''
-        #FIXME
-        res = super(BlogAdmin, self).response_change(request, obj)
-        if "_continue" in request.POST:
-            obj.published = False
-            obj.save()
-        return res
+    def make_published(self, request, queryset):
+        '''
+        $modeladmin: current modeladmin
+        $request: the current request
+        $queryset: the set of objects selected by user
+        '''
+        rows_updated = queryset.update(status='p')
+        if rows_updated == 1:
+            message_bit = "1 blog was"
+        else:
+            message_bit = "%s blogs ware "%rows_updated
+        self.message_user(request, "%s successfully published" % message_bit)
+    make_published.short_description = u"发布"
 
     
 
@@ -72,3 +78,8 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)
+
+
+
+
+

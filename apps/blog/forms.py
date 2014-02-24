@@ -12,14 +12,3 @@ class BlogForm(forms.ModelForm):
         widgets = {
             'snippet': forms.Textarea(attrs={'rows':4,'cols':15}),
         }
-
-    def save(self, commit=True):
-        '''
-            默认的保存方式即为发布文章
-        '''
-        instance = super(BlogForm, self).save(commit=False)
-        instance.published = True 
-        if commit:
-            instance.save()
-        return instance
-

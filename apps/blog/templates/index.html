@@ -3,9 +3,9 @@
 {% block content %}
     {% for blog in blogs %}
     <!-- blog entry -->
-    <h1><a href="#">{{blog.title}}</a>
+    <h1><a href="{% url 'blog:blog_detail' blog.id blog.blog_link %}">{{blog.title}}</a>
     </h1>
-    <p class="lead">by <a href="/">Start Bootstrap</a>
+    <!-- <p class="lead">by <a>{{blog.author.username}}</a> -->
     </p>
     <hr>
     <p>
@@ -13,8 +13,8 @@
     <!-- <img src="http://placehold.it/900x300" class="img-responsive"> --!>
     <hr>
     {% load myapp_markup %}
-    {{blog.content | md2}} 
-    <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+    {{blog.snippet | md2}} 
+    <a class="btn btn-primary" href="{% url 'blog:blog_detail' blog.id blog.blog_link %} ">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
     <hr>
     {% endfor %} 
     <!-- pager -->

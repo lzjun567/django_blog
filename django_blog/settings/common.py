@@ -43,6 +43,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.core.context_processors.i18n',
     'django.contrib.messages.context_processors.messages',
+    'apps.blog.processor.tag_list',
 )
 
 #STATICFILES_FINDERS = (
@@ -63,7 +64,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'crispy_forms',
     'reversion',
-    'django_blog.apps.blog',
+    'apps.blog',
     'pagedown',
     'south',
 )
