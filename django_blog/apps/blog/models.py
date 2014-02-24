@@ -7,6 +7,7 @@ from django import forms
 
 class Blog(models.Model):
     title = models.CharField(u'标题', max_length=150, db_index=True, unique=True)
+    link = models.CharField(u'链接', max_length=150, null=True, blank=True, unique=True)
     snippet = models.CharField(u'摘要', max_length=500, default='') 
     content = models.TextField(u'内容',)
     add_time = models.DateTimeField(u'创建时间', auto_now_add=True)

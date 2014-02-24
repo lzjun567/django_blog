@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}FooFish的自话自说{% endblock %}
+{% block content %}
+    {% for blog in blogs %}
+    <!-- blog entry -->
+    <h1><a href="#">{{blog.title}}</a>
+    </h1>
+    <p class="lead">by <a href="/">Start Bootstrap</a>
+    </p>
+    <hr>
+    <p>
+    <span class="glyphicon glyphicon-time"></span> Posted on {{blog.add_time}}</p>
+    <!-- <img src="http://placehold.it/900x300" class="img-responsive"> --!>
+    <hr>
+    {% load myapp_markup %}
+    {{blog.content | md2}} 
+    <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <hr>
+    {% endfor %} 
+    <!-- pager -->
+    <ul class="pager">
+        <li class="previous"><a href="#">&larr; Older</a>
+        </li>
+        <li class="next"><a href="#">Newer &rarr;</a>
+        </li>
+    </ul>
+{% endblock %}
+
+            
