@@ -11,7 +11,7 @@ def hello(request):
 
 def index(request):
 
-    blogs = get_list_or_404(Blog)
+    blogs = get_list_or_404(Blog.objects.order_by('-publish_time'), status='p')
     return render(request, 'index.html', {'blogs':blogs})
 
 
@@ -24,7 +24,7 @@ def author_blogs(request, username):
     return render(request, 'index.html',{'blogs':blogs})
 
 def archives(request):
-    blogs = get_list_or_404(Blog)
+    blogs = get_list_or_404(Blog.objects.order_by('-publish_time'), status='p')
     return render(request, 'archives.html', {'blogs':blogs})
 
 

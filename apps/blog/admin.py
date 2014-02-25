@@ -1,4 +1,6 @@
 #! coding=utf-8
+import datetime
+
 from django.contrib import admin
 from django import forms
 import reversion
@@ -21,7 +23,7 @@ def submit_row(context):
 
 class BlogAdmin(reversion.VersionAdmin):
 
-    list_display = ('title', 'status', 'last_update','access_count')
+    list_display = ('title', 'status', 'publish','access_count')
     fields = ('title','snippet', 'content', ('is_public', 'is_top',), 'category', 'author', 'status', 'tags')
     exclude = ('publish_time',) 
     search_fields = ('title',)
@@ -34,9 +36,12 @@ class BlogAdmin(reversion.VersionAdmin):
         return obj.add_time.strftime('%Y-%m-%d')
     create_time.short_description = u"创建时间"
 
-    def last_update(self, obj):
-        return obj.update_time.strftime('%Y-%m-%d')
-    last_update.short_description = u"最后更新时间"
+    def publish(self, obj):
+        if obj.publish_time:
+            return obj.publish_time.strftime('%Y-%m-%d')
+        else:
+           return '' 
+    publish.short_description = u"发布时间"
 
     def make_published(self, request, queryset):
         '''
@@ -44,12 +49,20 @@ class BlogAdmin(reversion.VersionAdmin):
         $request: the current request
         $queryset: the set of objects selected by user
         '''
-        rows_updated = queryset.update(status='p')
+        rows_updated = 0
+        for entry in queryset:
+            if entry.status != 'p':
+                entry.status = 'p'
+            if entry.publish_time is None:
+                entry.publish_time = datetime.datetime.now()
+                rows_updated += 1
+                entry.save()
         if rows_updated == 1:
             message_bit = "1 blog was"
         else:
             message_bit = "%s blogs ware "%rows_updated
         self.message_user(request, "%s successfully published" % message_bit)
+        
     make_published.short_description = u"发布"
 
     

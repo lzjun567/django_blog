@@ -1,4 +1,5 @@
 #! coding=utf-8
+import datetime
 from django import forms
 from pagedown.widgets import AdminPagedownWidget
 from models import Blog
@@ -12,3 +13,11 @@ class BlogForm(forms.ModelForm):
         widgets = {
             'snippet': forms.Textarea(attrs={'rows':4,'cols':15}),
         }
+
+    def save(self, commit=True):
+        instance = super(BlogForm, self).save(commit=False)
+        if instance.status == 'p' and instance.publish_time is None:
+            instance.publish_time = datetime.datetime.now()  
+        if commit:
+            instance.save()
+        return instance

@@ -1,13 +1,11 @@
 #! coding=utf-8
 from django.db import models
 from django.contrib.auth.models import User
-
-from tinymce import models as tinymce_models
 from django import forms
 
 STATUS_CHOICES = (
     ('d', u"草稿"),
-    ('p', u"已发布"),
+    ('p', u"发布"),
 )
 
 class Blog(models.Model):

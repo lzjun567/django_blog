@@ -1,3 +1,4 @@
 *.pyc
 *.pyo
 django_blog/settings/dev.py
+django_blog/settings/prod.py
