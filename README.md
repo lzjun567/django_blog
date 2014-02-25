@@ -1,7 +1,6 @@
 django_blog
 ===========
 A blog based on django and bootstrap3 
-------------------------------------
 ####Philosophy
 from opensource to opensource
 ####Requirements
@@ -18,8 +17,7 @@ Optional:
 
 * gunicorn (https://github.com/benoitc/gunicorn)
 
-License
-=========
+####License
 
 This project is licensed under the terms of the MIT License describe below.
 
