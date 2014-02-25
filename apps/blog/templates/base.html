@@ -31,7 +31,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{% url 'blog:archives' %}">Archives</a>
                     </li>
-                    <li><a href="#">About</a>
+                    <li><a href="{% url 'blog:about' %}">About</a>
                     </li>
                 </ul>
             </div>
@@ -107,6 +107,8 @@
     <script src="{% static "js/jquery-1.10.2.js" %}"></script>
     <script src="{% static "js/bootstrap.js" %}"></script>
     <script src="{% static "js/blog.js" %}"></script>
+
+    
 
 </body>
 

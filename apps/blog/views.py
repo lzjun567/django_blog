@@ -27,7 +27,5 @@ def archives(request):
     blogs = get_list_or_404(Blog.objects.order_by('-publish_time'), status='p')
     return render(request, 'archives.html', {'blogs':blogs})
 
-
-
-
-
+def about(request):
+    return render(request, 'about.html',{})
