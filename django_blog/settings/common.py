@@ -67,6 +67,7 @@ INSTALLED_APPS = (
     'apps.blog',
     'pagedown',
     'south',
+    'apps.bootstrap_pagination',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -117,4 +118,6 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 TINYMCE_SPELLCHECKER = True
 #TINYMCE_COMPRESSOR = True
+
+PAGE_SIZE = 6
 
