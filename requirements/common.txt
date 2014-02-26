@@ -5,4 +5,5 @@ django-reversion
 markdown2
 pygments
 django-pagedown
+markdown==2.4
 
