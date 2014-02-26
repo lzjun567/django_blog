@@ -9,7 +9,7 @@
                 <span class="glyphicon glyphicon-time"></span> Posted on {{blog.publish_time|date:'Y-m-d'}}</p>
                 <hr>
                 {% load myapp_markup %}
-                {{blog.content | md2}}
+                {{blog.content | md1}}
 {% include "disqus.html" %}
 {% endblock %}
  

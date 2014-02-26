@@ -14,7 +14,7 @@
     <!-- <img src="http://placehold.it/900x300" class="img-responsive"> --!>
     <hr>
     {% load myapp_markup %}
-    {{blog.snippet | md2}} 
+    {{blog.snippet | md1}} 
     <a class="btn btn-primary" href="{% url 'blog:blog_detail' blog.id blog.blog_link %} ">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
     <hr>
     {% endfor %} 
