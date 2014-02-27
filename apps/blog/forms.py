@@ -1,6 +1,9 @@
 #! coding=utf-8
 import datetime
+
 from django import forms
+from django.template.defaultfilters import slugify
+
 from pagedown.widgets import AdminPagedownWidget
 from models import Blog
 

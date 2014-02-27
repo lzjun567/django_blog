@@ -4,7 +4,7 @@
 {% block content %}
     {% for blog in blogs %}
     <!-- blog entry -->
-    <h1><a href="{% url 'blog:blog_detail' blog.id blog.blog_link %}">{{blog.title}}</a>
+    <h1><a href="{% url 'blog:blog_detail' blog.id blog.link%}">{{blog.title}}</a>
     </h1>
     <!-- <p class="lead">by <a>{{blog.author.username}}</a> -->
     </p>
@@ -15,7 +15,7 @@
     <hr>
     {% load myapp_markup %}
     {{blog.snippet | md1}} 
-    <a class="btn btn-primary" href="{% url 'blog:blog_detail' blog.id blog.blog_link %} ">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a class="btn btn-primary" href="{% url 'blog:blog_detail' blog_id=blog.id blog_link=blog.link %} ">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
     <hr>
     {% endfor %} 
     <!-- pager -->

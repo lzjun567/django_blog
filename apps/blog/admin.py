@@ -24,9 +24,10 @@ def submit_row(context):
 class BlogAdmin(reversion.VersionAdmin):
 
     list_display = ('title', 'status', 'publish','access_count')
-    fields = ('title','snippet', 'content', ('is_public', 'is_top',), 'category', 'author', 'status', 'tags')
+    fields = ('title','link', 'snippet', 'content', ('is_public', 'is_top',), 'category', 'author', 'status', 'tags')
     exclude = ('publish_time',) 
     search_fields = ('title',)
+    prepopulated_fields = {"link": ("link",)}
     ordering = ('-add_time', )
     list_per_page = 60
     form = BlogForm
@@ -53,9 +54,9 @@ class BlogAdmin(reversion.VersionAdmin):
         for entry in queryset:
             if entry.status != 'p':
                 entry.status = 'p'
-            if entry.publish_time is None:
-                entry.publish_time = datetime.datetime.now()
                 rows_updated += 1
+                if entry.publish_time is None:
+                    entry.publish_time = datetime.datetime.now()
                 entry.save()
         if rows_updated == 1:
             message_bit = "1 blog was"
