@@ -17,7 +17,7 @@ def deploy():
     project_dir = '/home/django_blog'
     with cd(project_dir):
         run("git pull origin master")
-        run("supervistorctl restart foofish")
+        run("supervisorctl restart foofish")
 
 def go():
     prepare_deploy()
