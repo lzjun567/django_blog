@@ -17,8 +17,7 @@ def deploy():
     project_dir = '/home/django_blog'
     with cd(project_dir):
         run("git pull origin master")
-        run("source /root/envs/foofish/bin/activate")
-        run("python ./manage.py collectstatic")
+        run("/root/envs/foofish/bin/python ./manage.py collectstatic")
         run("supervisorctl restart foofish")
 
 def go():
