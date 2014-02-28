@@ -2,8 +2,8 @@ Django==1.6.2
 South==0.8.4
 MySQL-python
 django-reversion
-markdown2
+#markdown2
 pygments
 django-pagedown
-markdown==2.4
+markdown
 

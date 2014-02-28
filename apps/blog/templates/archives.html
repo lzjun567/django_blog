@@ -3,7 +3,10 @@
 {% block content %}
 <ul class="list-group">
     {% for blog in blogs %}
-    <li class=""><a href="{% url 'blog:blog_detail' blog.id blog.blog_link %}">{{blog.title}}</a><span>{{blog.publish_time|date:'Y-m-d' }}</span></li>
+    <li class="">
+        <a href="{% url 'blog:blog_detail' blog.id blog.blog_link %}">{{blog.title}}</a>
+        <span><small>{{blog.publish_time|date:'Y-m-d' }}</small></span>
+    </li>
     {% endfor %}
 </ul>
 
