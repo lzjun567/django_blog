@@ -10,6 +10,8 @@
                 <hr>
                 {% load myapp_markup %}
                 {{blog.content | md1}}
+
+{% include "share.html" %}
 {% include "disqus.html" %}
 {% endblock %}
  
