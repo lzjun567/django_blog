@@ -27,7 +27,7 @@ def index(request):
 
 
 def blog_detail(request,blog_id, blog_link=''):
-    blog = get_object_or_404(Blog, pk=blog_id)
+    blog = get_object_or_404(Blog, pk=blog_id, status='p')
     return render(request, 'blog-post.html', {'blog':blog})
 
 def author_blogs(request, username):
@@ -40,3 +40,7 @@ def archives(request):
 
 def about(request):
     return render(request, 'about.html',{})
+
+def sitemap(request):
+    return render(request, 'sitemap.xml', {})
+

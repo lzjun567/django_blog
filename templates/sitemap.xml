@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://foofish.net/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/archives</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/about</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/59/what-is-descriptor-in-python</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/58/why-you-reinvent-a-blog</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/17/understand-gil</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/52/mutil-thread-programming</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/40/mysql-partition</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/20/learning-mysql</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/?page=2</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/?page=3</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/?page=4</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/59/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/58/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/17/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/52/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/40/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/20/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/29/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/8/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/16/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/47/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/36/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/48/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/55/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/41/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/32/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/18/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/26/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/34/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/44/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/25/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/39/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/15/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/13/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/37/</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/29/ordered-dict-in-python</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/8/sort-algorithm-compare</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/blog/16/understanding-python-charset</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://foofish.net/?page=1</loc>
+  <changefreq>daily</changefreq>
+</url>
+</urlset>
