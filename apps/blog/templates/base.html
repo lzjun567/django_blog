@@ -68,7 +68,7 @@
                         <div class="col-lg-6">
                             <ul class="list-unstyled">
                                 {% for tag in tag1s %}
-                                <li><a href="#dinosaurs">{{tag.title}}</a>
+                                <li><a href="{% url 'blog:tag' tag.title %}">{{tag.title}}</a>
                                 </li>
                                 {% endfor %}
                             </ul>
@@ -76,7 +76,7 @@
                         <div class="col-lg-6">
                             <ul class="list-unstyled">
                                 {% for tag in tag2s%}
-                                <li><a href="#dinosaurs">{{tag.title}}</a>
+                                <li><a href="{% url 'blog:tag' tag.title %}">{{tag.title}}</a>
                                 </li>
                                 {% endfor %}
                             </ul>

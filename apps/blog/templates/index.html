@@ -6,11 +6,19 @@
     <!-- blog entry -->
     <h1><a href="{% url 'blog:blog_detail' blog.id blog.link%}">{{blog.title}}</a>
     </h1>
-    <!-- <p class="lead">by <a>{{blog.author.username}}</a> -->
+    {% comment %} <p class="lead">by <a>{{blog.author.username}}</a> {% endcomment %}
     </p>
     <hr>
     <p>
     <span class="glyphicon glyphicon-time"></span> posted on {{blog.add_time|date:"Y-m-d"}} by {{blog.author.username}}</p>
+    {% if blog.tags.all %}
+    <p><span class="glyphicon glyphicon-tag"></span>  
+        {% for tag in blog.tags.all %}
+            <a href="{% url 'blog:tag' tag.title %}" class="tag"><span class="label label-default">{{tag.title}}</span></a>
+        {% endfor %}
+    </p>
+    {%endif%}
+
     <!-- <img src="http://placehold.it/900x300" class="img-responsive"> --!>
     <hr>
     {% load myapp_markup %}
