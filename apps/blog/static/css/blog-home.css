@@ -1,6 +1,21 @@
 body {
-	margin-top: 100px; /* 100px is double the height of the navbar - I made it a big larger for some more space - keep it at 50px at least if you want to use the fixed top nav */
+	margin-top: 100px; 
+    font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB",sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #555;
+    
+    /* 100px is double the height of the navbar - I made it a big larger for some more space - keep it at 50px at least if you want to use the fixed top nav */
 }
+
+.container {
+font-family: Georgia,"Times New Roman",Times,"Songti SC","SimSun",serif;
+font-size: 16px;
+font-weight: 100;
+line-height: 30px;
+color: #2f2f2f;
+}
+
 
 footer {
 	margin: 50px 0;
