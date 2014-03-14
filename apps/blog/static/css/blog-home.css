@@ -21,3 +21,7 @@ footer {
 	margin: 50px 0;
 }
 
+.tag:hover, .tag:focus {
+    text-decoration:none;
+}
+

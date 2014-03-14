@@ -31,7 +31,11 @@ def blog_detail(request,blog_id, blog_link=''):
     return render(request, 'blog-post.html', {'blog':blog})
 
 def author_blogs(request, username):
-    blogs = get_list_or_404(Blog, author__username=username)
+    blogs = get_list_or_404(
+                Blog.objects.order_by('-pulish_time'), 
+                author__username=username,
+                status='p')
+
     return render(request, 'index.html',{'blogs':blogs})
 
 def archives(request):
@@ -43,4 +47,14 @@ def about(request):
 
 def sitemap(request):
     return render(request, 'sitemap.xml', {})
+
+def tag(request, tag_title):
+
+    blogs = get_list_or_404(Blog.objects.order_by('-publish_time'),
+                            status='p', 
+                            tags__in=Tag.objects.filter(title=tag_title)
+            )
+
+    return render(request, 'archives.html', {'blogs':blogs})
+
 

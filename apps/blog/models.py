@@ -34,6 +34,9 @@ class Blog(models.Model):
         self.link = slugify(self.link)
         super(Blog, self).save(*args, **kwargs)
 
+    def __unicode__(self):
+        return self.title
+
 class Category(models.Model):
     '''
     大分类
