@@ -1,28 +1,32 @@
 {% extends "base.html" %}
+{% load myapp_markup %}
 {% load bootstrap_pagination %}
 {% block title %}FooFish的自话自说{% endblock %}
 {% block content %}
     {% for blog in blogs %}
     <!-- blog entry -->
-    <h1><a href="{% url 'blog:blog_detail' blog.id blog.link%}">{{blog.title}}</a>
-    </h1>
-    {% comment %} <p class="lead">by <a>{{blog.author.username}}</a> {% endcomment %}
-    </p>
-    <hr>
-    <p>
-    <span class="glyphicon glyphicon-time"></span> posted on {{blog.add_time|date:"Y-m-d"}} by {{blog.author.username}}</p>
-    {% if blog.tags.all %}
-    <p><span class="glyphicon glyphicon-tag"></span>  
-        {% for tag in blog.tags.all %}
-            <a href="{% url 'blog:tag' tag.title %}" class="tag"><span class="label label-default">{{tag.title}}</span></a>
-        {% endfor %}
-    </p>
-    {%endif%}
+    <h3>
+        <a href="{% url 'blog:blog_detail' blog.id blog.link%}">{{blog.title}}</a>
+    </h3>
+    {% comment %} <p class="lead">by <a>{{blog.author.username}}</a> </p>{% endcomment %}
+    <p class="article-info">
+    <span class="glyphicon glyphicon-time"></span><span class="info">{{blog.add_time|date:"Y-m-d"}}</span>
+    <span class="glyphicon glyphicon-user"></span><span class="info">{{blog.author.username}}</span>
 
-    <!-- <img src="http://placehold.it/900x300" class="img-responsive"> --!>
-    <hr>
-    {% load myapp_markup %}
+        {% if blog.tags.all %}
+        <span class="glyphicon glyphicon-tags"> </span>
+        {% for tag in blog.tags.all %}
+        <a href="{% url 'blog:tag' tag.title %}" class="tag">
+            <span class="label label-default">{{tag.title}}</span> 
+        </a>
+        {% endfor %}
+    {%endif%}
+    </p>
+       <!-- <img src="http://placehold.it/900x300" class="img-responsive"> --!>
+    <div class="article-preview">
     {{blog.snippet | md1}} 
+    </div>
+
     <a class="btn btn-primary" href="{% url 'blog:blog_detail' blog_id=blog.id blog_link=blog.link %} ">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
     <hr>
     {% endfor %} 
