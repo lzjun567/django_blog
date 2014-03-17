@@ -86,8 +86,8 @@ class TagAdmin(admin.ModelAdmin):
     pass 
 
 class CategoryAdmin(admin.ModelAdmin):
-    pass 
-
+    list_display = ('title', 'posistion')
+    ordering = ('posistion',)
 
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(Category, CategoryAdmin)

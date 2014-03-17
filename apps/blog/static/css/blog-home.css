@@ -29,7 +29,7 @@ footer {
     font-size: 14px;
 
 }
-.article-preview {
+.article-preview ,.footer{
 color: #717171;
 font-family: Georgia,"Times New Roman",Times,"Songti SC","SimSun",serif;
 font-size: 14px;

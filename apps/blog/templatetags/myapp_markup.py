@@ -24,7 +24,7 @@ def md2(value):
 @register.filter(is_safe=True)
 @stringfilter
 def md1(value):
-    extensions = ["nl2br", ]
+    extensions = ["nl2br", "codehilite"]
     return mark_safe(markdown.markdown(force_unicode(value),
                                        extensions,
                                        safe_mode=True,
