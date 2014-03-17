@@ -20,7 +20,6 @@ class Blog(models.Model):
     publish_time = models.DateTimeField(u'发表时间', null=True)
     update_time = models.DateTimeField(u'修改时间', auto_now=True)
     status = models.CharField(u'状态', max_length=1, choices=STATUS_CHOICES, default=STATUS_CHOICES[0][0])
-    posistion = models.IntegerField(u'位置', default=0)
     
     is_public = models.BooleanField(u'公开', default = True)
     is_top = models.BooleanField(u'置顶', default=False)
@@ -42,7 +41,6 @@ class Category(models.Model):
     大分类
     '''
     title = models.CharField(u'名称', max_length=50, db_index=True,unique=True)
-    posistion = models.IntegerField(u'位置', default=0)
 
     class Meta:
         ordering = ['title',]
