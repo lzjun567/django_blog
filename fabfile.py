@@ -4,8 +4,9 @@ env.hosts = ['root@foofish.net']
 
 def prepare_deploy():
     #test() 
-    local('git add *.py *.html *js *.css && git commit')
-    local('git push origin master')
+    with settings(warn_only=True):
+        local('git add *.py *.html *js *.css && git commit')
+        local('git push origin master')
 
 def test():
     with settings(warn_only=True):
