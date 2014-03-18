@@ -13,4 +13,6 @@ urlpatterns = patterns('',
     #url(r'^grappelli/',include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^sitemap.xml', 'apps.blog.views.sitemap'),
+    url(r'^baidu_verify_3ymtDfPE09.html', 'apps.blog.views.baidu'),
+    
 )
