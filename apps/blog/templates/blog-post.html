@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+
+{% block description %}{{blog.snippet | truncatewords:50}}{%endblock%} 
 {% block title %}FooFish的自话自说--{{blog.title}}{% endblock %}
 {% block content %}
     <h2>{{blog.title}}</h2>

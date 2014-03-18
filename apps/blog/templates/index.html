@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% load myapp_markup %}
 {% load bootstrap_pagination %}
+
+{% block description %}FooFish的自话自说,Bloger,Enginner{%endblock%} 
 {% block title %}FooFish的自话自说{% endblock %}
+
 {% block content %}
     {% for blog in blogs %}
     <!-- blog entry -->
