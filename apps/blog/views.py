@@ -47,6 +47,8 @@ def about(request):
 
 def sitemap(request):
     return render(request, 'sitemap.xml', {})
+def baidu(request):
+    return render(request, 'baidu_verify_3ymtDfPE09.html',{})
 
 def tag(request, tag_title):
 
