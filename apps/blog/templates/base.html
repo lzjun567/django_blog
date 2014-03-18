@@ -29,7 +29,6 @@
                 </button>
                 <a class="navbar-brand" href="/">FOOFISH</a>
             </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
@@ -38,8 +37,15 @@
                     <li><a href="{% url 'blog:about' %}">About</a>
                     </li>
                 </ul>
+                {{uid}}
+                {% if request.user.is_superuser %}
+                <div class="navbar-user">
+                    <a class="navbar-brand" href="/admin">{{request.user}}</a>
+                </div>
+                {%endif%}
             </div>
             <!-- /.navbar-collapse -->
+            
         </div>
         <!-- /.container -->
     </nav>

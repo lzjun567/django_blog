@@ -11,9 +11,24 @@ from django_blog.settings.common import PAGE_SIZE
 def hello(request):
     return render(request, 'hello.html')
 
+
+def admin_criteria(request):
+    '''
+        if not login or not super user ,
+        then return all published and public articles
+    '''
+    criteria = {'status':'p'}
+    if not(request.user and request.user.is_superuser):
+        criteria['is_public']=True
+    return criteria
+
 def index(request):
-    
-    blog_list = get_list_or_404(Blog.objects.order_by('-publish_time'), status='p')
+
+    blog_list = get_list_or_404(
+                                Blog.objects.order_by('-publish_time'), 
+                                **admin_criteria(request)
+    )
+
     paginator =  Paginator(blog_list, PAGE_SIZE)
     page = request.GET.get('page')
     try:
@@ -27,19 +42,25 @@ def index(request):
 
 
 def blog_detail(request,blog_id, blog_link=''):
-    blog = get_object_or_404(Blog, pk=blog_id, status='p')
+    blog = get_object_or_404(Blog, 
+                            pk=blog_id, 
+                            **admin_criteria(request)
+    )
     return render(request, 'blog-post.html', {'blog':blog})
 
 def author_blogs(request, username):
     blogs = get_list_or_404(
                 Blog.objects.order_by('-pulish_time'), 
                 author__username=username,
-                status='p')
+                **admin_criteria(request)
+    )
 
     return render(request, 'index.html',{'blogs':blogs})
 
 def archives(request):
-    blogs = get_list_or_404(Blog.objects.order_by('-publish_time'), status='p')
+    blogs = get_list_or_404(Blog.objects.order_by('-publish_time'), 
+                            **admin_criteria(request)
+    )
     return render(request, 'archives.html', {'blogs':blogs})
 
 def about(request):
@@ -47,15 +68,18 @@ def about(request):
 
 def sitemap(request):
     return render(request, 'sitemap.xml', {})
+
 def baidu(request):
     return render(request, 'baidu_verify_3ymtDfPE09.html',{})
 
 def tag(request, tag_title):
-
+    '''
+    query blogs by tags
+    '''
     blogs = get_list_or_404(Blog.objects.order_by('-publish_time'),
-                            status='p', 
-                            tags__in=Tag.objects.filter(title=tag_title)
-            )
+                            tags__in=Tag.objects.filter(title=tag_title),
+                            **admin_criteria(request)
+    )
 
     return render(request, 'archives.html', {'blogs':blogs})
 
