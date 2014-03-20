@@ -31,6 +31,7 @@ Django_Blog是一个基于Django、Bootstrap开发的个人极简博客应用，
     pip install -r requirements/dev.txt
     python manage.py syncdb
     python manage.py migrate apps.blog
+    python manage.py migrate reversion
     python manage.py runserver localhost:8000
 
 ####预览效果 
