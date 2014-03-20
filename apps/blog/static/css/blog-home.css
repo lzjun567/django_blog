@@ -41,7 +41,13 @@ line-height: 24px;
 float:right;
 }
 
+.articles, .about{
+list-style:none;
+}
+.articles li, .about li{
+    margin:10px 0;
+}
 .articles .date{
-float:right;
 color: #aaa;
 }
+

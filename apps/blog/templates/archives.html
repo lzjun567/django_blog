@@ -1,15 +1,18 @@
 {% extends "base.html" %}
 {% block description %}文章存档{%endblock%} 
-{% block title %}FooFish的自话自说---文章存档{% endblock %}
+{% block title %}文章存档{% endblock %}
 {% block content %}
 
-<div class="list-group articles">
+<h2><span class="glyphicon glyphicon-th-list"> </span>存档</h2>
+<ul class=" articles">
     {% for blog in blogs %}
-        <a  class="list-group-item" href="{% url 'blog:blog_detail' blog.id blog.link %}">{{blog.title}}
-        <span class="date"><small>{{blog.publish_time|date:'Y-m-d' }}</small></span>
-</a>
+    <li> 
+    <span class="date"><small>{{blog.publish_time|date:'Y-m-d' }}</small></span>
+    <a href="{% url 'blog:blog_detail' blog.id blog.link %}">{{blog.title}}</a>
+        
+    </li>
     {% endfor %}
-</div>
+</ul>
 
 {% endblock %}
  
