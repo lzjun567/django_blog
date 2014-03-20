@@ -1,7 +1,41 @@
-django_blog
-===========
-A blog based on django and bootstrap3 
-####Philosophy
+采用Django+Bootstrap开发的个人博客
+===============
+Django_Blog是一个基于Django、Bootstrap开发的个人极简博客应用，响应式设计，仅支持markdown格式WYSIWYG(所见即所得)的编辑方式。
+####开发哲学
+简约原则，开源精神
+####项目结构
+
+    ├─django_blog
+    │  ├─libs
+    │  └─settings
+    ├─requirements
+    ├─templates
+    │  └─admin
+    │      └─blog
+    └─apps
+        ├─blog
+        │  ├─templates
+        │  ├─static
+        │  │  ├─css
+        │  │  ├─js
+        │  │  └─fonts
+        │  ├─templatetags
+        │  └─migrations
+        └─bootstrap_pagination
+            ├─templates
+            │  └─bootstrap_pagination
+            └─templatetags
+
+####安装运行
+
+    git clone https://github.com/lzjun567/django_blog.git
+    cd django_blog
+    pip install -r requirements/dev.txt
+    python manage.py syncdb
+    python manage.py runserver localhost:8000
+
+
+任何建议或者参与开发，可以[New Issue](https://github.com/lzjun567/django_blog/issues)。项目遵循[Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)协议  
 from opensource to opensource
 ####Requirements
 * Python >=2.6

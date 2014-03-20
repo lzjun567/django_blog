@@ -8,8 +8,8 @@
     {% include "article-info.html" with blog=blog only %}
     {% load myapp_markup %}
     {{blog.content | md1}}
-
     {% include "share.html" %}
     {% include "disqus.html" %}
 {% endblock %}
- 
+
+{% block well %} {%include "well.html"%}{%endblock%}
