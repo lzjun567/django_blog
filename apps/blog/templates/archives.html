@@ -3,10 +3,10 @@
 {% block title %}FooFish的自话自说---文章存档{% endblock %}
 {% block content %}
 
-<div class="list-group">
+<div class="list-group articles">
     {% for blog in blogs %}
-        <a  class="list-group-item" href="{% url 'blog:blog_detail' blog.id blog.blog_link %}">{{blog.title}}
-        <span><small>{{blog.publish_time|date:'Y-m-d' }}</small></span>
+        <a  class="list-group-item" href="{% url 'blog:blog_detail' blog.id blog.link %}">{{blog.title}}
+        <span class="date"><small>{{blog.publish_time|date:'Y-m-d' }}</small></span>
 </a>
     {% endfor %}
 </div>

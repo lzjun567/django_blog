@@ -1,26 +1,15 @@
 {% extends "base.html" %}
 
 {% block description %}{{blog.snippet | truncatewords:50}}{%endblock%} 
-{% block title %}FooFish的自话自说--{{blog.title}}{% endblock %}
+{% block title %}{{blog.title}}{% endblock %}
+
 {% block content %}
     <h2>{{blog.title}}</h2>
-    <p class="article-info">
-    <span class="glyphicon glyphicon-time"></span><span class="info">{{blog.add_time|date:"Y-m-d"}}</span>
-    <span class="glyphicon glyphicon-user"></span><span class="info">{{blog.author.username}}</span>
-
-        {% if blog.tags.all %}
-        <span class="glyphicon glyphicon-tags"> </span>
-        {% for tag in blog.tags.all %}
-        <a href="{% url 'blog:tag' tag.title %}" class="tag">
-            <span class="label label-default">{{tag.title}}</span> 
-        </a>
-        {% endfor %}
-    {%endif%}
-    </p>
+    {% include "article-info.html" with blog=blog only %}
     {% load myapp_markup %}
     {{blog.content | md1}}
 
-{% include "share.html" %}
-{% include "disqus.html" %}
+    {% include "share.html" %}
+    {% include "disqus.html" %}
 {% endblock %}
  

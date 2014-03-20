@@ -40,3 +40,8 @@ line-height: 24px;
 .navbar-user{
 float:right;
 }
+
+.articles .date{
+float:right;
+color: #aaa;
+}
