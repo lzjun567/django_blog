@@ -35,9 +35,10 @@ Django_Blog是一个基于Django、Bootstrap开发的个人极简博客应用，
 
 ####预览效果 
 ![预览效果 ][1]
-任何建议或者参与开发，可以[New Issue](https://github.com/lzjun567/django_blog/issues)。项目遵循[Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)协议  
 
-管理登录地址：[http://localhost:8000/admin](http://localhost:8000/admin)，用户名:admin   密码:123456
+管理登录地址：[http://localhost:8000/admin](http://localhost:8000/admin)，用户名:admin   密码:123456  
+
+任何建议或者参与开发，可以[New Issue](https://github.com/lzjun567/django_blog/issues)。项目遵循[Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)协议  
  
   [1]: https://photos-2.dropbox.com/t/0/AACd5mYhFLs75kaWhp96onwOUxcVCZxF8zYA4Sw3OzGLjA/12/71722329/png/1024x768/3/1395331200/0/2/preview.png/y6NzGiPUvieoTm5bNtA6hsnM7Caeb44Dd7zrzOX36S0
 
