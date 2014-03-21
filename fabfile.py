@@ -25,7 +25,8 @@ def install():
     project_dir = '/home/django_blog'
     with cd(project_dir):
         run("git pull origin master")
-        run("/root/envs/foofish/bin/python -r requirements/prod.txt")
+        run("source /root/envs/foofish/bin/activate")
+        run("pip install -r requirements/prod.txt")
 
 def go():
     prepare_deploy()
