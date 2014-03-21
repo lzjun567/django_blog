@@ -10,13 +10,13 @@ TEMPLATE_LOADERS = (
     ),
 )
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME':'django_blog',
-	'USER': '',
-	'PASSWORD':'',
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME':'django_blog',
+#	'USER': '',
+#	'PASSWORD':'',
+#    }
+#}
 
 ALLOWED_HOSTS = ['foofish.net','www.foofish.net']
