@@ -46,10 +46,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'apps.blog.processor.tag_list',
 )
 
-#STATICFILES_FINDERS = (
-#    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.FileSystemFinder',
-#)
 
 ALLOWED_HOSTS = []
 
@@ -120,3 +116,10 @@ TINYMCE_SPELLCHECKER = True
 
 PAGE_SIZE = 6
 
+#compressor
+INSTALLED_APPS += ("compressor",)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'compressor.finders.CompressorFinder',
+)

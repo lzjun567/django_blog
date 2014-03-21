@@ -3,7 +3,6 @@ from fabric.api import local, settings, abort, cd, env, run
 env.hosts = ['root@foofish.net']
 
 def prepare_deploy():
-    #test() 
     with settings(warn_only=True):
         local('git add *.py *.html *js *.css && git commit')
         local('git push origin master')
@@ -20,6 +19,13 @@ def deploy():
         run("git pull origin master")
         run("/root/envs/foofish/bin/python ./manage.py collectstatic")
         run("supervisorctl restart foofish")
+
+def install():
+    prepare_deploy()
+    project_dir = '/home/django_blog'
+    with cd(project_dir):
+        run("git pull origin master")
+        run("/root/envs/foofish/bin/python -r requirements/prod.txt")
 
 def go():
     prepare_deploy()

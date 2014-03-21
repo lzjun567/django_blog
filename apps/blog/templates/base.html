@@ -9,9 +9,12 @@
     <meta name="author" content="foofish">
     <title>{% block title %}{% endblock %}</title>
     {% load staticfiles %}
+    {% load compress %}
+    {% compress css %}
     <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
     <link href="{% static "css/blog-home.css" %}" rel="stylesheet">
     <link href="{% static "css/github.css" %}" rel="stylesheet">
+    {% endcompress %}
 
 
 </head>
@@ -60,14 +63,19 @@
         <footer>
             <div class="row footer">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; liuzhijun 2014 服务器托管于<a href="https://www.digitalocean.com/?refcode=af4cff8f42bc">DigitalOcean</a></p>
+                    <p>Copyright &copy; liuzhijun 2014 
+                    <span>服务器托管:
+                        <a href="https://www.digitalocean.com/?refcode=af4cff8f42bc">DigitalOcean</a>
+                    </span>
+                    <span> 源代码:<a href="https://github.com/lzjun567/django_blog">django_blog</a></span>
+                    </p>
                 </div>
             </div>
         </footer>
 
     </div>
     <!-- /.container -->
-
+    {% compress js %}
     <script src="{% static "js/jquery-1.10.2.js" %}"></script>
     <script src="{% static "js/bootstrap.js" %}"></script>
     <script src="{% static "js/blog.js" %}"></script>
@@ -81,6 +89,7 @@
       ga('create', 'UA-42613705-2', 'foofish.net');
         ga('send', 'pageview');
     </script>
+    {% endcompress %}
 
 </body>
 
