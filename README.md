@@ -1,4 +1,4 @@
-Django_Blog是一个基于Django、Bootstrap开发的个人极简博客应用，响应式设计，仅支持markdown格式WYSIWYG(所见即所得)的编辑方式。
+Django_Blog是一个基于Django、Bootstrap开发的极简博客应用，响应式设计，支持markdown格式WYSIWYG(所见即所得)的编辑方式。
 ####为什么会有这个博客
 经历过iteye，github，wordpress发现没一个是我想要的
 ####开发哲学
