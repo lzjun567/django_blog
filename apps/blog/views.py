@@ -83,4 +83,5 @@ def tag(request, tag_title):
 
     return render(request, 'archives.html', {'blogs':blogs})
 
-
+def not_found(request):
+    return render(request, '404.html', {})
