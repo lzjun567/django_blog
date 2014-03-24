@@ -1,6 +1,7 @@
 from common import *
 
 DEBUG=True
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -20,4 +21,6 @@ DATABASES = {
 #}
 
 INSTALLED_APPS += ("debug_toolbar",)
+
+ALLOWED_HOSTS = ['localhost',]
 
