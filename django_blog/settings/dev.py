@@ -24,3 +24,7 @@ INSTALLED_APPS += ("debug_toolbar",)
 
 ALLOWED_HOSTS = ['localhost',]
 
+MIDDLEWARE_CLASSES += (
+    'middleware.profile.ProfilerMiddleware',
+)
+
