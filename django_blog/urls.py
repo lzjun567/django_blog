@@ -14,5 +14,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^sitemap.xml', 'apps.blog.views.sitemap'),
     url(r'^baidu_verify_3ymtDfPE09.html', 'apps.blog.views.baidu'),
+    url(r'404', 'apps.blog.views.not_found'),
+
     
 )
