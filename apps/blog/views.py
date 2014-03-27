@@ -66,9 +66,6 @@ def archives(request):
 def about(request):
     return render(request, 'about.html',{})
 
-def sitemap(request):
-    return render(request, 'sitemap.xml', {})
-
 def baidu(request):
     return render(request, 'baidu_verify_3ymtDfPE09.html',{})
 
