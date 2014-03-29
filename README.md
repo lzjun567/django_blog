@@ -21,13 +21,31 @@ Django_Blog是一个基于Django、Bootstrap开发的极简博客应用，响应
         │  │  └─fonts
         │  ├─templatetags
         │  └─migrations
-        └─bootstrap_pagination
+        └─bootstrap_paginationDuplicate
             ├─templates
             │  └─bootstrap_pagination
             └─templatetags
 
 ####安装运行
 
+推荐使用virtualenv安装方式，virtualenv能提供一个隔离的python环境，首先安装virtualenv:  
+    
+    pip install virtualenv
+
+然后使用virtualenv创建一个python虚拟环境  
+
+    mkdir ~/.virtualenvs
+    virtualenv ~/.virtualenvs/django_blog
+激活虚拟环境django_blog  
+
+    source ~/.virtualenvs/django_blog/bin/activate
+如果你使用用windows：  
+
+    ~/virtualenvs/django_blog/bin/activate    
+
+现在正式开始下载安装：  
+    
+    cd /home/${user}/workspace #你可以把project下载到任意你想放的地方
     git clone https://github.com/lzjun567/django_blog.git
     cd django_blog
     pip install -r requirements/dev.txt
