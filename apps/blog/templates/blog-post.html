@@ -5,11 +5,11 @@
 
 {% block content %}
     <h2>{{blog.title}}</h2>
-    {% include "article-info.html" with blog=blog only %}
+    {% include "widget/blog-info.html" with blog=blog only %}
     {% load myapp_markup %}
     {{blog.content | md1}}
-    {% include "share.html" %}
-    {% include "disqus.html" %}
+    {% include "widget/share.html" %}
+    {% include "widget/disqus.html" %}
 {% endblock %}
 
-{% block well %} {%include "well.html"%}{%endblock%}
+{% block panel %} {%include "widget/panel.html"%}{%endblock%}
