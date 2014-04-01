@@ -11,8 +11,10 @@
     <h3>
         <a href="{% url 'blog:blog_detail' blog.id blog.link%}">{{blog.title}}</a>
     </h3>
-    {% comment %} <p class="lead">by <a>{{blog.author.username}}</a> </p>{% endcomment %}
+    {% comment %} 
+    <p class="lead">by <a>{{blog.author.username}}</a> </p>
     {% include "widget/blog-info.html" with blog=blog only %}
+    {% endcomment %}
     <!-- <img src="http://placehold.it/900x300" class="img-responsive"> --!>
     <div class="article-preview">
     {{blog.snippet | md1}} 
