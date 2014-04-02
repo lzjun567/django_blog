@@ -52,3 +52,18 @@ color: #aaa;
 margin-right:10px;
 }
 
+
+a.read-more {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #428bca;
+    border-color: #428bca;
+    text-decoration:none;
+}
+.read-more:hover, .read-more:focus, .read-more:active, .read-more.active, .open .dropdown-toggle.read-more {
+color: #fff;
+background-color: #3276b1;
+border-color: #285e8e;
+}

@@ -18,9 +18,11 @@
     <!-- <img src="http://placehold.it/900x300" class="img-responsive"> --!>
     <div class="article-preview">
     {{blog.snippet | md1}} 
+    <a href="{% url 'blog:blog_detail' blog_id=blog.id blog_link=blog.link %}" class="read-more">显示全部<span class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
 
-    <a class="btn btn-primary" href="{% url 'blog:blog_detail' blog_id=blog.id blog_link=blog.link %} ">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+   <!-- <a class="btn btn-primary" href="{% url 'blog:blog_detail' blog_id=blog.id blog_link=blog.link %} ">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+-->
     <hr>
     {% endfor %} 
     <!-- pager -->
