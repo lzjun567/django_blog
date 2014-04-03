@@ -46,6 +46,7 @@ def blog_detail(request,blog_id, blog_link=''):
                             **admin_criteria(request)
     )
     blog.access_count+=1
+    blog.save()
     return render(request, 'blog-post.html', {'blog':blog})
 
 def author_blogs(request, username):

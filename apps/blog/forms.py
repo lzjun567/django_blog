@@ -10,15 +10,16 @@ from models import Blog
 class BlogForm(forms.ModelForm):
     title = forms.CharField(label=u'标题', widget=forms.TextInput(attrs={'size':118}))
     content = forms.CharField(label=u'内容', widget=AdminPagedownWidget())
-    snippet = forms.CharField(label=u'摘要', 
-                                widget=forms.Textarea(attrs={'cols':85, 'rows':7}),
-                                required=False
-                             )
+    #表单中不再使用sippet
+    #snippet = forms.CharField(label=u'摘要', 
+    #                            widget=forms.Textarea(attrs={'cols':85, 'rows':7}),
+    #                            required=False
+    #                         )
     class Meta:
         model = Blog
-        widgets = {
-            'snippet': forms.Textarea(attrs={'rows':4,'cols':15}),
-        }
+        # widgets = {
+        #     'snippet': forms.Textarea(attrs={'rows':4,'cols':15}),
+        # }
 
     def save(self, commit=True):
         instance = super(BlogForm, self).save(commit=False)

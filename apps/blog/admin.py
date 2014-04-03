@@ -12,14 +12,14 @@ from django.contrib.admin.templatetags.admin_modify import submit_row as origina
 
 @register.inclusion_tag('admin/blog/submit_line.html', takes_context=True)
 def submit_row(context):
+    '''
+        删除"保存后添加"按钮
+    '''
     ctx = original_submit_row(context)
     ctx.update({
         'show_save_and_add_another': False,
-        })                                                                  
+    })                                                                  
     return ctx 
-
-
-
 
 class BlogAdmin(reversion.VersionAdmin):
 
@@ -30,7 +30,6 @@ class BlogAdmin(reversion.VersionAdmin):
             'content', 
             ('is_public', 'is_top',), 
             'category', 
-            'author', 
             'status', 
             'tags'
     )
@@ -68,29 +67,16 @@ class BlogAdmin(reversion.VersionAdmin):
                 if entry.publish_time is None:
                     entry.publish_time = datetime.datetime.now()
                 entry.save()
-        if rows_updated == 1:
-            message_bit = "1 blog was"
-        else:
-            message_bit = "%s blogs ware "%rows_updated
-        self.message_user(request, "%s successfully published" % message_bit)
+        message_bit = "%s 篇博客 "%rows_updated
+        self.message_user(request, "%s 成功发布" % message_bit)
         
-    make_published.short_description = u"发布"
-
-    
+    make_published.short_description = u"发表"
 
 
-    #def change_view(self, request, object_id, form_url='', extra_context=None):
-    #    extra_context = extra_context or {}
-    #    extra_context['show_save_and_add_another'] = False
-    #    # or
-    #    extra_context['really_hide_save_and_add_another_damnit'] = True
-    #    return super(BlogAdmin, self).change_view(request, object_id,
-    #        form_url, extra_context=extra_context)
-    
-    
+    def save_model(self, request, obj, form, change):
+        obj.author = request.user 
+        obj.save()
 
-    class Media:
-        pass
 
 class TagAdmin(admin.ModelAdmin):
     pass 

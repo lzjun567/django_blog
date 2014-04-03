@@ -31,6 +31,7 @@ class Blog(models.Model):
     
     def save(self, *args, **kwargs):
         self.link = slugify(self.link)
+        self.snippet = self.content[:321]
         super(Blog, self).save(*args, **kwargs)
 
     def __unicode__(self):
