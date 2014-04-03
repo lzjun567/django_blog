@@ -6,7 +6,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Blog, Tag
 from django_blog.settings.common import PAGE_SIZE
 
-# Create your views here.
 
 def hello(request):
     return render(request, 'hello.html')
@@ -46,6 +45,7 @@ def blog_detail(request,blog_id, blog_link=''):
                             pk=blog_id, 
                             **admin_criteria(request)
     )
+    blog.access_count+=1
     return render(request, 'blog-post.html', {'blog':blog})
 
 def author_blogs(request, username):

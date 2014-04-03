@@ -24,7 +24,17 @@ def submit_row(context):
 class BlogAdmin(reversion.VersionAdmin):
 
     list_display = ('title', 'status', 'publish','access_count')
-    fields = ('title','link', 'snippet', 'content', ('is_public', 'is_top',), 'category', 'author', 'status', 'tags')
+    fields = (
+            'title',
+            'link', 
+            'content', 
+            ('is_public', 'is_top',), 
+            'category', 
+            'author', 
+            'status', 
+            'tags'
+    )
+
     exclude = ('publish_time',) 
     search_fields = ('title',)
     prepopulated_fields = {"link": ("link",)}
