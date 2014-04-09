@@ -28,3 +28,4 @@ class BlogForm(forms.ModelForm):
         if commit:
             instance.save()
         return instance
+

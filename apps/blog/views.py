@@ -65,7 +65,7 @@ def archives(request):
     return render(request, 'archives.html', {'blogs':blogs})
 
 def about(request):
-    return render(request, 'about.html',{})
+    return render(request, 'about.html')
 
 def baidu(request):
     return render(request, 'baidu_verify_3ymtDfPE09.html',{})

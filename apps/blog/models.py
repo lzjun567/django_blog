@@ -59,4 +59,3 @@ class Tag(models.Model):
         return self.title
 
 
-

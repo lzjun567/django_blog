@@ -6,7 +6,6 @@ from django import forms
 import reversion
 from .models import Tag, Blog, Category
 from .forms import BlogForm
-
 from django.contrib.admin.templatetags.admin_modify import *
 from django.contrib.admin.templatetags.admin_modify import submit_row as original_submit_row
 
@@ -23,7 +22,7 @@ def submit_row(context):
 
 class BlogAdmin(reversion.VersionAdmin):
 
-    list_display = ('title', 'status', 'publish','access_count')
+    list_display = ('title', 'is_public', 'status', 'publish','access_count')
     fields = (
             'title',
             'link', 
@@ -83,6 +82,7 @@ class TagAdmin(admin.ModelAdmin):
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('title',)
+
 
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(Category, CategoryAdmin)
