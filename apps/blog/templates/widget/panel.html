@@ -1,39 +1,26 @@
-  <div class="col-lg-4">
-                <div class="well">
-                    <h4>Blog Search</h4>
-                    <div class="input-group">
-                       <input type="text" class="form-control" id="blog-query">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button" id="blog-search">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </span>
-                    </div>
-                    <!-- /input-group -->
-                </div>
-                <div class="well">
-                    <h4>Popular Blog Categories</h4>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                {% for tag in tag1s %}
-                                <li><a href="{% url 'blog:tag' tag.title %}">{{tag.title}}</a>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                {% for tag in tag2s%}
-                                <li><a href="{% url 'blog:tag' tag.title %}">{{tag.title}}</a>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="well">
-                    <h4>GitHub</h4>
-                    <p><a href="https://github.com/lzjun567/django_blog">A blog base on django and bootstrap3</a></p>
-                </div>
+<div class="col-lg-4">
+    <div class="well">
+        <div class="input-group">
+           <input type="text" class="form-control" id="blog-query">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" id="blog-search">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
     </div>
+    <!-- Tag -->
+    <div class="well" id="whatever">
+        <h4>Tags</h4>
+                    {% for title, count in tags %}
+                    <a href="{% url 'blog:tag' title %}" rel="{{count}}">{{title}}</a>
+                    {% endfor %}
+    </div>
+
+    <!-- github -->
+    <div class="well">
+        <h4>GitHub</h4>
+        <p><a href="https://github.com/lzjun567/django_blog">A blog based on django and bootstrap3</a></p>
+    </div>
+
+</div>

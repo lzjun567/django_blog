@@ -9,13 +9,12 @@
     {%endif %}
     <span class="info">{{blog.author.username}}</span>
 
-   
     {% if blog.tags.all %}
-    <span class="glyphicon glyphicon-tags"> </span>
-    {% for tag in blog.tags.all %}
-        <a href="{% url 'blog:tag' tag.title %}" class="tag info">
-            <span class="label label-default">{{tag.title}}</span> 
-        </a>
-    {% endfor %}
+        <span class="glyphicon glyphicon-tags"> </span>
+        {% for tag in blog.tags.all %}
+            <a href="{% url 'blog:tag' tag.title %}" class="tag info">
+                <span class="label label-default">{{tag.title}}</span> 
+            </a>
+        {% endfor %}
     {%endif%}
 </p>
