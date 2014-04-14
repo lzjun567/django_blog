@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{% block description %}{% endblock %}">
+    <meta property="wb:webmaster" content="f426f506d13797ea" />
 
      
     <meta name="author" content="foofish">
@@ -61,6 +62,7 @@
     <div class="container">
 
         <div class="row">
+            <div id="floater"></div>
             <div class="col-lg-8">{% block content %} {% endblock %}</div>
             {% block panel %} {%endblock %}
         </div>
