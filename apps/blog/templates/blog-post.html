@@ -7,7 +7,7 @@
     <h2>{{blog.title}}</h2>
     {% include "widget/blog-info.html" with blog=blog only %}
     {% load myapp_markup %}
-    {{blog.content | md1}}
+    {{blog.content | md1 | safe}}
     {% include "widget/share.html" %}
     {% include "widget/disqus.html" %}
 {% endblock %}
