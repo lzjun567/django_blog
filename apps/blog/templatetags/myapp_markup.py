@@ -25,12 +25,16 @@ register = template.Library()
 
 try:
     import misaka as m
+    from misaka import Markdown, HtmlRenderer
     #https://github.com/FSX/misaka
     #优先使用misaka解析markdown
     @register.filter(is_safe=True)
     @stringfilter
     def md1(value):
-        return m.html(value)
+        rndr = HtmlRenderer()
+        md = Markdown(rndr)
+        return md.render(value)
+        #return m.html(value)
 except:
     @register.filter(is_safe=True)
     @stringfilter
