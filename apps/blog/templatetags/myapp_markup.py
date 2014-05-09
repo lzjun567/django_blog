@@ -7,6 +7,7 @@ from django.template.defaultfilters import stringfilter
 from django.utils.encoding import force_unicode
 from django. utils.safestring import mark_safe
 
+
 register = template.Library()
 
 #@register.filter(is_safe=True)
@@ -21,12 +22,21 @@ register = template.Library()
 #            )
 #    return mark_safe(markdown2.markdown(value))
 
-@register.filter(is_safe=True)
-@stringfilter
-def md1(value):
-    extensions = ["nl2br", "codehilite"]
-    return mark_safe(markdown.markdown(force_unicode(value),
-                                       extensions,
-                                       safe_mode=True,
-                                       enable_attributes=False))
 
+try:
+    import misaka as m
+    #https://github.com/FSX/misaka
+    #优先使用misaka解析markdown
+    @register.filter(is_safe=True)
+    @stringfilter
+    def md1(value):
+        return m.html(value)
+except:
+    @register.filter(is_safe=True)
+    @stringfilter
+    def md1(value):
+        extensions = ["nl2br", "codehilite"]
+        return mark_safe(markdown.markdown(force_unicode(value),
+                                           extensions,
+                                           safe_mode=True,
+                                           enable_attributes=False))
