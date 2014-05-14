@@ -1,5 +1,5 @@
 from fabric.api import local, settings, abort, cd, env, run
-
+ 
 env.hosts = ['root@foofish.net']
 
 def prepare_deploy():
