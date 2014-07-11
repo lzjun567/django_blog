@@ -7,7 +7,7 @@
     {% for blog in blogs %}
     <li> 
         <span class="date"><small>{{blog.publish_time|date:'Y-m-d' }}</small></span>
-        <a href="{% url 'blog:blog_detail' blog.id blog.link %}">{{blog.title}}</a>
+        <a href="{{ blog.get_absolute_url }}">{{blog.title}}</a>
     </li>
     {% endfor %}
 </ul>
