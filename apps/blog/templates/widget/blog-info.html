@@ -7,7 +7,7 @@
     {% else %}
         <span class="glyphicon glyphicon-user"></span>
     {%endif %}
-    <span class="info">{{blog.author.username}}</span>
+    <span class="info"><a href="{% url 'blog:author_blogs' blog.author.username %}">{{blog.author.username}}</a></span>
 
     {% if blog.tags.all %}
         <span class="glyphicon glyphicon-tags"> </span>
