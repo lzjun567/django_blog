@@ -68,5 +68,5 @@ Django_Blog是一个基于Django、Bootstrap开发的极简博客应用，响应
 
 任何建议或者参与开发，可以[New Issue](https://github.com/lzjun567/django_blog/issues)。项目遵循[Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)协议  
  
-  [1]: https://photos-2.dropbox.com/t/0/AACd5mYhFLs75kaWhp96onwOUxcVCZxF8zYA4Sw3OzGLjA/12/71722329/png/1024x768/3/1395331200/0/2/preview.png/y6NzGiPUvieoTm5bNtA6hsnM7Caeb44Dd7zrzOX36S0
+  [1]: http://foofish.qiniudn.com/preview.png
 
