@@ -27,7 +27,7 @@ Django_Blog是一个基于Django、Bootstrap开发的极简博客应用，响应
             └─templatetags
 
 ####安装运行
-
+版本要求：python2.7，django1.6  
 推荐使用virtualenv安装方式，virtualenv能提供一个隔离的python环境，首先安装virtualenv:  
     
     $ pip install --upgrade virtualenv
