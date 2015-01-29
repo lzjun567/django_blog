@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import time
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -26,16 +27,16 @@ TEMPLATE_DEBUG = True
 
 STATIC_URL = '/static/'
 
-#for deployment, collects the static files into STATIC_ROOT
+# for deployment, collects the static files into STATIC_ROOT
 STATIC_ROOT = os.path.join(BASE_DIR, 'collectedstatic')
 
 #STATICFILES_DIRS = (
 #        os.path.join(BASE_DIR, "static"),
 #)
 
-TEMPLATE_DIRS =  (
-    os.path.join(BASE_DIR, 'templates').replace('\\','/'),        
-    os.path.join(BASE_DIR, 'django_blog/apps/blog/templates').replace('\\','/'),        
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates').replace('\\', '/'),
+    os.path.join(BASE_DIR, 'django_blog/apps/blog/templates').replace('\\', '/'),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -45,7 +46,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'apps.blog.processor.tag_list',
 )
-
 
 ALLOWED_HOSTS = []
 
@@ -93,8 +93,9 @@ DATABASES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
-TIME_ZONE = 'Etc/GMT%+-d'%(time.timezone/3600)
-LANGUAGE_CODE = 'zh-cn'
+TIME_ZONE = 'Etc/GMT%+-d' % (time.timezone / 3600)
+#LANGUAGE_CODE = 'zh-cn'
+LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
 
 USE_I18N = True

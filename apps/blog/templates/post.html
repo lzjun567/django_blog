@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block description %}{{blog.snippet | truncatewords:50}}{%endblock%} 
+{% block title %}{{blog.title}}{% endblock %}
+{% load staticfiles %}
+{% block body_header %}
+<div class="post-heading">
+    <h1>{{blog.title}}</h1>
+    <span class="meta">Posted by <a href="#">{{blog.author.username}}</a> on {{blog.add_time|date:"b d, Y"}}</span>
+</div>
+{% endblock %}
+
+{% block main_content %}
+    {% load myapp_markup %}
+    {{blog.content | md1 | safe}}
+    {% include "widget/share.html" %}
+    {% include "widget/disqus.html" %}
+{% endblock %}
