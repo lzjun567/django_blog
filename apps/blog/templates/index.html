@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load myapp_markup %}
-{% load bootstrap_pagination %}
  {% load staticfiles %}
 {% block description %}FooFish的自话自说,Bloger,Enginner{%endblock%}
 {% block title %}FooFish的自话自说{% endblock %}
@@ -34,8 +33,13 @@
 {% endfor %}
 <!-- Pager -->
 <ul class="pager">
+
     <li class="next">
+        {% if page_num == 0 %}
+         No More
+        {% else %}
         <a href="/?p={{page_num}}">Older Posts &rarr;</a>
+        {% endif %}
     </li>
 </ul>
 <!-- pager -->

@@ -1,5 +1,4 @@
 Django==1.7.4
-South==1.0
 #只有把MySQL作为后端存储的时候才安装MySQL-python库
 #MySQL-python
 django-reversion
@@ -7,3 +6,4 @@ pygments
 django-pagedown
 markdown
 django-compressor
+pip install fabric

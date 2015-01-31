@@ -20,22 +20,14 @@ def not_found(request):
     return render(request, '404.html', {})
 
 
-def _admin_criteria(request):
-    """
-        if not login or not super user ,
-        then return all published and public articles
-    """
-    criteria = {'status': 'p'}
-    if not (request.user and request.user.is_superuser):
-        criteria['is_public'] = True
-    return criteria
-
-
 def _query_blogs(request, pagination=False, **criteria):
     """
     根据指定条件查询blog
     pagination:是否分页返回
     criteria： 查询的key-value对
+    如果 pagination=True, 返回blog list和page_num
+    如果 pagination=False, 返回blog list
+    page_num = -1 表示不能在分页了
     """
     # “发布”状态
     criteria['status'] = 'p'
@@ -45,14 +37,18 @@ def _query_blogs(request, pagination=False, **criteria):
     if pagination is True:
         paginator = Paginator(blog_list, settings.PAGE_SIZE)
         page_num = request.GET.get('p', 1)
+        print paginator.num_pages
         try:
             blogs = paginator.page(page_num)
         except PageNotAnInteger:
             page_num = 1
             blogs = paginator.page(page_num)
-
         except EmptyPage:
+            page_num = -1
             blogs = paginator.page(paginator.num_pages)
+        finally:
+            if int(page_num) == paginator.num_pages:
+                page_num = -1
         return blogs, int(page_num) + 1
     else:
         return blog_list

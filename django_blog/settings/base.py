@@ -1,26 +1,11 @@
-"""
-/app
-Django settings for django_blog project.
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-For more information on this file, see
-https://docs.djangoproject.com/en/1.6/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.6/ref/settings/
-"""
 import time
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'xhcg42=d%md&1jcy$c8%#p5e+59!)25v$m$%uq*^1hfx%23i+p'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 TEMPLATE_DEBUG = True
@@ -62,8 +47,6 @@ INSTALLED_APPS = [
     'reversion',
     'apps.blog',
     'pagedown',
-    'south',
-    'apps.bootstrap_pagination',
 ]
 
 MIDDLEWARE_CLASSES = (
@@ -117,7 +100,7 @@ TINYMCE_DEFAULT_CONFIG = {
 TINYMCE_SPELLCHECKER = True
 # TINYMCE_COMPRESSOR = True
 
-PAGE_SIZE = 1
+PAGE_SIZE = 7
 
 # compressor
 INSTALLED_APPS += ("compressor",)
