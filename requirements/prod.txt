@@ -1,4 +1,4 @@
--r common.txt
+-r base.txt
 MySQL-python
 #boto==2.1.1
 #cssmin=0.1.4

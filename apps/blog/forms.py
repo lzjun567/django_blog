@@ -1,6 +1,6 @@
-#! coding=utf-8
-import datetime
+# -*- coding: utf-8 -*-
 
+import datetime
 from django import forms
 
 from pagedown.widgets import AdminPagedownWidget

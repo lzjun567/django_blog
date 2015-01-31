@@ -1,18 +1,17 @@
 #! coding=utf-8
 from django.db import models
 from django.contrib.auth.models import User
-from django import forms
 from django.template.defaultfilters import slugify
 
 from django.core.urlresolvers import reverse
 
-STATUS_CHOICES = (
-    ('d', u"草稿"),
-    ('p', u"发布"),
-)
-
 
 class Blog(models.Model):
+    STATUS_CHOICES = (
+        ('d', u"草稿"),
+        ('p', u"发布"),
+    )
+
     title = models.CharField(u'标题', max_length=150, db_index=True, unique=True)
     link = models.CharField(u'链接', max_length=150, default='')
     link.help_text = u"Cool URIs don't change"
