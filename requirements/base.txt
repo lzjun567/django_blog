@@ -6,4 +6,4 @@ pygments
 django-pagedown
 markdown
 django-compressor
-pip install fabric
+fabric
