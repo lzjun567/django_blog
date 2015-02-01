@@ -9,7 +9,6 @@ from django.conf import settings
 
 
 class ProfilerMiddleware(object):
-
     '''
     视图性能执行效率工具,仅用于开发阶段
     在url后面加上参数prof即可查看
@@ -26,7 +25,6 @@ class ProfilerMiddleware(object):
     def process_response(self, request, response):
         if settings.DEBUG and 'prof' in request.GET:
             (fd, self.profiler_file) = tempfile.mkstemp()
-            print fd,self.profiler_file
             self.profiler.dump_stats(self.profiler_file)
             out = StringIO()
             stats = pstats.Stats(self.profiler_file, stream=out)

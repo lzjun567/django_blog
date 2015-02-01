@@ -1,6 +1,6 @@
-Django_Blog是一个基于Django、Bootstrap开发的极简博客应用，响应式设计，支持markdown格式WYSIWYG(所见即所得)的编辑方式。
+Django_Blog是一个基于Django、Bootstrap开发的极简博客，基于响应式设计，支持markdown格式WYSIWYG(所见即所得)的编辑方式。
 ####为什么会有这个博客
-经历过iteye，github，wordpress发现没一个是我想要的
+经历过iteye，github，wordpress发现没一个是我想要的（其实是不折腾会死星人）。
 ####开发哲学
 简约原则
 ####项目结构
@@ -27,7 +27,7 @@ Django_Blog是一个基于Django、Bootstrap开发的极简博客应用，响应
             └─templatetags
 
 ####安装运行
-版本要求：python2.7，django1.6  
+版本要求：python2.7（其他的依赖包参见requirements/base.txt)
 推荐使用virtualenv安装方式，virtualenv能提供一个隔离的python环境，首先安装virtualenv:  
     
     $ pip install --upgrade virtualenv
@@ -51,7 +51,6 @@ Django_Blog是一个基于Django、Bootstrap开发的极简博客应用，响应
     (django_blog) $ pip install -r requirements/dev.txt
     (django_blog) $ python manage.py syncdb
     (django_blog) $ python manage.py migrate apps.blog
-    (django_blog) $ python manage.py migrate reversion
     (django_blog) $ python manage.py runserver localhost:8000
 
 ####预览效果 
