@@ -2,3 +2,7 @@
 *.pyo
 django_blog/settings/prod.py
 colletedstatic
+.idea
+.DS_Store
+prod.py
+fabfile.py

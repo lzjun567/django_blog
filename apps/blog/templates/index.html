@@ -1,34 +1,46 @@
 {% extends "base.html" %}
 {% load myapp_markup %}
-{% load bootstrap_pagination %}
-
-{% block description %}FooFish的自话自说,Bloger,Enginner{%endblock%} 
+ {% load staticfiles %}
+{% block description %}FooFish的自话自说,Bloger,Enginner{%endblock%}
 {% block title %}FooFish的自话自说{% endblock %}
 
-{% block content %}
-    {% for blog in blogs %}
-    <!-- blog entry -->
-    <h3>
-        <a href="{{ blog.get_absolute_url }}">{{blog.title}}</a>
-    </h3>
-    {% comment %} 
-    <p class="lead">by <a>{{blog.author.username}}</a> </p>
-    {% include "widget/blog-info.html" with blog=blog only %}
-    {% endcomment %}
-    <!-- <img src="http://placehold.it/900x300" class="img-responsive"> --!>
-    <div class="article-preview">
-    {{blog.snippet | md1 | safe}} 
-    <a href="{{ blog.get_absolute_url }}" class="read-more">显示全部<span class="glyphicon glyphicon-chevron-right"></span></a>
-    </div>
+{% block body_header %}
 
-   <!-- <a class="btn btn-primary" href="{{ blog.get_absolute_url }}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
--->
-    <hr>
-    {% endfor %} 
-    <!-- pager -->
-    {%bootstrap_paginate blogs %}
+                        <div class="site-heading">
+                            <h1>Foofish's Blog</h1>
+                            <hr class="small">
+                            <span class="subheading">记录*生活</span>
+                        </div>
+
 {% endblock %}
 
-{% block panel %} {%include "widget/panel.html"%}{%endblock%}
+{% block main_content %}
+{% for blog in blogs %}
+<div class="post-preview">
+    <a href="{{ blog.get_absolute_url }}">
+        <h2 class="post-title">
+            {{blog.title}}
+        </h2>
 
-            
+        <h3 class="post-subtitle">
+             {{blog.snippet | md1 | safe}}
+        </h3>
+    </a>
+
+    <p class="post-meta">Posted by <a href="#">{{blog.author.username}}</a> on  {{blog.add_time|date:"b d, Y"}}</p>
+</div>
+<hr>
+{% endfor %}
+<!-- Pager -->
+<ul class="pager">
+
+    <li class="next">
+        {% if page_num == 0 %}
+         No More
+        {% else %}
+        <a href="/?p={{page_num}}">Older Posts &rarr;</a>
+        {% endif %}
+    </li>
+</ul>
+<!-- pager -->
+{% endblock %}
