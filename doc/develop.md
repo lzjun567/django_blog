@@ -1,5 +1,8 @@
 开发文档
 ===============
+django_blog v1.2进行了大量改动，django升级到了1.7.4，数据库迁移工具不在依赖第三方库south，该方案已经集成到了django1.7。核心代码views.py缩减至100行内。
+
+####目录结构
 项目目录结构参考[Recommended Django Project Layout](http://www.revsys.com/blog/2014/nov/21/recommended-django-project-layout/)，此方案比django自动生成的目录结构更加灵活。
 
 
@@ -57,15 +60,6 @@
 
 ####生产环境---prod.py
 生产环境的部署方案是：Supervisor+Nginx+Gunicorn+MySQL
-
-
-
-django_blog v1.2进行了大量改动，django升级到了1.7.4，数据库迁移工具不在依赖第三方库south，该方案已经集成到了django1.7。
-
-核心代码views.py缩减至100行内。
-
-
-
 
 正式环境有gunicorn_start.sh来指定
 
