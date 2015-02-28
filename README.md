@@ -39,7 +39,7 @@ Django_Blog是一个基于Django、Bootstrap开发的极简博客应用，响应
 激活虚拟环境django_blog  
 
     $ source ~/.virtualenvs/django_blog/bin/activate
-如果你使用用windows：  
+如果你使用windows：  
 
     $ ~/virtualenvs/django_blog/bin/activate    
 
