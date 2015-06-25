@@ -1,150 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:wb="http://open.weibo.com/wb">
-
+<html>
 <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{% endblock %}" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     {% load staticfiles %}
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{% block description %}{% endblock %}">
-    <meta name="author" content="foofish">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/screen.css' %}" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
 
-   <title>{% block title %}{% endblock %}</title>
+    {% block head %}{% endblock %}
 
-    {% load staticfiles %}
-    <!-- Bootstrap Core CSS -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="{% static 'css/clean-blog.css' %}" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="http://cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
+<body class="{{body_class|default:'home-template' }} nav-closed">
+    {% block navigation %} {% endblock %}
+    <div class="site-wrapper">
 
+          {% block body %} {% endblock %}
 
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://foofish.net">foofish的念叨</a> &copy; {{date}}</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/lzjun567/django_blog">django_blog</a></section>
+        </footer>
 
-<body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">FOOFISH</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'blog:archives' %}">Archives</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'about' %}">About</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-
-    <header class="intro-header" style="background-image: url('{% static 'img/home-bg.jpg' %}')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                  {% block body_header %} {% endblock %}
-                </div>
-            </div>
-        </div>
-    </header>
-
-
-    <!-- Main Content -->
-    <article>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-               {% block main_content %} {% endblock %}
-            </div>
-        </div>
     </div>
-    </article>
-    <hr>
 
+    {% block foot %} {% endblock %}
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <ul class="list-inline text-center">
-
-                        <li>
-                            <a href="https://github.com/lzjun567">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted">
-                        <span>Powered by:
-                            <a href="https://github.com/lzjun567/django_blog">DjangoBlog</a>
-                        </span>
-                        <span>Template by:
-                            <a href="http://startbootstrap.com/template-overviews/clean-blog/">CleanBlog</a>
-                        </span>
-                        <span>Host on:
-                            <a href="https://www.digitalocean.com/?refcode=af4cff8f42bc">DigitalOcean</a>
-                        </span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-
-    <!-- jQuery -->
     <script src="{% static 'js/jquery.min.js' %}"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src= "{% static 'js/bootstrap.min.js' %}"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="{% static 'js/clean-blog.min.js' %}"></script>
-
-
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-42613705-2', 'foofish.net');
-        ga('send', 'pageview');
-    </script>
+    <script type="text/javascript" src="{% static 'js/jquery.fitvids.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 
 </body>
-
 </html>
+
+
+
+

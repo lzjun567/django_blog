@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import (render, redirect,
-                              get_object_or_404, get_list_or_404)
+                              get_list_or_404)
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
 
@@ -20,46 +20,33 @@ def not_found(request):
     return render(request, '404.html', {})
 
 
-def _query_blogs(request, pagination=False, **criteria):
+def _query_blogs(request, page_num=None, **criteria):
     """
     根据指定条件查询blog
-    pagination:是否分页返回
-    criteria： 查询的key-value对
-    如果 pagination=True, 返回blog list和page_num
-    如果 pagination=False, 返回blog list
-    page_num = -1 表示不能在分页了
+    :param request:
+    :param page_num: 地page_num数据
+    :param criteria: 查询的key-value对
     """
-    # “发布”状态
-    criteria['status'] = 'p'
+    criteria['status'] = 'p'  # “发布”状态
     if not (request.user and request.user.is_superuser):
         criteria['is_public'] = True
     blog_list = get_list_or_404(Blog.objects.order_by('-publish_time'), **criteria)
-    if pagination is True:
-        paginator = Paginator(blog_list, settings.PAGE_SIZE)
-        page_num = request.GET.get('p', 1)
-        print paginator.num_pages
-        try:
-            blogs = paginator.page(page_num)
-        except PageNotAnInteger:
-            page_num = 1
-            blogs = paginator.page(page_num)
-        except EmptyPage:
-            page_num = -1
-            blogs = paginator.page(paginator.num_pages)
-        finally:
-            if int(page_num) == paginator.num_pages:
-                page_num = -1
-        return blogs, int(page_num) + 1
-    else:
-        return blog_list
+    paginator = Paginator(blog_list, settings.PAGE_SIZE)
+    try:
+        blogs = paginator.page(page_num)
+    except PageNotAnInteger:
+        blogs = paginator.page(1)
+    except EmptyPage:
+        blogs = paginator.page(paginator.num_pages)
+    return blogs
 
 
-def index(request):
+def index(request, page_num=1):
     """
     首页
     """
-    blogs, next_page = _query_blogs(request, pagination=True)
-    return render(request, 'index.html', {'blogs': blogs, 'page_num': next_page})
+    blogs = _query_blogs(request, page_num=page_num)
+    return render(request, 'index.html', {'blogs': blogs})
 
 
 def blog_detail(request, blog_id, blog_link=''):
@@ -76,8 +63,8 @@ def author_blogs(request, username):
     """
     返回username创建的blog
     """
-    blogs, next_page = _query_blogs(request, pagination=True, author__username=username)
-    return render(request, 'index.html', {'blogs': blogs, 'page_num': next_page})
+    blogs, next_page = _query_blogs(request, author__username=username)
+    return render(request, 'index.html', {'blogs': blogs})
 
 
 def archives(request):
@@ -91,4 +78,3 @@ def tag(request, tag_title):
     """
     blogs = _query_blogs(request, tags__in=Tag.objects.filter(title=tag_title))
     return render(request, 'archives.html', {'blogs': blogs})
-
