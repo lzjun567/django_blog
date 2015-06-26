@@ -56,7 +56,7 @@ def blog_detail(request, blog_id, blog_link=''):
     blog = _query_blogs(request, pk=blog_id)[0]
     blog.access_count += 1
     blog.save()
-    return render(request, 'post.html', {'blog': blog})
+    return render(request, 'post.html', {'blog': blog, 'body_class': "post-template tag-fables"})
 
 
 def author_blogs(request, username):

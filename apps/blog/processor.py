@@ -11,6 +11,6 @@ def tag_list(request):
                         LEFT JOIN blog_tag ON blog_tag.id=t2.tid";
     cursor.execute(sql)
     tags = cursor.fetchall()
-    ctx = {'tags': tags}
+    ctx = {'tags': [tag[0] for tag in tags]}
     return ctx 
 

@@ -1,21 +1,23 @@
 {% extends "base.html" %}
 {% load myapp_markup %}
-{% block description %}FooFish的自话自说,Bloger,Enginner{%endblock%}
-{% block title %}FooFish的自话自说{% endblock %}
+{% block description %}FooFish的念,Bloger,Enginner{%endblock%}
+{% block title %}FooFish的念{% endblock %}
 
 {% block head %}
-<header class="main-header">
+     {% load staticfiles %}
+
+<header class="main-header" style="background-image: url({% static 'img/home-bg.jpg' %})">
 
     <nav class="main-nav overlay clearfix">
-        <a class="blog-logo" href="/"><img
-                src="/content/images/2014/09/Ghost-Transparent-for-DARK-BG.png" alt="Foofish"></a>
+        <a class="blog-logo" href=""><img
+                src="{% static 'img/logo.png' %}" alt="Foofish"></a>
         <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
     </nav>
     <div class="vertical">
         <div class="main-header-content inner">
-            <h1 class="page-title">Foofish</h1>
+            <h1 class="page-title">Coming</h1>
 
-            <h2 class="page-description">Life is Short, Tomorrow Is Not Promised</h2>
+            <h2 class="page-description">life is short,tomorrow is not promised</h2>
         </div>
     </div>
     <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
@@ -38,7 +40,6 @@
             <p><a class="read-more" href="{{blog.get_absolute_url}}">{{blog.snippet}} &raquo;</a></p>
         </section>
         <footer class="post-meta">
-            <img class="author-thumb" src="{{author.image}}" alt="{{author.name}}" nopin="nopin"/>
             {{blog.author.username}}
             <time class="post-date" datetime='{{blog.add_time|date:"b d, Y"}}'>{{blog.add_time|date:"b d, Y"}}</time>
         </footer>

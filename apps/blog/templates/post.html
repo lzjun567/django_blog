@@ -4,11 +4,12 @@
 {% block title %}{{blog.title}}{% endblock %}
 
 {% block head %}
-<header class="main-header post-head">
+{% load staticfiles %}
+<header class="main-header post-head" style="background-image: url({% static 'img/home-bg.jpg' %})">
 
     <nav class="main-nav overlay clearfix">
         <a class="blog-logo" href="/"><img
-                src="/content/images/2014/09/Ghost-Transparent-for-DARK-BG.png" alt="Foofish"></a>
+                src="{% static 'img/logo.png' %}" alt="Foofish"></a>
         <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
     </nav>
 </header>
@@ -23,7 +24,7 @@
         <header class="post-header">
             <h1 class="post-title">{{blog.title}}</h1>
             <section class="post-meta">
-                <time class="post-date" datetime="{{blog.add_time|date:'b d, Y'}}">{{blog.add_time|date:"b d, Y"}}</time>
+                <time class="post-date" datetime="{{blog.add_time|date:'b d, Y'}}">{{blog.add_time|date:"b d, Y"}}</time> {% if tags %}on {{tags|join:" "}} {% endif %}
             </section>
         </header>
 
@@ -34,24 +35,30 @@
 
             <section class="author">
                 <h4><a href="{{url}}">{{blog.author.username}}</a></h4>
-                <p>sdfsdfdsfdsfsdfdsfds</p>
+                <p>who is admin</p>
 
             </section>
 
 
             <section class="share">
                 <h4>Share this post</h4>
-                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text={{blog.title}}&amp;url={{url}}"
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text={{blog.title|urlencode}}&amp;url=http://{{request.META.HTTP_HOST}}{{blog.get_absolute_url}}"
                     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <span class="hidden">Twitter</span>
                 </a>
-                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url}}"
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://{{request.META.HTTP_HOST}}{{blog.get_absolute_url}}"
                     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <span class="hidden">Facebook</span>
                 </a>
-                <a class="icon-google-plus" href="https://plus.google.com/share?url={{url}}"
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://{{request.META.HTTP_HOST}}{{blog.get_absolute_url}}"
                    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <span class="hidden">Google+</span>
+                </a>
+                <a class="icon-weibo" href="http://service.weibo.com/share/share.php?url=http://{{request.META.HTTP_HOST}}{{blog.get_absolute_url}}&searchPic=true"
+                    onclick="window.open(this.href, 'weibo-share', 'width=440,height=395');return false;">
+                    <i class="fa fa-weibo">
+                    <span class="hidden">Sina Weibo</span>
+                    </i>
                 </a>
             </section>
 
@@ -59,26 +66,4 @@
 
     </article>
 </main>
-
-
-<aside class="read-next">
-    {{next_post}}
-    <a class="read-next-story {{ image}}" style="background-image: url({{image}}){{else}}no-cover{{if}}" href="{{url}}">
-        <section class="post">
-            <h2>ddfdfdf</h2>
-            <p>{{excerpt}}&hellip;</p>
-        </section>
-    </a>
-    {{next_post}}
-    {{prev_post}}
-    <a class="read-next-story prev {{ image}}" style="background-image: url({{image}}){{else}}no-cover{{if}}" href="{{url}}">
-        <section class="post">
-            <h2>{{title}}</h2>
-            <p>{{excerpt}}&hellip;</p>
-        </section>
-    </a>
-    {{prev_post}}
-</aside>
-
-
 {% endblock %}
