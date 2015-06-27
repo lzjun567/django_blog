@@ -1,46 +1,56 @@
 {% extends "base.html" %}
 {% load myapp_markup %}
- {% load staticfiles %}
-{% block description %}FooFish的自话自说,Bloger,Enginner{%endblock%}
-{% block title %}FooFish的自话自说{% endblock %}
+{% block description %}FooFish的念,Bloger,Enginner{%endblock%}
+{% block title %}FooFish的念{% endblock %}
+{% load staticfiles %}
+{% block head %}
 
-{% block body_header %}
+<header class="main-header" style="background-image: url({% static 'img/home-bg.jpg' %})">
 
-                        <div class="site-heading">
-                            <h1>Foofish's Blog</h1>
-                            <hr class="small">
-                            <span class="subheading">记录*生活</span>
-                        </div>
+    {% include "widget/main-nav.html" %}
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Coming</h1>
 
+            <h2 class="page-description">life is short,tomorrow is not promised</h2>
+        </div>
+    </div>
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
 {% endblock %}
 
-{% block main_content %}
-{% for blog in blogs %}
-<div class="post-preview">
-    <a href="{{ blog.get_absolute_url }}">
-        <h2 class="post-title">
-            {{blog.title}}
-        </h2>
 
-        <h3 class="post-subtitle">
-             {{blog.snippet | md1 | safe}}
-        </h3>
-    </a>
 
-    <p class="post-meta">Posted by <a href="#">{{blog.author.username}}</a> on  {{blog.add_time|date:"b d, Y"}}</p>
-</div>
-<hr>
-{% endfor %}
-<!-- Pager -->
-<ul class="pager">
+{% block body %}
+<main id="content" class="content" role="main">
+    {% for blog in blogs %}
 
-    <li class="next">
-        {% if page_num == 0 %}
-         No More
-        {% else %}
-        <a href="/?p={{page_num}}">Older Posts &rarr;</a>
+    <article class="post">
+        <header class="post-header">
+            <h2 class="post-title"><a href="{{blog.get_absolute_url}}">{{blog.title}}</a></h2>
+        </header>
+        <section class="post-excerpt">
+            <p><a class="read-more" href="{{blog.get_absolute_url}}">{{blog.snippet}} &raquo;</a></p>
+        </section>
+        <footer class="post-meta">
+            {{blog.author.username}}
+            <time class="post-date" datetime='{{blog.add_time|date:"b d, Y"}}'>{{blog.add_time|date:"b d, Y"}}</time>
+        </footer>
+    </article>
+
+    {% endfor %}
+
+    <nav class="pagination" role="navigation">
+        <span class="page-number">Page {{blogs.number}} of {{blogs.paginator.num_pages}}</span>
+        {% if blogs.has_previous %}
+        <a class="newer-posts" href="/blog/page/{{blogs.previous_page_number}}">← Newer Posts</a>
         {% endif %}
-    </li>
-</ul>
-<!-- pager -->
+        {% if blogs.has_next %}
+        <a class="older-posts" href="/blog/page/{{ blogs.next_page_number }}">Older Posts →</a>
+        {% endif %}
+
+    </nav>
+</main>
+
+
 {% endblock %}
