@@ -2,17 +2,12 @@
 {% load myapp_markup %}
 {% block description %}FooFish的念,Bloger,Enginner{%endblock%}
 {% block title %}FooFish的念{% endblock %}
-
+{% load staticfiles %}
 {% block head %}
-     {% load staticfiles %}
 
 <header class="main-header" style="background-image: url({% static 'img/home-bg.jpg' %})">
 
-    <nav class="main-nav overlay clearfix">
-        <a class="blog-logo" href=""><img
-                src="{% static 'img/logo.png' %}" alt="Foofish"></a>
-        <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
-    </nav>
+    {% include "widget/main-nav.html" %}
     <div class="vertical">
         <div class="main-header-content inner">
             <h1 class="page-title">Coming</h1>
@@ -24,9 +19,7 @@
 </header>
 {% endblock %}
 
-{% block navigation %}
-{%include "widget/navigation.html"%}
-{% endblock %}
+
 
 {% block body %}
 <main id="content" class="content" role="main">

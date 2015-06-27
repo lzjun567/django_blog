@@ -2,18 +2,18 @@
 {% load myapp_markup %}
 {% block description %}{{blog.snippet | truncatewords:50}}{%endblock%}
 {% block title %}{{blog.title}}{% endblock %}
+{% load staticfiles %}
+
+{% block assert %}
+ <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+{% endblock %}
 
 {% block head %}
-{% load staticfiles %}
 <header class="main-header post-head" style="background-image: url({% static 'img/home-bg.jpg' %})">
-
-    <nav class="main-nav overlay clearfix">
-        <a class="blog-logo" href="/"><img
-                src="{% static 'img/logo.png' %}" alt="Foofish"></a>
-        <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
-    </nav>
+ {% include "widget/main-nav.html" %}
 </header>
 {% endblock %}
+
 
 
 {% block body %}
@@ -35,7 +35,7 @@
 
             <section class="author">
                 <h4><a href="{{url}}">{{blog.author.username}}</a></h4>
-                <p>who is admin</p>
+                <p>Keep It Simple, Stupid.</p>
 
             </section>
 
@@ -64,6 +64,10 @@
 
         </footer>
 
+         {% include "widget/disqus.html" %}
     </article>
+
+
+
 </main>
 {% endblock %}

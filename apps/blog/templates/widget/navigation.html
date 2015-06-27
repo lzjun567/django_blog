@@ -4,11 +4,11 @@
         <span class="hidden">Close</span>
     </a>
     <ul>
-        <li class="nav-home nav-current" role="presentation"><a href="http://demo.ghost.io/">Home</a></li>
-        <li class="nav-about" role="presentation"><a href="http://demo.ghost.io/about/">About</a></li>
-        <li class="nav-fables" role="presentation"><a href="http://demo.ghost.io/tag/fables/">Fables</a></li>
-        <li class="nav-speeches" role="presentation"><a href="http://demo.ghost.io/tag/speeches/">Speeches</a></li>
-        <li class="nav-start-a-blog" role="presentation"><a href="https://ghost.org">Start a Blog</a></li>
+        <li class="nav-home nav-current" role="presentation"><a href="{% url 'home' %}">Home</a></li>
+        <li class="nav-about" role="presentation"><a href="{% url 'about' %}">About</a></li>
+        <li class="nav-about" role="presentation"><a href="{% url 'blog:archives' page_num=1 %}">Archives</a></li>
+
+        <li class="nav-start-a-blog" role="presentation"><a href="https://github.com/lzjun567">Github</a></li>
     </ul>
     <a class="subscribe-button icon-feed" href="http://demo.ghost.io/rss/">Subscribe</a>
 </div>

@@ -9,7 +9,8 @@ from .models import Blog, Tag
 
 
 def about(request):
-    return render(request, 'about.html')
+    print 'about'
+    return render(request, 'about.html',{'body_class':"post-template page-template page nav-closed"})
 
 
 def blog_home(request):
@@ -67,8 +68,8 @@ def author_blogs(request, username):
     return render(request, 'index.html', {'blogs': blogs})
 
 
-def archives(request):
-    blogs = _query_blogs(request)
+def archives(request, page_num=1):
+    blogs = _query_blogs(request, page_num=page_num)
     return render(request, 'archives.html', {'blogs': blogs})
 
 

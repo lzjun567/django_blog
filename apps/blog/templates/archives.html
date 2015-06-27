@@ -1,16 +1,52 @@
 {% extends "base.html" %}
-{% block description %}文章存档{%endblock%} 
-{% block title %}文章存档{% endblock %}
-{% block main_content %}
-
-<ul class=" articles">
-    {% for blog in blogs %}
-    <li> 
-        <span class="date"><small>{{blog.publish_time|date:'Y-m-d' }}</small></span>
-        <a href="{{ blog.get_absolute_url }}">{{blog.title}}</a>
-    </li>
-    {% endfor %}
-</ul>
+{% block title %}Archives{% endblock %}
+{% block head %}
+<header class="main-header post-head no-cover">
+  {% include "widget/main-nav.html" %}
+</header>
 {% endblock %}
- 
+
+{% block body %}
+
+<main class="content" role="main">
+    <article class="post page">
+
+        <div class="postExcerpt">
+            <div class="list">
+                {% for blog in blogs %}
+                <div class="item row">
+                    <div class="summary">
+                        <h3>
+                            <a href="{{blog.get_absolute_url}}">{{blog.title}}</a>
+                            <span class="beginner difficulty" data-placement="right" data-toggle="tooltip" title=""
+                                  data-original-title="Beginner"></span>
+                        </h3>
+
+                        <p class="subhead">
+                            {{blog.publish_time|date:'Y-m-d' }}
+                        </p>
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </article>
+
+      <nav class="pagination" role="navigation">
+        <span class="page-number">Page {{blogs.number}} of {{blogs.paginator.num_pages}}</span>
+        {% if blogs.has_previous %}
+        <a class="newer-posts" href="{% url 'blog:archives' page_num=blogs.previous_page_number %}">← Newer Posts</a>
+        {% endif %}
+        {% if blogs.has_next %}
+        <a class="older-posts" href="{% url 'blog:archives' page_num=blogs.next_page_number %}">Older Posts →</a>
+        {% endif %}
+
+    </nav>
+</main>
+
+
+{% endblock %}
+
 {% block panel %} {%include "widget/panel.html"%}{%endblock%}
