@@ -12,6 +12,18 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/screen.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/prism.css' %}" />
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <style>
+
+        .poweredby img {
+          display: inline-block;
+          position: relative;
+          bottom: -3px;
+          margin-right: 4px;
+          width: 25px;
+          height: auto;
+        }
+
+    </style>
     {% block assert %} {% endblock %}
 
 </head>
@@ -24,10 +36,9 @@
           {% block body %}{% endblock %}
 
         <footer class="site-footer clearfix">
-            <section class="copyright"><a href="http://foofish.net">foofish的念</a> &copy; {{date}}</section>
-
-            <section class="poweredby">Proudly published with <a href="https://github.com/lzjun567/django_blog">django_blog</a></section>
-            <section class="poweredby">Template <a href="https://github.com/lzjun567/django_blog">Ghost</a></section>
+            <section class="copyright"><a href="http://foofish.net">foofish</a> &copy; 2015</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/lzjun567/django_blog">Django_Blog & Ghost</a></section>
+            <section class="poweredby"><img alt="Ghost" src="http://7i7hhc.com1.z0.glb.clouddn.com/logo-minidigitalocean.png"> Powered <em>by</em> <a href="https://www.digitalocean.com/?refcode=af4cff8f42bc" target="_blank">DigitalOcean</a></section>
 
         </footer>
 
