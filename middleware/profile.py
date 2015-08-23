@@ -3,7 +3,10 @@ import cProfile
 import os
 import pstats
 import tempfile
-from io import StringIO
+try:
+    from cStringIO import StringIO  # py2
+except ImportError:
+    from io import StringIO  # py3
 
 from django.conf import settings
 
