@@ -1,9 +1,6 @@
-Django==1.7.4
-#只有把MySQL作为后端存储的时候才安装MySQL-python库
-#MySQL-python
-django-reversion
-pygments
-django-pagedown
-markdown
-django-compressor
-fabric
+django==1.8.2
+mistune==0.7.1
+pygments== 2.0.2
+django-reversion==1.9.3
+django-compressor==1.5
+django-pagedown==0.1.0

@@ -3,18 +3,18 @@ import cProfile
 import os
 import pstats
 import tempfile
-from cStringIO import StringIO
+from io import StringIO
 
 from django.conf import settings
 
 
 class ProfilerMiddleware(object):
-    '''
+    """
     视图性能执行效率工具,仅用于开发阶段
     在url后面加上参数prof即可查看
 
     eg: http://localhost:8000/index?prof
-    '''
+    """
 
     def process_view(self, request, view, args, kwargs):
         if settings.DEBUG and 'prof' in request.GET:

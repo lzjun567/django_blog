@@ -1,46 +1,33 @@
-#! coding=utf-8
-#import markdown2
-import markdown
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 from django import template
 from django.template.defaultfilters import stringfilter
-from django.utils.encoding import force_unicode
-from django. utils.safestring import mark_safe
-
+from django.utils.safestring import mark_safe
+import mistune
+from pygments import highlight
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters import HtmlFormatter
 
 register = template.Library()
 
-#@register.filter(is_safe=True)
-#@stringfilter
-#def md2(value):
-#    '''
-#        目前markdown2 无法处理井号（####）标题
-#    '''
-#    return mark_safe(markdown2.markdown(
-#                force_unicode(value),
-#                safe_mode=True)
-#            )
-#    return mark_safe(markdown2.markdown(value))
+
+class HighlightRenderer(mistune.Renderer):
+    def block_code(self, code, lang):
+        if not lang:
+            return '\n<pre><code>%s</code></pre>\n' % \
+                   mistune.escape(code)
+        lexer = get_lexer_by_name(lang, stripall=True)
+        formatter = HtmlFormatter()
+        return highlight(code, lexer, formatter)
 
 
-try:
-    import misaka as m
-    from misaka import Markdown, HtmlRenderer
-    #https://github.com/FSX/misaka
-    #优先使用misaka解析markdown
-    @register.filter(is_safe=True)
-    @stringfilter
-    def md1(value):
-        rndr = HtmlRenderer()
-        md = Markdown(rndr)
-        return md.render(value)
-        #return m.html(value)
-except:
-    @register.filter(is_safe=True)
-    @stringfilter
-    def md1(value):
-        extensions = ["nl2br", "codehilite"]
-        return mark_safe(markdown.markdown(force_unicode(value),
-                                           extensions,
-                                           safe_mode=True,
-                                           enable_attributes=False))
+renderer = HighlightRenderer()
+markdown = mistune.Markdown(renderer=renderer)
+
+
+@register.filter(is_safe=True)
+@stringfilter
+def md1(value):
+    markdown = mistune.Markdown(renderer=renderer)
+    return mark_safe(markdown(value))

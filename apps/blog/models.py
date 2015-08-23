@@ -1,4 +1,6 @@
-#! coding=utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify

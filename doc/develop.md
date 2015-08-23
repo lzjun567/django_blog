@@ -1,6 +1,6 @@
 开发文档
 ===============
-django_blog v1.2进行了大量改动，django升级到了1.7.4，数据库迁移工具不在依赖第三方库south，该方案已经集成到了django1.7。核心代码views.py缩减至100行内。
+django_blog v1.2进行了大量改动，django升级到了1.8.2，数据库迁移工具不在依赖第三方库south，该方案已经集成到了django1.7。核心代码views.py缩减至100行内。
 
 ####目录结构
 项目目录结构参考[Recommended Django Project Layout](http://www.revsys.com/blog/2014/nov/21/recommended-django-project-layout/)，此方案比django自动生成的目录结构更加灵活。
@@ -17,7 +17,7 @@ django_blog v1.2进行了大量改动，django升级到了1.7.4，数据库迁�
         │   │   ├── processor.py
         │   │   ├── static               # 静态资源文件
         │   │   ├── templates
-        │   │   ├── templatetags
+        │   │   ├── templatetags         # 自定义模板标签
         │   │   ├── urls.py              # 博客app的路由规则
         │   │   ├── views.py             # 业务逻辑
         ├── collectedstatic

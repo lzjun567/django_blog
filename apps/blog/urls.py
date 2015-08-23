@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from django.conf.urls import patterns, url
 
 urlpatterns = patterns('apps.blog.views',
@@ -9,3 +12,4 @@ urlpatterns = patterns('apps.blog.views',
                        url(r'^archives/(?P<page_num>\d?)$', 'archives', name='archives'),
                        url(r'^tag/(?P<tag_title>[\w,-]*)$', 'tag', name='tag'),
 )
+

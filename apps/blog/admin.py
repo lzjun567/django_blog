@@ -1,12 +1,15 @@
-#! coding=utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import datetime
 
 from django.contrib import admin
 import reversion
-from .models import Tag, Blog, Category
-from .forms import BlogForm
 from django.contrib.admin.templatetags.admin_modify import *
 from django.contrib.admin.templatetags.admin_modify import submit_row as original_submit_row
+
+from .models import Tag, Blog, Category
+from .forms import BlogForm
 
 
 @register.inclusion_tag('admin/blog/submit_line.html', takes_context=True)
@@ -37,7 +40,7 @@ class BlogAdmin(reversion.VersionAdmin):
     exclude = ('publish_time',)
     search_fields = ('title',)
     prepopulated_fields = {"link": ("link",)}
-    ordering = ('-add_time', )
+    ordering = ('-add_time',)
     list_per_page = 60
     form = BlogForm
     actions = ['make_published']
@@ -90,8 +93,3 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)
-
-
-
-
-

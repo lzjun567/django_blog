@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import (render, redirect,
@@ -9,7 +10,6 @@ from .models import Blog, Tag
 
 
 def about(request):
-    print 'about'
     return render(request, 'about.html',{'body_class':"post-template page-template page nav-closed"})
 
 
