@@ -1,12 +1,38 @@
-{% extends "base.html"%}
-{% block title %}404{% endblock %}
-{% block body_header %}
+ {% load staticfiles %}
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if (gte IE 9)| IEMobile |!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<script src="https://gist.github.com/lzjun567/6be73383ce84e7e8ee40.js"></script>
-    <div class="site-heading">
-        <h1>404'ed</h1>
-        <hr class="small">
-        <span class="subheading">AHH,你懂的</span>
-    </div>
-{% endblock %}
+    <title>404 — Page not found</title>
 
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ghost.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font.css' %}"/>
+ </head>
+  <body>
+    <main role="main" id="main">
+      <div class="gh-app">
+          <div class="gh-viewport">
+              <div class="gh-view">
+                <section class="error-content error-404 js-error-container">
+                  <section class="error-details">
+                    <section class="error-message">
+                      <h1 class="error-code">404</h1>
+                    </section>
+                  </section>
+                </section>
+              </div>
+          </div>
+      </div>
+    </main>
+  </body>
+</html>

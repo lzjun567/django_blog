@@ -17,3 +17,5 @@ ALLOWED_HOSTS = ['localhost', ]
 MIDDLEWARE_CLASSES += (
     'middleware.profile.ProfilerMiddleware',
 )
+
+PAGE_SIZE = 2

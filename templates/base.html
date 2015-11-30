@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{% endblock %}"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/screen.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/github.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font.css' %}"/>
+
+</head>
+<body class="{{body_class|default:'home-template' }} nav-closed">
+
+<div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home nav-current" role="presentation"><a href="{% url 'home' %}">Home</a></li>
+        <li class="nav-about" role="presentation"><a href="{% url 'about' %}">About</a></li>
+        <li class="nav-start-a-blog" role="presentation"><a href="https://github.com/lzjun567">Github</a></li>
+    </ul>
+</div>
+<span class="nav-cover"></span>
+
+<div class="site-wrapper">
+
+    {% block head %}{% endblock %}
+    {% block body %}{% endblock %}
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="http://foofish.net">foofish</a> &copy; 2015</section>
+        <section class="poweredby">Powered
+            <em>by</em><a href="https://github.com/lzjun567/django_blog"> Django_Blog</a> & <a href="https://www.digitalocean.com/?refcode=af4cff8f42bc" target="_blank">DigitalOcean</a>
+        </section>
+
+    </footer>
+
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.fitvids.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/prism.js' %}"></script>
+
+</body>
+</html>
+
+
+
+
