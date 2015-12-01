@@ -1,5 +1,4 @@
 from django.shortcuts import render
-# Create your views here.
 
 from .forms import CommentForm
 
@@ -9,13 +8,14 @@ def index(request):
 
 
 def add_comments(request):
+    success = False
     if request.method == "POST":
         form = CommentForm(request.POST)
         print(form)
         if form.is_valid():
             form.save()
-            print("helloworld")
+            success = True
     else:
         form = CommentForm()
-    return render(request, 'wedding_index.html', {'form': form})
+    return render(request, 'wedding_index.html', {'form': form, "success": success})
 

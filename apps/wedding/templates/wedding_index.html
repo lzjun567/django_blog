@@ -18,7 +18,7 @@
     <title>我们结婚啦,刘志军&吴长芳</title>
     <meta name="description" content="">
     <meta name="author" content="WebThemez">
-      <!--[if lt IE 9]>
+    <!--[if lt IE 9]>
 
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -44,7 +44,7 @@
         }
     </style>
 
-     <style type='text/css'>
+    <style type='text/css'>
         @font-face {
         font-family: 'NaiYou565989';
         src: url('font/fonts/NaiYou.eot');
@@ -74,9 +74,17 @@
 <section id="home">
     <div class="banner-container">
         <div class="container">
-            <div class="row">
+            <div class="heading text-center">
+                {% if success %}
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="alert alert-info" role="alert">提交成功</div>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="row">
 
-                <div class="heading text-center">
+
                     <h2 style='font-family:NaiYou565988'>我们结婚啦！</h2>
 
                     <h1 style='font-family:NaiYou565988'>刘志军＆吴长芳</h1>
@@ -111,7 +119,7 @@
             </div>
             <div class="six columns feature-media left"><img src="{% static 'images/pic1.JPG' %}" alt=""></div>
         </div>
-               </div>
+    </div>
     </div>
 </section>
 
@@ -127,9 +135,12 @@
                 </div>
             </div>
             <div class="row mrgn30">
+
                 <form method="post" action="/wedding/add_comments/" id="contactfrm" role="form">
+
                     {% csrf_token %}
                     <div class="col-sm-12">
+
                         <div class="form-group">
                             <label for="name">姓名</label>
                             <input type="text" class="form-control" name="name" id="name" placeholder="输入姓名"
@@ -148,6 +159,7 @@
                             <button name="submit" type="submit" class="btn btn-lg btn-primary" id="submit">提交
                             </button>
                         </div>
+
                         <div class="result"></div>
                     </div>
                 </form>
@@ -156,7 +168,6 @@
         <!--/.container-->
     </div>
 </section>
-
 
 
 <a href="#top" class="topHome"><i class="fa fa-chevron-up fa-2x"></i></a>

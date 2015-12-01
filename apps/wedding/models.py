@@ -9,4 +9,4 @@ class Comment(models.Model):
     body = models.CharField(max_length=2000, blank=True)
 
     def __str__(self):
-        return self.body[:100]
+        return ":".join([self.name, self.body[:100]])
