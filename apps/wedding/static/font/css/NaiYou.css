@@ -1,0 +1,10 @@
+@font-face {
+font-family: 'NaiYou565988';
+src: url('NaiYou.eot');
+src: url('NaiYou.eot?#iefix') format('embedded-opentype'),
+     url('NaiYou.woff') format('woff'),
+     url('NaiYou.ttf') format('truetype'),
+     url('NaiYou.svg#NaiYou') format('svg');
+    font-weight: normal;
+    font-style: normal;
+   }
