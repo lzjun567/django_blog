@@ -8,10 +8,8 @@ SECRET_KEY = 'xhcg42=d%md&1jcy$c8%#p5e+59!)25v$m$%uq*^1hfx%23i+p'
 DEBUG = True
 
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+# from django.contrib import staticfiles
+# django.contrib.staticfiles.finders.AppDirectoriesFinder
 
 TEMPLATES = [
     {
@@ -40,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'apps.blog',
+    'apps.wedding',
     'pagedown',
 ]
 
@@ -51,6 +50,11 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+    # os.
 )
 
 ROOT_URLCONF = 'urls'
