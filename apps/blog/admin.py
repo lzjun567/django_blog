@@ -48,7 +48,7 @@ class BlogAdmin(reversion.VersionAdmin):
     def create_time(self, obj):
         return obj.add_time.strftime('%Y-%m-%d')
 
-    create_time.short_description = u"创建时间"
+    create_time.short_description = "创建时间"
 
     def publish(self, obj):
         if obj.publish_time:
@@ -56,7 +56,7 @@ class BlogAdmin(reversion.VersionAdmin):
         else:
             return ''
 
-    publish.short_description = u"发布时间"
+    publish.short_description = "发布时间"
 
     def make_published(self, request, queryset):
         """
@@ -75,7 +75,7 @@ class BlogAdmin(reversion.VersionAdmin):
         message_bit = "%s 篇博客 " % rows_updated
         self.message_user(request, "%s 成功发布" % message_bit)
 
-    make_published.short_description = u"发表"
+    make_published.short_description = "发表"
 
     def save_model(self, request, obj, form, change):
         obj.author = request.user
