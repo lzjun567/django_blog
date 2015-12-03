@@ -10,28 +10,28 @@ from django.core.urlresolvers import reverse
 
 class Blog(models.Model):
     STATUS_CHOICES = (
-        ('d', u"草稿"),
-        ('p', u"发布"),
+        ('d', "草稿"),
+        ('p', "发布"),
     )
 
-    title = models.CharField(u'标题', max_length=150, db_index=True, unique=True)
-    link = models.CharField(u'链接', max_length=150, default='')
-    link.help_text = u"Cool URIs don't change"
-    snippet = models.CharField(u'摘要', max_length=500, default='')
-    content = models.TextField(u'内容', )
+    title = models.CharField('标题', max_length=150, db_index=True, unique=True)
+    link = models.CharField('链接', max_length=150, default='')
+    link.help_text = "Cool URIs don't change"
+    snippet = models.CharField('摘要', max_length=500, default='')
+    content = models.TextField('内容', )
 
-    add_time = models.DateTimeField(u'创建时间', auto_now_add=True)
-    publish_time = models.DateTimeField(u'发表时间', null=True)
-    update_time = models.DateTimeField(u'修改时间', auto_now=True)
-    status = models.CharField(u'状态', max_length=1, choices=STATUS_CHOICES, default=STATUS_CHOICES[0][0])
+    add_time = models.DateTimeField('创建时间', auto_now_add=True)
+    publish_time = models.DateTimeField('发表时间', null=True)
+    update_time = models.DateTimeField('修改时间', auto_now=True)
+    status = models.CharField('状态', max_length=1, choices=STATUS_CHOICES, default=STATUS_CHOICES[0][0])
 
-    is_public = models.BooleanField(u'公开', default=True)
-    is_top = models.BooleanField(u'置顶', default=False)
-    access_count = models.IntegerField(u'浏览量', default=1, editable=False)
-    category = models.ForeignKey('Category', verbose_name=u'所属分类')
-    tags = models.ManyToManyField('Tag', verbose_name=u'标签集合', null=True, blank=True)
+    is_public = models.BooleanField('公开', default=True)
+    is_top = models.BooleanField('置顶', default=False)
+    access_count = models.IntegerField('浏览量', default=1, editable=False)
+    category = models.ForeignKey('Category', verbose_name='所属分类')
+    tags = models.ManyToManyField('Tag', verbose_name='标签集合', null=True, blank=True)
     tags.help_text = ''
-    author = models.ForeignKey(User, verbose_name=u'作者')
+    author = models.ForeignKey(User, verbose_name='作者')
 
     def save(self, *args, **kwargs):
         self.link = slugify(self.link)
@@ -49,7 +49,7 @@ class Category(models.Model):
     """
     大分类
     """
-    title = models.CharField(u'名称', max_length=50, db_index=True, unique=True)
+    title = models.CharField('名称', max_length=50, db_index=True, unique=True)
 
     class Meta:
         ordering = ['title', ]
@@ -62,7 +62,7 @@ class Tag(models.Model):
     """
     小标签
     """
-    title = models.CharField(u'名称', max_length=50, db_index=True, unique=True)
+    title = models.CharField('名称', max_length=50, db_index=True, unique=True)
 
     def __unicode__(self):
         return self.title
