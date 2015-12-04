@@ -8,6 +8,7 @@ SECRET_KEY = 'xhcg42=d%md&1jcy$c8%#p5e+59!)25v$m$%uq*^1hfx%23i+p'
 DEBUG = True
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
 # from django.contrib import staticfiles
 # django.contrib.staticfiles.finders.AppDirectoriesFinder
 
