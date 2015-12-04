@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render
 from .forms import CommentForm
 from .models import Comment
@@ -11,7 +13,6 @@ def index(request):
 def add_comments(request):
     if request.method == "POST":
         form = CommentForm(request.POST)
-        print(form)
         if form.is_valid():
             form.save()
     else:
