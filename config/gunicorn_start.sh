@@ -11,14 +11,14 @@ DJANGO_WSGI_MODULE=wsgi
 echo "Starting $NAME as `whoami`"
 
 cd $DJANGODIR
-source /root/envs/foofish/bin/activate
+source /root/envs/django_blog/bin/activate
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DJANGODIR:$PYTHONPATH
 
 RUNDIR=$(dirname $SOCKFILE)
 test -d $RUNDIR || mkdir -p $RUNDIR
 
-exec /root/envs/foofish/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
+exec /root/envs/django_blog/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
 --name $NAME \
 --workers $NUM_WORKERS \
 --user=$USER --group=$GROUP \
