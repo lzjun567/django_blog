@@ -38,16 +38,18 @@
 
     {% endfor %}
 
+    {% if is_paginated %}
     <nav class="pagination" role="navigation">
-        <span class="page-number">Page {{blogs.number}} of {{blogs.paginator.num_pages}}</span>
-        {% if blogs.has_previous %}
-        <a class="newer-posts" href="/blog/page/{{blogs.previous_page_number}}">← Newer Posts</a>
-        {% endif %}
-        {% if blogs.has_next %}
-        <a class="older-posts" href="/blog/page/{{ blogs.next_page_number }}">Older Posts →</a>
-        {% endif %}
+        <span class="page-number">Page {{ page_obj.number }} of  {{ page_obj.paginator.num_pages }}</span>
 
+        {% if page_obj.has_previous %}
+        <a class="newer-posts" href="/?page={{page_obj.previous_page_number}}">← Newer Posts</a>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <a class="older-posts" href="/?page={{ page_obj.next_page_number }}">Older Posts →</a>
+        {% endif %}
     </nav>
+    {% endif %}
 </main>
 
 

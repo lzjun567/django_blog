@@ -9,8 +9,6 @@ DEBUG = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
-# from django.contrib import staticfiles
-# django.contrib.staticfiles.finders.AppDirectoriesFinder
 
 TEMPLATES = [
     {

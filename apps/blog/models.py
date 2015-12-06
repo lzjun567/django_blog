@@ -41,7 +41,7 @@ class Blog(models.Model):
     def get_absolute_url(self):
         return reverse('blog:blog_detail', args=(self.id, self.link))
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
 
@@ -54,7 +54,7 @@ class Category(models.Model):
     class Meta:
         ordering = ['title', ]
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
 
@@ -64,7 +64,7 @@ class Tag(models.Model):
     """
     title = models.CharField('名称', max_length=50, db_index=True, unique=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
 

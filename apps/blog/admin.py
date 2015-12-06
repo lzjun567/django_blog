@@ -23,7 +23,7 @@ def submit_row(context):
     return ctx
 
 
-class BlogAdmin(reversion.VersionAdmin):
+class BlogAdmin(admin.ModelAdmin):
     list_display = ('title', 'is_public', 'status', 'publish', 'access_count')
     fields = (
         'title',
