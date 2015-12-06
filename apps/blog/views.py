@@ -5,12 +5,11 @@ from django.shortcuts import (render, redirect,
                               get_list_or_404)
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
-
 from .models import Blog, Tag
 
 
 def about(request):
-    return render(request, 'about.html',{'body_class':"post-template page-template page nav-closed"})
+    return render(request, 'about.html', {'body_class': "post-template page-template page nav-closed"})
 
 
 def blog_home(request):
