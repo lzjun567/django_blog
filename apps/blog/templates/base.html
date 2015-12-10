@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/font.css' %}"/>
 
 </head>
-<body class="home-template nav-closed">
+<body class="{% block body_class %}{% endblock %} nav-closed">
 
 <div class="nav">
     <h3 class="nav-title">Menu</h3>

@@ -2,6 +2,7 @@
 {% load myapp_markup %}
 {% block description %}{{blog.snippet | truncatewords:50}}{%endblock%}
 {% block title %}{{blog.title}}{% endblock %}
+{%block body_class %} post-template {% endblock %}
 {% load staticfiles %}
 
 {% block head %}
