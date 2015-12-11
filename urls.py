@@ -1,14 +1,12 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-
+from django.contrib.sitemaps.views import sitemap
 from django_blog.sitemaps import BlogSitemap
-from django_blog.sitemaps import StaticViewSitemap
 
 admin.autodiscover()
 
 sitemaps = {
     'blog': BlogSitemap,
-    'static': StaticViewSitemap
 }
 
 urlpatterns = patterns('',
@@ -18,5 +16,6 @@ urlpatterns = patterns('',
                        url(r'^wedding/', include('apps.wedding.urls', namespace='wedding')),
                        url(r'^admin/', include(admin.site.urls)),
                        url(r'404', 'apps.blog.views.not_found'),
-                       url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
-)
+                       url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},
+                           name='django.contrib.sitemaps.views.sitemap')
+                       )
