@@ -7,7 +7,7 @@
 
 {% block head %}
 <header class="main-header post-head no-cover">
- {% include "widget/main-nav.html" %}
+    {% include "widget/main-nav.html" %}
 </header>
 {% endblock %}
 
@@ -20,22 +20,24 @@
         <header class="post-header">
             <h2 class="post-title">{{blog.title}}</h2>
             <section class="post-meta">
-                <time class="post-date" datetime="{{blog.add_time|date:'b d, Y'}}">{{blog.add_time|date:"b d, Y"}}</time>
+                <time class="post-date" datetime="{{blog.add_time|date:'b d, Y'}}">{{blog.add_time|date:"b d, Y"}}
+                </time>
                 {% if blog.tags %}on
                 {% for tag in blog.tags.all %}
-                {{tag  }}
+                {{tag }}
                 {% endfor %}
                 {% endif %}
             </section>
         </header>
 
         <section class="post-content">
-           {{blog.content | md1}}
+            {{blog.content | md1}}
         </section>
         <footer class="post-footer">
 
             <section class="author">
                 <h4><a href="{{url}}">{{blog.author.username}}</a></h4>
+
                 <p>Keep It Simple, Stupid.</p>
 
             </section>
@@ -43,31 +45,26 @@
 
             <section class="share">
                 <h4>Share this post</h4>
-                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text={{blog.title|urlencode}}&amp;url=http://{{request.META.HTTP_HOST}}{{blog.get_absolute_url}}"
-                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                    <span class="hidden">Twitter</span>
-                </a>
-                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://{{request.META.HTTP_HOST}}{{blog.get_absolute_url}}"
-                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                    <span class="hidden">Facebook</span>
-                </a>
-                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://{{request.META.HTTP_HOST}}{{blog.get_absolute_url}}"
-                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-                    <span class="hidden">Google+</span>
-                </a>
-                <a class="icon-weibo" href="http://service.weibo.com/share/share.php?url=http://{{request.META.HTTP_HOST}}{{blog.get_absolute_url}}&searchPic=true"
-                    onclick="window.open(this.href, 'weibo-share', 'width=440,height=395');return false;">
-                    <i class="fa fa-weibo">
-                    <span class="hidden">Sina Weibo</span>
-                    </i>
-                </a>
+
+                <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#"
+                                                                                                  class="bds_qzone"
+                                                                                                  data-cmd="qzone"
+                                                                                                  title="分享到QQ空间"></a><a
+                        href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq"
+                                                                                           data-cmd="tqq"
+                                                                                           title="分享到腾讯微博"></a><a
+                        href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin"
+                                                                                            data-cmd="weixin"
+                                                                                            title="分享到微信"></a></div>
+                <script>
+                    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","qzone","tsina","bdysc","weixin","tieba","douban","bdhome","sqq","youdao","sdo","qingbiji","mail","ty","fbook","twi","linkedin","h163","copy","print"],"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                </script>
             </section>
 
         </footer>
 
-         {% include "widget/disqus.html" %}
+        {% include "widget/disqus.html" %}
     </article>
-
 
 
 </main>
