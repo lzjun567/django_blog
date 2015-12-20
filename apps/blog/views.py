@@ -7,6 +7,8 @@ from django.views.generic.list import ListView
 
 from .models import Blog
 
+def baidu(request):
+    return render(request, 'baidu_verify_3ymtDfPE09.html')
 
 def about(request):
     return render(request, 'about.html')
