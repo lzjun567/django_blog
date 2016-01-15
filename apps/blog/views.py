@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 
 from django.conf import settings
-from django.shortcuts import (render)
+from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-
+from django.core.urlresolvers import reverse
+from django.contrib.syndication.views import Feed
 from .models import Blog
+
 
 def baidu(request):
     return render(request, 'baidu_verify_3ymtDfPE09.html')
+
 
 def about(request):
     return render(request, 'about.html')
@@ -41,3 +44,18 @@ class BlogDetailView(DetailView):
         blog.access_count += 1
         blog.save()
         return blog
+
+
+class LatestPosts(Feed):
+    title = "foofish 的笔录"
+    link = "/"
+
+    def items(self):
+        blogs = Blog.objects.filter(status='p', is_public=True).all().order_by('-publish_time')[:10]
+        return blogs
+
+    def item_title(self, item):
+        return item.title
+
+    def item_description(self, item):
+        return item.snippet

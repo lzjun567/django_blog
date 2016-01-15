@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django_blog.sitemaps import BlogSitemap
 from django.http import HttpResponse
+from apps.blog.views import LatestPosts
 
 admin.autodiscover()
 
@@ -22,5 +23,6 @@ urlpatterns = patterns('',
                        url(r'^robots.txt$',
                            lambda r: HttpResponse("User-agent: *\nDisallow: /admin/\nSitemap: <http://foofish.net/sitemap.xml>", content_type="text/plain")),
                        url(r'^baidu_verify_3ymtDfPE09.html', 'apps.blog.views.baidu', name='baidu'),
+                       url(r'^rss/', LatestPosts(), name='feeds'),
 
                        )
