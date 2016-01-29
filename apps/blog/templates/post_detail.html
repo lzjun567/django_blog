@@ -60,4 +60,19 @@
 
 </main>
 
+    <aside class="read-next">
+    <a class="read-next-story " href="{{next_post.get_absolute_url}}">
+        <section class="post">
+            <h2>{{next_post.title}}</h2>
+            <p>{{next_post.snippet|truncatechars_html:20}}</p>
+        </section>
+    </a>
+    <a class="read-next-story prev "  href="{{random_post.get_absolute_url}}">
+        <section class="post">
+            <h2>{{random_post.title}}</h2>
+            <p>{{random_post.snippet|truncatechars_html:20}}</p>
+        </section>
+    </a>
+</aside>
+
 {% endblock %}

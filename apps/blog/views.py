@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
-
+import random
 from django.conf import settings
 from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from django.core.urlresolvers import reverse
 from django.contrib.syndication.views import Feed
 from .models import Blog
 
@@ -45,8 +44,32 @@ class BlogDetailView(DetailView):
         blog.save()
         return blog
 
+    def get_context_data(self, **kwargs):
+        context = super(BlogDetailView, self).get_context_data(**kwargs)
+        current_post = context.get("object")
+
+        # 随机文章
+        count = Blog.objects.filter(status='p', is_public=True).count()
+        randint = random.randint(0, count)
+        print(count, randint)
+        try:
+            random_post = Blog.objects.filter(status='p', is_public=True)[randint:randint + 1][0]
+        except IndexError:
+            random_post = None
+        try:
+            next_post = Blog.objects.filter(pk__gt=current_post.id)[0]
+        except IndexError:
+            next_post = None
+
+        context['next_post'] = next_post
+        context['random_post'] = random_post
+        return context
+
 
 class LatestPosts(Feed):
+    """
+    RSS 输出
+    """
     title = "foofish 的笔录"
     link = "/"
 
