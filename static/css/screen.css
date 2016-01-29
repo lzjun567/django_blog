@@ -1394,6 +1394,7 @@ body:not(.post-template) .post-title {
 
 .read-next-story .post {
     padding-top: 6rem;
+    padding-bottom: 6rem;
 }
 
 .read-next-story .post:before {
