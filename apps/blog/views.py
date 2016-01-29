@@ -57,7 +57,7 @@ class BlogDetailView(DetailView):
         except IndexError:
             random_post = None
         try:
-            next_post = Blog.objects.filter(pk__gt=current_post.id)[0]
+            next_post = Blog.objects.filter(pk__lt=current_post.id)[0]
         except IndexError:
             next_post = None
 
