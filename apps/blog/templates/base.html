@@ -2,6 +2,7 @@
 <html>
 <head>
     {% load staticfiles %}
+    {% load compress %}
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>{% block title %}{% endblock %}</title>
@@ -10,9 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    {% compress css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/screen.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/github.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/font.css' %}"/>
+    {% endcompress %}
 
 </head>
 <body class="{% block body_class %}{% endblock %} nav-closed">
@@ -47,11 +50,12 @@
 
 </div>
 
+{% compress js %}
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery.fitvids.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/prism.js' %}"></script>
-
+{% endcompress %}
 </body>
 </html>
 

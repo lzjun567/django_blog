@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'apps.blog',
     'apps.wedding',
     'pagedown',
+    'compressor',
 ]
 SITE_ID = 1
 MIDDLEWARE_CLASSES = (
@@ -57,6 +58,11 @@ STATICFILES_DIRS = (
     # os.
 )
 
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
 ROOT_URLCONF = 'urls'
 
 WSGI_APPLICATION = 'wsgi.application'
