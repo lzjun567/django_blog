@@ -51,7 +51,6 @@ class BlogDetailView(DetailView):
         # 随机文章
         count = Blog.objects.filter(status='p', is_public=True).count()
         randint = random.randint(0, count)
-        print(count, randint)
         try:
             random_post = Blog.objects.filter(status='p', is_public=True)[randint:randint + 1][0]
         except IndexError:
