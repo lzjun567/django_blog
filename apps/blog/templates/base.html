@@ -9,14 +9,27 @@
     <meta name="description" content="{% block description %}{% endblock %}"/>
     <meta name="HandheldFriendly" content="True"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/highlight.js/9.1.0/styles/github.min.css">
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
     {% compress css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/screen.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/github.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/font.css' %}"/>
     {% endcompress %}
 
+    <style>
+        pre {
+        word-wrap: normal;
+        -moz-hyphens: none;
+        -ms-hyphens: none;
+        -webkit-hyphens: none;
+        hyphens: none;
+        font-size: 0.7em;
+        line-height: 1.3em;
+        }
+        pre code, pre tt {
+        white-space: pre;
+        }
+    </style>
 </head>
 <body class="{% block body_class %}{% endblock %} nav-closed">
 
@@ -50,12 +63,16 @@
 
 </div>
 
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 {% compress js %}
-<script src="{% static 'js/jquery.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery.fitvids.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/prism.js' %}"></script>
 {% endcompress %}
+
+<!-- http://highlightjs.readthedocs.org/en/latest/css-classes-reference.html -->
+<script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 </body>
 </html>
 
