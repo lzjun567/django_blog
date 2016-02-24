@@ -32,6 +32,8 @@
 
         <section class="post-content">
             {{blog.content | md1}}
+
+            原文链接：<a href="{{blog.get_absolute_url}}">{{blog.title}}</a>，转发请注明来自foofish的博客！
         </section>
         <footer class="post-footer">
 
