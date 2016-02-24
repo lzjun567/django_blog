@@ -33,7 +33,11 @@
         <section class="post-content">
             {{blog.content | md1}}
 
-            原文链接：<a href="{{blog.get_absolute_url}}">{{blog.title}}</a>，转发请注明来自foofish的博客！
+            <details open="">
+                <summary>原文链接：<a href="{{blog.get_absolute_url}}" rel="author">{{blog.title}}</a>，转发请注明来自<a
+                        href="http://foofish.net">foofish的博客</a>！
+                </summary>
+            </details>
         </section>
         <footer class="post-footer">
 
@@ -47,8 +51,11 @@
             <!-- JiaThis Button BEGIN -->
             <script type="text/javascript">
             var jiathis_config = {data_track_clickback:'true'};
+
             </script>
-            <script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?move=0&amp;btn=r2.gif&amp;uid=2080162" charset="utf-8"></script>
+            <script type="text/javascript"
+                    src="http://v3.jiathis.com/code/jiathis_r.js?move=0&amp;btn=r2.gif&amp;uid=2080162"
+                    charset="utf-8"></script>
             <!-- JiaThis Button END -->
 
         </footer>
@@ -59,13 +66,13 @@
 
 </main>
 
-    <aside class="read-next">
+<aside class="read-next">
     <a class="read-next-story " href="{{next_post.get_absolute_url}}">
         <section class="post">
             <h2>{{next_post.title}}</h2>
         </section>
     </a>
-    <a class="read-next-story prev "  href="{{random_post.get_absolute_url}}">
+    <a class="read-next-story prev " href="{{random_post.get_absolute_url}}">
         <section class="post">
             <h2>{{random_post.title}}</h2>
         </section>
