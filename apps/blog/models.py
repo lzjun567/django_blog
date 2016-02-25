@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+import datetime
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
@@ -21,7 +21,7 @@ class Blog(models.Model):
 
     add_time = models.DateTimeField('创建时间', auto_now_add=True)
     publish_time = models.DateTimeField('发表时间', null=True)
-    update_time = models.DateTimeField('修改时间', auto_now=True)
+    update_time = models.DateTimeField('修改时间')
     status = models.CharField('状态', max_length=1, choices=STATUS_CHOICES, default=STATUS_CHOICES[0][0])
 
     is_public = models.BooleanField('公开', default=True)
@@ -35,6 +35,9 @@ class Blog(models.Model):
     def save(self, *args, **kwargs):
         self.link = slugify(self.link)
         self.snippet = self.snippet or self.content[:140]
+        modified = kwargs.pop("modified", True)
+        if modified:
+            self.update_time = datetime.datetime.utcnow()
         super(Blog, self).save(*args, **kwargs)
 
     def get_absolute_url(self):

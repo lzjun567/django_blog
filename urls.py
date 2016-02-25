@@ -1,14 +1,16 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
-from django_blog.sitemaps import BlogSitemap
+from django_blog.sitemaps import BlogSitemap, IndexSitemap
 from django.http import HttpResponse
 from apps.blog.views import LatestPosts
 
 admin.autodiscover()
 
 sitemaps = {
+    'index': IndexSitemap,
     'blog': BlogSitemap,
+
 }
 
 urlpatterns = patterns('',

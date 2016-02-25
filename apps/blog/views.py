@@ -41,7 +41,7 @@ class BlogDetailView(DetailView):
         blog = super(BlogDetailView, self).get_object(queryset)
         # 阅读数增1
         blog.access_count += 1
-        blog.save()
+        blog.save(modified=False)
         return blog
 
     def get_context_data(self, **kwargs):
