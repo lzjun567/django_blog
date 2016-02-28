@@ -28,8 +28,7 @@ class BlogListView(ListView):
         tag_name = self.kwargs.get('tag_name')
         if tag_name:
             context['tag_title'] = tag_name
-            tag = Tag.objects.get(title=tag_name)
-            print(tag)
+            # tag = Tag.objects.get(title=tag_name)
             context['tag_description'] = ''
         return context
 
