@@ -40,7 +40,7 @@
                 <div class="tag-cloud-tags">
 
                     {% for tag in tag_list %}
-                    <a href="{% url 'blog:tag' tag.title}" style="font-size:{{tag.font_size}}px; color:{{tag.color}}">{{tag.title}}</a>
+                    <a href="{% url 'blog:tag' tag.title %}" style="font-size:{{tag.font_size}}px; color:{{tag.color}}">{{tag.title}}</a>
                     {% endfor %}
 
                 </div>
