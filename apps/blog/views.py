@@ -11,7 +11,6 @@ from django.core.exceptions import PermissionDenied
 class BlogListView(ListView):
     template_name = 'post_list.html'
     paginate_by = settings.PAGE_SIZE
-    ordering = "-publish_time"
     context_object_name = "blog_list"
 
     def get_queryset(self):
@@ -22,7 +21,7 @@ class BlogListView(ListView):
         }
         if 'tag_name' in self.kwargs:
             query_condition['tags__title'] = self.kwargs['tag_name']
-        return Blog.objects.filter(**query_condition)
+        return Blog.objects.filter(**query_condition).order_by('-publish_time')
 
     def get_context_data(self, **kwargs):
         context = super(BlogListView, self).get_context_data(**kwargs)
