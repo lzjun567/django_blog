@@ -1,33 +1,35 @@
 # -*- coding: utf-8 -*-
 import random
 from django.conf import settings
-from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.contrib.syndication.views import Feed
 from .models import Blog
-
-
-def baidu(request):
-    return render(request, 'baidu_verify_3ymtDfPE09.html')
-
-
-def about(request):
-    return render(request, 'about.html')
-
-
-def not_found(request):
-    return render(request, '404.html', {})
+from django.core.exceptions import PermissionDenied
 
 
 class BlogListView(ListView):
-    model = Blog
-    # 只显示状态为发布且公开的文章列表
-    queryset = Blog.objects.filter(status='p', is_public=True)
     template_name = 'post_list.html'
     paginate_by = settings.PAGE_SIZE
     ordering = "-publish_time"
-    context_object_name = "blogs"
+    context_object_name = "blog_list"
+
+    def get_queryset(self):
+        # 只显示状态为发布且公开的文章列表
+        query_condition = {
+            'status': 'p',
+            'is_public': True
+        }
+        if 'tag_name' in self.kwargs:
+            query_condition['tags__title'] = self.kwargs['tag_name']
+        return Blog.objects.filter(**query_condition)
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogListView, self).get_context_data(**kwargs)
+        if 'tag_name' in self.kwargs:
+            context['tag_title'] = self.kwargs['tag_name']
+            context['tag_description'] = ''
+        return context
 
 
 class BlogDetailView(DetailView):
@@ -39,6 +41,8 @@ class BlogDetailView(DetailView):
 
     def get_object(self, queryset=None):
         blog = super(BlogDetailView, self).get_object(queryset)
+        if blog.status == 'd' or (not blog.is_public and self.request.user != blog.author):
+            raise PermissionDenied
         # 阅读数增1
         blog.access_count += 1
         blog.save(modified=False)

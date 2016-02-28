@@ -29,7 +29,7 @@ class Blog(models.Model):
     access_count = models.IntegerField('浏览量', default=1, editable=False)
     category = models.ForeignKey('Category', verbose_name='所属分类')
     tags = models.ManyToManyField('Tag', verbose_name='标签集合', null=True, blank=True)
-    tags.help_text = ''
+    tags.help_text = '标签'
     author = models.ForeignKey(User, verbose_name='作者')
 
     def save(self, *args, **kwargs):
@@ -65,6 +65,7 @@ class Tag(models.Model):
     小标签
     """
     title = models.CharField('名称', max_length=50, db_index=True, unique=True)
+    # description = models.CharField('描述', max_length=200, default='')
 
     def __str__(self):
         return self.title
