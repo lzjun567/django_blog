@@ -898,6 +898,20 @@ body.nav-opened .nav {
     color: rgba(0,0,0,0.5);
 }
 
+.site-wrapper .main-inner{
+    width: 700px;
+    margin: 0 auto;
+ }
+
+.tag-cloud {
+    text-align: center;
+}
+
+.tag-cloud a {
+    display: inline-block;
+    margin: 10px;
+}
+
 /* Add subtle load-in animation for content on the home page */
 .home-template .page-title {
     -webkit-animation: fade-in-down 0.6s;

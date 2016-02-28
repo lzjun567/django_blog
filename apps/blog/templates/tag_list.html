@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load myapp_markup %}
+{% block description %}FooFish的念,Bloger,Enginner,Python{%endblock%}
+{% block title %}FooFish的笔录{% endblock %}
+{%block body_class %} home-template {% endblock %}
+{% load staticfiles %}
+{% block head %}
+
+
+<header class="main-header tag-head " style="background-image: url({% static 'img/home-bg.jpg' %})">
+    <nav class="main-nav overlay clearfix">
+        <a class="blog-logo" href="{%url 'index' %}">FOOFISH</a>
+        <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">{{tag_title |default:"Life is Short"}}</h1>
+            <h2 class="page-description">
+                {{tag_description}}
+            </h2>
+        </div>
+    </div>
+</header>
+
+
+{% endblock %}
+
+
+{% block body %}
+<main id="content" class="content" role="main">
+    <div class="main-inner">
+
+        <div id="posts" class="posts-expand">
+
+
+            <div class="tag-cloud">
+                <div class="tag-cloud-title">
+                    目前共计 {{ tag_list|length }} 个标签
+                </div>
+                <div class="tag-cloud-tags">
+
+                    {% for tag in tag_list %}
+                    <a href="{% url 'blog:tag' tag.title}" style="font-size:{{tag.font_size}}px; color:{{tag.color}}">{{tag.title}}</a>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</main>
+
+
+{% endblock %}
