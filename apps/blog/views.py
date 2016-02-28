@@ -4,7 +4,7 @@ from django.conf import settings
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.contrib.syndication.views import Feed
-from .models import Blog
+from .models import Blog, Tag
 from django.core.exceptions import PermissionDenied
 
 
@@ -26,8 +26,11 @@ class BlogListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(BlogListView, self).get_context_data(**kwargs)
-        if 'tag_name' in self.kwargs:
-            context['tag_title'] = self.kwargs['tag_name']
+        tag_name = self.kwargs.get('tag_name')
+        if tag_name:
+            context['tag_title'] = tag_name
+            tag = Tag.objects.get(title=tag_name)
+            print(tag)
             context['tag_description'] = ''
         return context
 

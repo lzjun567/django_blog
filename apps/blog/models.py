@@ -65,7 +65,6 @@ class Tag(models.Model):
     小标签
     """
     title = models.CharField('名称', max_length=50, db_index=True, unique=True)
-    # description = models.CharField('描述', max_length=200, default='')
 
     def __str__(self):
         return self.title

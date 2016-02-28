@@ -24,7 +24,7 @@
                 </time>
                 {% if blog.tags %}on
                 {% for tag in blog.tags.all %}
-                {{tag }}
+                <a href="{%url 'blog:tag' tag%}">{{tag }}</a>
                 {% endfor %}
                 {% endif %}
             </section>
