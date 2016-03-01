@@ -7,13 +7,15 @@ from django.contrib.syndication.views import Feed
 from .models import Blog, Tag
 from django.core.exceptions import PermissionDenied
 
+from .libs.tag_cloud import TagCloud
+
 
 class TagListView(ListView):
     template_name = 'tag_list.html'
     context_object_name = 'tag_list'
     model = Tag
 
-    colors = ['#ccc', "#adadad", '#8e8e8e', '#6f6f6f', '4f4f4f', '#303030', '#111', '#000']
+    colors = ['#ccc', "#adadad", '#8e8e8e', '#6f6f6f', '#4f4f4f', '#303030', '#111', '#000']
     max_font_size, min_font_size = 33, 12
     font_sizes = [min_font_size, 15, 18, 21, 24, 27, 30, max_font_size]
 
@@ -30,14 +32,12 @@ class TagListView(ListView):
 
         max_count = max(tag_list_have_blog, key=lambda tag: tag.blog_count).blog_count
         min_count = min(tag_list_have_blog, key=lambda tag: tag.blog_count).blog_count
-        step = (self.max_font_size - self.min_font_size) / (max_count - min_count)
-        print("step:", step)
+
+        tag_cloud = TagCloud(min_count, max_count)
+
         for tag in tag_list_have_blog:
-            size = round(self.min_font_size + (tag.blog_count - min_count) * step)
-            tag_font_size = min(self.font_sizes, key=lambda x: abs(x-size))
-
-            color = self.colors[self.font_sizes.index(tag_font_size)]
-
+            tag_font_size = tag_cloud.get_tag_font_size(tag.blog_count)
+            color = tag_cloud.get_tag_color(tag.blog_count)
             tag.color = color
             tag.font_size = tag_font_size
 

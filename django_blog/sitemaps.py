@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 
 class BlogSitemap(Sitemap):
     changefreq = "weekly"
+    priority = 0.9
 
     def items(self):
         return Blog.objects.filter(is_public=True).filter(status='p').order_by('-add_time')
@@ -15,7 +16,6 @@ class BlogSitemap(Sitemap):
 
     def location(self, item):
         return r'/blog/%d/%s' % (item.id, item.link)
-
 
 class IndexSitemap(Sitemap):
     changefreq = "daily"
