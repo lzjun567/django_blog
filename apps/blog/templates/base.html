@@ -6,9 +6,19 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>{% block title %}{% endblock %}</title>
+    <meta name="keywords" content="python,django,mysql">
     <meta name="description" content="{% block description %}{% endblock %}"/>
     <meta name="HandheldFriendly" content="True"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="canonical" href="http://foofish.net" />
+    <meta property='og:locale' content='zh_CN'/>
+    <meta property='og:type' content='article'/>
+    <meta property='og:title' content='foofish'/>
+    <meta property='og:description' content='python,django,mysql'/>
+    <meta property='og:url' content='http://foofish.net/'/>
+    <meta property='og:site_name' content='foofish'/>
+
     <link rel="stylesheet" href="http://apps.bdimg.com/libs/highlight.js/9.1.0/styles/github.min.css">
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
     {% compress css %}
