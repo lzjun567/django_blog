@@ -15,10 +15,6 @@ class TagListView(ListView):
     context_object_name = 'tag_list'
     model = Tag
 
-    colors = ['#ccc', "#adadad", '#8e8e8e', '#6f6f6f', '#4f4f4f', '#303030', '#111', '#000']
-    max_font_size, min_font_size = 33, 12
-    font_sizes = [min_font_size, 15, 18, 21, 24, 27, 30, max_font_size]
-
     def get_context_data(self, **kwargs):
         context = super(TagListView, self).get_context_data(**kwargs)
         tag_list = context.get("tag_list")
