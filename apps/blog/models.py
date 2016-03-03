@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
+import re
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
@@ -65,6 +67,10 @@ class Tag(models.Model):
     小标签
     """
     title = models.CharField('名称', max_length=50, db_index=True, unique=True)
+
+    def save(self, *args, **kwargs):
+        self.title = re.sub("\s", "", self.title)
+        super(Tag, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
