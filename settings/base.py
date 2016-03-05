@@ -21,6 +21,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.blog.context_processors.google_analytics',
             ],
         },
     },
@@ -84,3 +85,6 @@ LANGUAGE_CODE = 'zh-hans'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = False
+
+
+GOOGLE_ANALYTICS_ID='you google analytics id'
