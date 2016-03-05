@@ -13,5 +13,9 @@ def tag_list(request):
     cursor.execute(sql)
     tags = cursor.fetchall()
     ctx = {'tags': [tag[0] for tag in tags]}
-    return ctx 
+    return ctx
 
+
+def google_analytics(request):
+    from django.conf import settings
+    return {'ga_id': settings.GOOGLE_ANALYTICS_ID}
