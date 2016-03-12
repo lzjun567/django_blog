@@ -56,7 +56,6 @@ MIDDLEWARE_CLASSES = (
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
-    # os.
 )
 
 STATICFILES_FINDERS = (
@@ -67,9 +66,6 @@ STATICFILES_FINDERS = (
 ROOT_URLCONF = 'urls'
 
 WSGI_APPLICATION = 'wsgi.application'
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
     'default': {
