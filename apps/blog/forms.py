@@ -2,17 +2,20 @@
 # -*- coding: utf-8 -*-
 
 import datetime
-from django import forms
+from django.forms import ModelForm
+from django.forms import CharField
+from django.forms import Textarea
+
 
 from pagedown.widgets import AdminPagedownWidget
 
 
-class BlogForm(forms.ModelForm):
-    title = forms.CharField(label='标题', widget=forms.TextInput(attrs={'size': 118}))
-    content = forms.CharField(label='内容', widget=AdminPagedownWidget())
-    snippet = forms.CharField(label='摘要',
-                              widget=forms.Textarea(attrs={'cols': 85, 'rows': 7}),
-                              required=False)
+class BlogForm(ModelForm):
+    content = CharField(label='内容', widget=AdminPagedownWidget())
+    snippet = CharField(label='摘要',
+                        widget=Textarea(attrs={'cols': 85, 'rows': 7}),
+                        required=False)
+
 
     def save(self, commit=True):
         instance = super(BlogForm, self).save(commit=False)
@@ -21,4 +24,3 @@ class BlogForm(forms.ModelForm):
         if commit:
             instance.save()
         return instance
-

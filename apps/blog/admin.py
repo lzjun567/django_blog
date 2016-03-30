@@ -3,7 +3,6 @@
 import datetime
 
 from django.contrib import admin
-import reversion
 from django.contrib.admin.templatetags.admin_modify import *
 from django.contrib.admin.templatetags.admin_modify import submit_row as original_submit_row
 
@@ -14,11 +13,15 @@ from .forms import BlogForm
 @register.inclusion_tag('admin/blog/submit_line.html', takes_context=True)
 def submit_row(context):
     """
-        删除"保存后添加"按钮
+    移除"保存后添加"按钮
+    移除"保存继续编辑"按钮
+    添加"保存为草稿"按钮
     """
     ctx = original_submit_row(context)
     ctx.update({
         'show_save_and_add_another': False,
+        'show_save_as_draft': True,
+        'show_save_and_continue': False,
     })
     return ctx
 
@@ -28,11 +31,10 @@ class BlogAdmin(admin.ModelAdmin):
     fields = (
         'title',
         'link',
-        'snippet',
         'content',
+        'snippet',
         ('is_public', 'is_top',),
         'category',
-        'status',
         'tags'
     )
 
@@ -58,11 +60,6 @@ class BlogAdmin(admin.ModelAdmin):
     publish.short_description = "发布时间"
 
     def make_published(self, request, queryset):
-        """
-        $modeladmin: current modeladmin
-        $request: the current request
-        $queryset: the set of objects selected by user
-        """
         rows_updated = 0
         for entry in queryset:
             if entry.status != 'p':
@@ -78,7 +75,20 @@ class BlogAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         obj.author = request.user
-        obj.save()
+        if '_save' in request.POST.keys():
+            obj.status = Blog.STATUS_CHOICES[1][0]
+        elif '_save_as_draft' in request.POST.keys():
+            obj.status = Blog.STATUS_CHOICES[0][0]
+        super(BlogAdmin, self).save_model(request, obj, form, change)
+        # obj.save()
+
+    def response_action(self, request, queryset):
+        print(request)
+        return super(BlogAdmin, self).response_action(request, queryset)
+
+    def response_change(self, request, obj):
+        print(obj)
+        return super(BlogAdmin, self).response_change(request, obj)
 
 
 class TagAdmin(admin.ModelAdmin):

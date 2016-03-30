@@ -84,3 +84,11 @@ USE_TZ = False
 
 
 GOOGLE_ANALYTICS_ID='you google analytics id'
+
+SIMPLEMDE_OPTIONS = {
+    'placeholder': 'haha',
+    'status': False,
+    'autosave': {
+        'enabled': True
+    }
+}

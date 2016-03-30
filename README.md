@@ -1,8 +1,8 @@
 关于Django_Blog
 =====================
-Django_Blog是一款基于Python3.x、Django1.8.x 开发的个人博客系统，按照《Two Scoops of Django Best Practices for Django》实践而成，使用极简主义风格。在管理后台可以用WYSIWYG(所见即所得)编辑方式。系统主题经过3次大的改动，最初前端使用BootStrap开发完成。目前最新版本使用的是Ghost主题，因为Ghost的简洁实在是太吸引我了。
+Django_Blog是一款基于Python3.x、Django1.8.x 开发的个人博客系统，按照《Two Scoops of Django Best Practices for Django》实践而成，使用极简主义风格。在管理后台可以用WYSIWYG(所见即所得)编辑方式。系统主题经过3次大的改动，最初前端使用BootStrap开发完成，目前最新版本使用的是Ghost主题，因为Ghost的简洁实在是太吸引我了。
 ####为什么会有这个博客
-写博客是我作为开发者一直以来的习惯，最早在Javaeye记录，后来用[DigitalOcean](https://www.digitalocean.com/?refcode=af4cff8f42bc)（注：从链接点进去注册使用服务，你和我都会得到$10优惠券）自己搭建一个VPS转用WordPress，不过在使用体验上都存在这样那样的不足（其实是不折腾会死星人）。于是自己开始着手打造一个轮子，能满足自己需求即可。这个项目是我第一次接触Python的时候写的，Django的强大以至于业务代码非常得少。因此项目亦可作为绝大数Python初学者练手，希望对你有所帮助。
+写博客是我作为开发者一直以来的习惯，最早在Javaeye记录，后来用[DigitalOcean](https://www.digitalocean.com/?refcode=af4cff8f42bc)（注：从链接点进去注册使用服务，你和我都会得到$10优惠券）自己搭建一个VPS转用WordPress，不过在使用体验上都存在这样那样的不足（其实是不折腾会死星人）。于是自己开始着手打造一个轮子，能满足自己需求即可。这个项目是我第一次接触Python的时候写的，Django的强大以至于你可以完全专注于业务。因此项目亦可作为绝大数Python初学者练手，希望对你有所帮助。
 ####Features
 - WYSIWYG编辑模式
 - 支持代码高亮
@@ -38,7 +38,7 @@ Python版本使用3.4，首先确保系统有Python3的环境。还没安装的�
 ####预览效果 
 ![预览效果 ][1]
 
-管理登录地址：[http://localhost:8000/admin](http://localhost:8000/admin)，用户名:admin   密码:123456  
+管理登录地址：[http://localhost:8000/admin](http://localhost:8000/admin)，用户名:admin   密码:123456  生产环境部署请参考[Django应用部署](http://foofish.net/blog/18/django-deploy)
 
 ####开发文档
 [develop.md](./doc/develop.md)

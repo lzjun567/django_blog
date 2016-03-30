@@ -1,4 +1,4 @@
-django==1.8.7
+django==1.9.4
 mistune==0.7.1
 pygments== 2.0.2
 django-reversion==1.9.3

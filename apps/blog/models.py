@@ -12,7 +12,7 @@ from django.core.urlresolvers import reverse
 class Blog(models.Model):
     STATUS_CHOICES = (
         ('d', "草稿"),
-        ('p', "发布"),
+        ('p', "已发布"),
     )
 
     title = models.CharField('标题', max_length=150, db_index=True, unique=True)
