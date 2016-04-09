@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'apps.blog',
-    'apps.wedding',
     'pagedown',
     'compressor',
 ]

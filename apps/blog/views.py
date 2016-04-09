@@ -42,7 +42,7 @@ class TagListView(ListView):
 
 
 class BlogListView(ListView):
-    template_name = 'post_list.html'
+    template_name = 'index.swig'
     paginate_by = settings.PAGE_SIZE
     context_object_name = "blog_list"
 
