@@ -5,27 +5,28 @@
     {% include "widget/main-nav.html" %}
 </header>
 {% endblock %}
-{% block body %}
+{% block content %}
 <main class="content" role="main">
     <article class="post page">
 
-        <header class="post-header">
-            <h1 class="post-title">About</h1>
-        </header>
 
         <section class="post-content">
-            <p>Hi! My name is Liuzhijun, and I work as a Software Engineer at Guangzhou China, Most of the time I write
-                Python code. I also use Java write something, such as Android App. You can contact me via
-                lzjun567@gmail.com</p>
+            <h2 class="post-title">关于作者</h2>
+            <p>
+            这是Foofish的个人站点, 一直在互联网行业做技术开发相关工作, 对程序语言有一点研究, 对技术架构有一点实践经验, 技术背景包括:
+                <ul>
+                <li>Python</li>
+                <li>Java</li>
+                <li>MySQL</li>
+                <li>NoSQL</li>
+                <li>Unix/Linux</li>
+                <li>Web架构</li>
+            </ul>
+            我的电子邮箱是: lzjun567@gmail.com , <a href="http://weibo.com/lzjun567">微博</a>偶尔用 , 我的<a href="https://github.com/lzjun567">Github</a>干货可能更多点
+            </p>
 
-            <h1 class="post-title">Side Projects</h1>
-            <ol>
-                <li>Django Blog:a blog platform based on django with simplicity style. <a href="https://github.com/lzjun567/django_blog">link</a></li>
-                <li>Android App: a app for ImportNew <a href="https://github.com/lzjun567/XiYuanFangApp">link</a> </li>
-                <li>Gongshare: a resource collection site. <a href="http://fav.foofish.net">link</a></li>
-            </ol>
         </section>
-        {% include "widget/disqus.html" %}
+        {% include "widget/disqus-comment.html" %}
     </article>
 </main>
 {% endblock %}

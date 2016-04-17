@@ -1,0 +1,26 @@
+
+body {
+	margin-top: 75px;
+}
+
+
+footer {
+	margin: 10px 0;
+}
+
+#comments, #comments li {
+    margin: 0;
+    padding: 0;
+}
+
+#comments li {
+    list-style: none;
+}
+        
+.photo {
+	margin-bottom: 10px;
+}
+
+.social-buttons button {
+	margin-top: 5px;
+}

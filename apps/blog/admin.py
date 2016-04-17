@@ -6,7 +6,7 @@ from django.contrib import admin
 from django.contrib.admin.templatetags.admin_modify import *
 from django.contrib.admin.templatetags.admin_modify import submit_row as original_submit_row
 
-from .models import Tag, Blog, Category
+from .models import Tag, Blog, Category, Friend
 from .forms import BlogForm
 
 
@@ -43,7 +43,6 @@ def submit_row(context):
     #     'show_save_as_draft': True,
     #     'show_save_and_continue': False,
     # })
-    print(ctx)
     return ctx
 
 
@@ -52,6 +51,7 @@ class BlogAdmin(admin.ModelAdmin):
     fields = (
         'title',
         'link',
+        'cover',
         'content',
         'snippet',
         ('is_public', 'is_top',),
@@ -109,10 +109,6 @@ class BlogAdmin(admin.ModelAdmin):
         return super().change_view(request, object_id, form_url, more_context)
 
 
-
-
-
-
 class TagAdmin(admin.ModelAdmin):
     pass
 
@@ -121,6 +117,11 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ('title',)
 
 
+class FriendAdmin(admin.ModelAdmin):
+    list_display = ('title', 'url', 'position', 'active')
+
+
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)
+admin.site.register(Friend, FriendAdmin)

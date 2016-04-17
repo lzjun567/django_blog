@@ -19,3 +19,18 @@ def tag_list(request):
 def google_analytics(request):
     from django.conf import settings
     return {'ga_id': settings.GOOGLE_ANALYTICS_ID}
+
+
+def recent_blog_list(request):
+    """
+    最近文章列表
+    """
+    from .models import Blog
+    from .models import Category
+    from .models import Friend
+    recent_blogs = Blog.objects.order_by('-publish_time')[:10]
+    categories = Category.objects.all()
+
+    friends = Friend.objects.filter(active=True).order_by('position')
+
+    return {'recent_blogs': recent_blogs, 'categories': categories, 'friends': friends}

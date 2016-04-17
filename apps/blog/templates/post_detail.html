@@ -12,64 +12,47 @@
 {% endblock %}
 
 
-{% block body %}
+{% block content %}
 
-<main class="content" role="main">
-    <article class="post">
+<article class="post">
 
-        <header class="post-header">
-            <h2 class="post-title">{{blog.title}}</h2>
-            <section class="post-meta">
-                <time class="post-date" datetime="{{blog.add_time|date:'b d, Y'}}">{{blog.add_time|date:"b d, Y"}}
+    <header class="post-header">
+        <h1>{{blog.title}}</h1>
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <time class="post-date" datetime='{{blog.add_time|date:"b d, Y"}}'>
+                    {{blog.add_time|date:"Y-m-d"}}
                 </time>
-                {% if blog.tags %}on
                 {% for tag in blog.tags.all %}
                 <a href="{%url 'blog:tag' tag%}">{{tag }}</a>
                 {% endfor %}
+            </div>
+
+        </div>
+    </header>
+
+    {% if blog.cover %}
+                <img src="{{blog.cover}}" class="img-responsive">
+    <br>
                 {% endif %}
-            </section>
-        </header>
 
-        <section class="post-content">
-            {{blog.content | md1}}
+    <section class="post-content">
+        {{blog.content | md1}}
 
-            <details open="">
-                <summary>原文链接：<a href="{{blog.get_absolute_url}}" rel="author">{{blog.title}}</a>，转发请注明来自<a
-                        href="http://foofish.net">foofish的博客</a>！
-                </summary>
-            </details>
-        </section>
-        <footer class="post-footer">
+        <p>原文链接：<a href="{{blog.get_absolute_url}}" rel="author">{{blog.title}}</a>，转载请注明来自<a
+                href="http://foofish.net">foofish的博客</a>！
+        </p>
+    </section>
 
-            <section class="author">
-                <h4><a href="{{url}}">{{blog.author.username}}</a></h4>
+    <hr>
+    <footer>
+        <h3>猜你喜欢</h3>
+        {% for blog in random_posts %}
+         <p><a href="{{blog.get_absolute_url}}" rel="author">{{blog.title}}</a></p>
+        {% endfor %}
+    </footer>
 
-                <p>Keep It Simple, Stupid.</p>
-
-            </section>
-
-
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"0","bdPos":"right","bdTop":"100"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-        </footer>
-
-        {% include "widget/disqus.html" %}
-    </article>
-
-
-</main>
-
-<aside class="read-next">
-    <a class="read-next-story " href="{{next_post.get_absolute_url}}">
-        <section class="post">
-            <h2>{{next_post.title}}</h2>
-        </section>
-    </a>
-    <a class="read-next-story prev " href="{{random_post.get_absolute_url}}">
-        <section class="post">
-            <h2>{{random_post.title}}</h2>
-        </section>
-    </a>
-</aside>
+    {% include "widget/disqus-comment.html" %}
+</article>
 
 {% endblock %}

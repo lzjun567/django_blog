@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block description %}Bloger,Enginner,Python{%endblock%}
+{% block head_title %}FooFish的笔录{% endblock %}
+{% load staticfiles %}
+{% block content %}
+            {% for blog in blog_list %}
+            <article>
+                <h1><a href="{{blog.get_absolute_url}}">{{blog.title}}</a></h1>
+
+                <div class="row">
+                    <div class="col-sm-6 col-md-6">
+                        <time class="post-date" datetime='{{blog.add_time|date:"b d, Y"}}'>
+                            {{blog.add_time|date:"Y-m-d"}}
+                        </time>
+                        {% for tag in blog.tags.all %}
+                        <a href="{%url 'blog:tag' tag%}">{{tag }}</a>
+                        {% endfor %}
+                    </div>
+
+                </div>
+                {% if blog.cover %}
+                <img src="{{blog.cover}}" class="img-responsive">
+                {% endif %}
+                <br/>
+
+                <p>{{blog.snippet}} &raquo;</p>
+                <p class="text-right">
+                    <a href="{{blog.get_absolute_url}}">
+                        阅读全文...
+                    </a>
+                </p>
+
+                <hr>
+            </article>
+            {% endfor %}
+
+            {% if is_paginated %}
+            <nav class="pager" role="navigation">
+                {% if page_obj.has_previous %}
+                <a class="newer-posts" href="/?page={{page_obj.previous_page_number}}">上一页←</a>
+                {% endif %}
+                <span class="page-number">第 {{ page_obj.number }} 页, 共 {{ page_obj.paginator.num_pages }} 页</span>
+                {% if page_obj.has_next %}
+                <a class="older-posts" href="/?page={{ page_obj.next_page_number }}"> →下一页</a>
+                {% endif %}
+            </nav>
+            {% endif %}
+
+
+{% endblock %}

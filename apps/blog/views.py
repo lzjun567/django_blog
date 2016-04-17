@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+
+__author__ = "liuzhijun"
+
 import random
 from django.conf import settings
 from django.views.generic.detail import DetailView
@@ -8,6 +11,17 @@ from .models import Blog, Tag
 from django.core.exceptions import PermissionDenied
 
 from .libs.tag_cloud import TagCloud
+
+from django.views.generic.base import TemplateView
+
+
+class AboutView(TemplateView):
+    template_name = 'about.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(AboutView, self).get_context_data(**kwargs)
+        context['about_active'] = True
+        return context
 
 
 class TagListView(ListView):
@@ -38,11 +52,12 @@ class TagListView(ListView):
             tag.font_size = tag_font_size
 
         context['tag_list'] = tag_list_have_blog
+        context['tag_active'] = True
         return context
 
 
 class BlogListView(ListView):
-    template_name = 'post_list.html'
+    template_name = 'index.html'
     paginate_by = settings.PAGE_SIZE
     context_object_name = "blog_list"
 
@@ -52,8 +67,12 @@ class BlogListView(ListView):
             'status': 'p',
             'is_public': True
         }
+
         if 'tag_name' in self.kwargs:
             query_condition['tags__title'] = self.kwargs['tag_name']
+        elif 'cat_name' in self.kwargs:
+            query_condition['category__title'] = self.kwargs['cat_name']
+
         return Blog.objects.filter(**query_condition).order_by('-publish_time')
 
     def get_context_data(self, **kwargs):
@@ -61,7 +80,13 @@ class BlogListView(ListView):
         tag_name = self.kwargs.get('tag_name')
         if tag_name:
             context['tag_title'] = tag_name
+
             context['tag_description'] = ''
+        else:
+            print('index active')
+            context['index_active'] = True
+
+        # 最近文章
         return context
 
 
@@ -87,18 +112,13 @@ class BlogDetailView(DetailView):
 
         # 随机文章
         count = Blog.objects.filter(status='p', is_public=True).count()
-        randint = random.randint(0, count)
+        randint = random.randint(0, count - 5)
         try:
-            random_post = Blog.objects.filter(status='p', is_public=True)[randint:randint + 1][0]
+            random_posts = Blog.objects.exclude(pk=current_post.id).filter(status='p', is_public=True)[
+                           randint:randint + 5]
         except IndexError:
-            random_post = None
-        try:
-            next_post = Blog.objects.filter(pk__lt=current_post.id).order_by('-pk')[0]
-        except IndexError:
-            next_post = None
-
-        context['next_post'] = next_post
-        context['random_post'] = random_post
+            random_posts = None
+        context['random_posts'] = random_posts
         return context
 
 

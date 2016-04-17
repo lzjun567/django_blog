@@ -18,6 +18,7 @@ class Blog(models.Model):
     title = models.CharField('标题', max_length=150, db_index=True, unique=True)
     link = models.CharField('链接', max_length=150, default='')
     link.help_text = "Cool URIs don't change"
+    cover = models.URLField('封面', default='')
     snippet = models.CharField('摘要', max_length=500, default='')
     content = models.TextField('内容', )
 
@@ -33,6 +34,10 @@ class Blog(models.Model):
     tags = models.ManyToManyField('Tag', verbose_name='标签集合', null=True, blank=True)
     tags.help_text = '标签'
     author = models.ForeignKey(User, verbose_name='作者')
+
+    class Meta:
+        verbose_name = '文章'
+        verbose_name_plural = '文章'
 
     def save(self, *args, **kwargs):
         self.link = slugify(self.link)
@@ -57,6 +62,8 @@ class Category(models.Model):
 
     class Meta:
         ordering = ['title', ]
+        verbose_name = '文章分类'
+        verbose_name_plural = '文章分类'
 
     def __str__(self):
         return self.title
@@ -71,6 +78,27 @@ class Tag(models.Model):
     def save(self, *args, **kwargs):
         self.title = re.sub("\s", "", self.title)
         super(Tag, self).save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = '标签'
+        verbose_name_plural = '标签'
+
+    def __str__(self):
+        return self.title
+
+
+class Friend(models.Model):
+    """
+    友情链接
+    """
+    title = models.CharField('名称', max_length=100, default='')
+    url = models.URLField('链接', default='')
+    position = models.SmallIntegerField('位置', default=1)
+    active = models.BooleanField('激活', default=True)
+
+    class Meta:
+        verbose_name = '友情链接'
+        verbose_name_plural = '友情链接'
 
     def __str__(self):
         return self.title
