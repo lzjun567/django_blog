@@ -1,15 +1,13 @@
 {% extends "base.html" %}
 {% load myapp_markup %}
 {% block description %}{{blog.snippet | truncatewords:50}}{%endblock%}
-{% block title %}{{blog.title}}{% endblock %}
-{%block body_class %} post-template {% endblock %}
-{% load staticfiles %}
+{% block head_title %}{{blog.title}}{% endblock %}
 
-{% block head %}
-<header class="main-header post-head no-cover">
-    {% include "widget/main-nav.html" %}
-</header>
+{% block head_css %}
+ <link rel="stylesheet" href="http://apps.bdimg.com/libs/highlight.js/9.1.0/styles/github.min.css">
 {% endblock %}
+
+{% load staticfiles %}
 
 
 {% block content %}
@@ -54,5 +52,12 @@
 
     {% include "widget/disqus-comment.html" %}
 </article>
+
+{% endblock %}
+
+{% block footer_javascript %}
+
+<script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 {% endblock %}

@@ -83,7 +83,6 @@ class BlogListView(ListView):
 
             context['tag_description'] = ''
         else:
-            print('index active')
             context['index_active'] = True
 
         # 最近文章

@@ -36,3 +36,8 @@ footer {
     color: #aaa;
     margin: 0;
 }
+
+.content img {
+    max-width:100%;
+    vertical-align: middle;
+}
