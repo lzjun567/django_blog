@@ -1,0 +1,109 @@
+
+
+/* ==========================================================================
+   quanzhankaifa.com's custom styles
+   ========================================================================== */
+
+
+body {
+    font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei",sans-serif;
+}
+
+h1,.h1,h2,.h2,h3,.h3,h4,.h4,.lead {
+    font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+}
+
+.home .course {
+    border-radius: 0px;
+    padding: 0px;
+}
+
+.home .course a{
+    text-decoration: none;
+    padding: 0px;
+
+    }
+
+.course .head{
+    height:130px;
+
+    width:100%;
+    font-family: 微软雅黑;
+    font-size: 20px;
+    text-decoration: none;
+    color:#FFFFFF;
+    padding:48px;
+
+}
+
+.course .blue{
+    background-color:#1C8DE7;
+}
+.course .green{
+    background-color:#1EA061;
+}
+.course .purple{
+    background-color:#6F5499;
+}
+.course .abstract{
+    height: 230px;
+    overflow-y: hidden;
+}
+
+.course .abstract p{
+    font-family: 微软雅黑;
+    font-size: 14px;
+    color: #555555;
+    padding: 15px;
+    line-height: 20px;
+    text-align: left;
+}
+
+.wrapper{
+    width:100%;
+}
+
+.wrapper h1{
+    margin-top: 0px;
+}
+
+.wrapper .body {
+
+margin-left:10px;
+margin-right:10px;
+}
+
+.comment{
+margin-top: 30px;
+}
+
+
+.footer h3 {
+font-size:16px;
+}
+
+.content{
+    display: block;
+    word-wrap: break-word;
+    overflow: hidden;
+    color: #333;
+    line-height: 1.7;
+    font-size: 1.6rem;
+    text-align:justify;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -22,6 +22,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'apps.blog.context_processors.google_analytics',
+                'apps.blog.context_processors.recent_blog_list',
             ],
         },
     },
@@ -39,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'apps.blog',
-    'apps.wedding',
     'pagedown',
     'compressor',
 ]
