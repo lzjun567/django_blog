@@ -80,11 +80,7 @@
 
             <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4>赞助广告</h4>
-                    </div>
-                    <img src="{% static 'img/text.png' %}" class="img-responsive">
-                </div>
+
                 <!-- Latest Posts -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -112,6 +108,7 @@
                     </ul>
                 </div>
 
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4>友情链接</h4>
@@ -121,6 +118,19 @@
                         <li class="list-group-item"><a href="{{friend.url}}">{{friend.title}}</a></li>
                         {% endfor %}
                     </ul>
+                </div>
+                     <div class="panel-heading">
+                        <h4>图书推荐</h4>
+                    </div>
+                     <ul class="list-group">
+                        <li class="list-group-item"><a href="https://book.douban.com/subject/23008813/">高性能MySQL第三版</a>
+                        <li class="list-group-item"><a href="https://book.douban.com/subject/3117898/">Python源码剖析</a>
+                        <li class="list-group-item"><a href="https://read.douban.com/ebook/7519526/">Redis设计与实现</a>
+                        <li class="list-group-item"><a href="https://book.douban.com/subject/6021440/">黑客与画家</a>
+
+                        </li>
+                    </ul>
+                    <!--<img src="{% static 'img/text.png' %}" class="img-responsive">-->
                 </div>
 
             </div>

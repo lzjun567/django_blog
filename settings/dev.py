@@ -17,6 +17,6 @@ MIDDLEWARE_CLASSES += (
     'middleware.profile.ProfilerMiddleware',
 )
 
-PAGE_SIZE = 2
+PAGE_SIZE = 5
 
 JQUERY_URL = "https://code.jquery.com/jquery-2.1.4.min.js"
