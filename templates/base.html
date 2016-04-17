@@ -79,7 +79,6 @@
             </div>
 
             <div class="col-md-4">
-                <div class="panel panel-default">
 
                 <!-- Latest Posts -->
                 <div class="panel panel-default">
@@ -119,10 +118,11 @@
                         {% endfor %}
                     </ul>
                 </div>
-                     <div class="panel-heading">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
                         <h4>图书推荐</h4>
                     </div>
-                     <ul class="list-group">
+                    <ul class="list-group">
                         <li class="list-group-item"><a href="https://book.douban.com/subject/23008813/">高性能MySQL第三版</a>
                         <li class="list-group-item"><a href="https://book.douban.com/subject/3117898/">Python源码剖析</a>
                         <li class="list-group-item"><a href="https://read.douban.com/ebook/7519526/">Redis设计与实现</a>
@@ -130,21 +130,22 @@
 
                         </li>
                     </ul>
-                    <!--<img src="{% static 'img/text.png' %}" class="img-responsive">-->
                 </div>
-
+                <!--<img src="{% static 'img/text.png' %}" class="img-responsive">-->
             </div>
+
         </div>
     </div>
+</div>
 
-    <footer>
-        <div class="container">
-            <hr/>
-            <p class="text-center">Copyright <a href="http://foofish.net">foofish</a> &copy; 2015. All rights reserved.
-                Powere by<a href="https://github.com/lzjun567/django_blog"> Django_Blog</a> & <a
-                        href="https://www.digitalocean.com/?refcode=af4cff8f42bc" target="_blank">DigitalOcean</a></p>
-        </div>
-    </footer>
+<footer>
+    <div class="container">
+        <hr/>
+        <p class="text-center">Copyright <a href="http://foofish.net">foofish</a> &copy; 2015. All rights reserved.
+            Powere by<a href="https://github.com/lzjun567/django_blog"> Django_Blog</a> & <a
+                    href="https://www.digitalocean.com/?refcode=af4cff8f42bc" target="_blank">DigitalOcean</a></p>
+    </div>
+</footer>
 
 </div>
 
@@ -163,6 +164,7 @@
         });
 
 
+
 </script>
 <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
@@ -177,6 +179,7 @@
 
   ga('create', '{{ga_id}}', 'auto');
   ga('send', 'pageview');
+
 
 
 </script>

@@ -24,3 +24,15 @@ footer {
 .social-buttons button {
 	margin-top: 5px;
 }
+
+.post-header .post-meta {
+    font-size: .9em;
+    color: #aaa;
+    margin: 0;
+}
+
+.post-header a {
+    font-size: .9em;
+    color: #aaa;
+    margin: 0;
+}
