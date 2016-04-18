@@ -96,7 +96,9 @@ class BlogAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.author = request.user
         if '_save' in request.POST.keys():
-            obj.publish_time = datetime.datetime.now()
+            # 只有是操作状态的文章才更新发布时间
+            if obj.status == 'd':
+                obj.publish_time = datetime.datetime.now()
             obj.status = Blog.STATUS_CHOICES[1][0]
         elif '_save_as_draft' in request.POST.keys():
             obj.status = Blog.STATUS_CHOICES[0][0]
