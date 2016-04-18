@@ -106,7 +106,7 @@ class BlogAdmin(admin.ModelAdmin):
     def change_view(self, request, object_id, form_url='', extra_context=None):
         more_context = {}
         more_context.update(extra_context or {})
-        return super().change_view(request, object_id, form_url, more_context)
+        return super(BlogAdmin, self).change_view(request, object_id, form_url, more_context)
 
 
 class TagAdmin(admin.ModelAdmin):

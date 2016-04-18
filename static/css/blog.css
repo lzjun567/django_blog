@@ -8,15 +8,7 @@ footer {
 	margin: 10px 0;
 }
 
-#comments, #comments li {
-    margin: 0;
-    padding: 0;
-}
 
-#comments li {
-    list-style: none;
-}
-        
 .photo {
 	margin-bottom: 10px;
 }
@@ -40,4 +32,13 @@ footer {
 .content img {
     max-width:100%;
     vertical-align: middle;
+}
+
+.tag-cloud {
+    text-align: center;
+}
+
+.tag-cloud a {
+    display: inline-block;
+    margin: 10px;
 }

@@ -18,7 +18,7 @@ class Blog(models.Model):
     title = models.CharField('标题', max_length=150, db_index=True, unique=True)
     link = models.CharField('链接', max_length=150, default='')
     link.help_text = "Cool URIs don't change"
-    cover = models.URLField('封面', default='')
+    cover = models.URLField('封面', default='', blank=True)
     snippet = models.CharField('摘要', max_length=500, default='')
     content = models.TextField('内容', )
 
