@@ -9,7 +9,7 @@ from django.views.generic.list import ListView
 from django.contrib.syndication.views import Feed
 from .models import Blog, Tag
 from django.core.exceptions import PermissionDenied
-
+from django.http import Http404
 from .libs.tag_cloud import TagCloud
 
 from django.views.generic.base import TemplateView
@@ -96,8 +96,13 @@ class BlogDetailView(DetailView):
     model = Blog
     template_name = "post_detail.html"
 
+
+
     def get_object(self, queryset=None):
         blog = super(BlogDetailView, self).get_object(queryset)
+        if blog.link != self.kwargs['blog_link']:
+            raise  Http404()
+
         if blog.status == 'd' or (not blog.is_public and self.request.user != blog.author):
             raise PermissionDenied
         # 阅读数增1
