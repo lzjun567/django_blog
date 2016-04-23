@@ -18,7 +18,7 @@ def tag_list(request):
 
 def google_analytics(request):
     from django.conf import settings
-    return {'ga_id': settings.GOOGLE_ANALYTICS_ID}
+    return {'ga_id': settings.GOOGLE_ANALYTICS_ID, 'disqus_name': settings.DISQUS_NAME}
 
 
 def recent_blog_list(request):

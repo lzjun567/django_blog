@@ -24,6 +24,9 @@
                 {% for tag in blog.tags.all %}
                 <a href="{%url 'blog:tag' tag%}">{{tag }}</a>
                 {% endfor %}
+                {% if request.user %}
+                <a href="{{blog.get_admin_url}}">编辑</a>
+                {% endif %}
             </div>
 
         </div>
