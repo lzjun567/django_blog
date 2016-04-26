@@ -22,7 +22,7 @@ class IndexSitemap(Sitemap):
     priority = 1.0
 
     def items(self):
-        return ['index']
+        return ['home']
 
     def location(self, item):
         return reverse(item)

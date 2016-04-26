@@ -84,6 +84,7 @@ USE_TZ = False
 
 
 GOOGLE_ANALYTICS_ID='you google analytics id'
+DISQUS_NAME = "YOU DISQUE SHORT NAME"
 
 SIMPLEMDE_OPTIONS = {
     'placeholder': 'haha',
