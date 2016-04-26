@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'xhcg42=d%md&1jcy$c8%#p5e+59!)25v$m$%uq*^1hfx%23i+p'
 DEBUG = True
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static2/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
 
 TEMPLATES = [

@@ -96,12 +96,10 @@ class BlogDetailView(DetailView):
     model = Blog
     template_name = "post_detail.html"
 
-
-
     def get_object(self, queryset=None):
         blog = super(BlogDetailView, self).get_object(queryset)
         if blog.link != self.kwargs['blog_link']:
-            raise  Http404()
+            raise Http404()
 
         if blog.status == 'd' or (not blog.is_public and self.request.user != blog.author):
             raise PermissionDenied

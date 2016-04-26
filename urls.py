@@ -1,12 +1,12 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
-from django_blog.sitemaps import BlogSitemap, IndexSitemap
-from django.http import HttpResponse
-from apps.blog.views import LatestPosts
-from apps.blog.views import BlogListView
 from django.views.generic import TemplateView
+
 from apps.blog.views import AboutView
+from apps.blog.views import BlogListView
+from apps.blog.views import LatestPosts
+from django_blog.sitemaps import BlogSitemap, IndexSitemap
 
 admin.autodiscover()
 

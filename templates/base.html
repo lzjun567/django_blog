@@ -64,6 +64,9 @@
                 <li {% if index_active %}class="active" {% endif %}><a href="/">首页</a></li>
                 <li {% if tag_active %}class="active" {% endif %}><a href="{% url 'blog:tag_list' %}">标签</a></li>
                 <li {% if about_active %}class="active" {% endif %}><a href="{% url 'about' %}">关于</a></li>
+                {% if user.is_authenticated %}
+                <li ><a href="{% url 'admin:index' %}">管理</a></li>
+                {% endif %}
             </ul>
         </div><!--/.navbar-collapse -->
     </div>
