@@ -143,7 +143,7 @@ class BlogListByCategoryView(ListView):
         return Blog.objects.filter(**query_condition).order_by('-publish_time')
 
     def get_context_data(self, **kwargs):
-        context = super(BlogListView, self).get_context_data(**kwargs)
+        context = super(BlogListByCategoryView, self).get_context_data(**kwargs)
         tag_name = self.kwargs.get('tag_name')
         if tag_name:
             context['tag_title'] = tag_name

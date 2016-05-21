@@ -8,9 +8,10 @@ from .views import BlogListView
 from .views import TagListView
 from .views import ArchiveView
 from .views import IndexView
+from .views import BlogListByCategoryView
 
 urlpatterns = [url(r'^tag/(?P<tag_name>[\w,-]+)$', BlogListView.as_view(), name='tag'),
-               url(r'^(?P<pk>\d+)/category/(?P<cat_name>\w+)$', BlogListView.as_view(), name='category'),
+               url(r'^category/(?P<pk>\d+)/(?P<cat_name>\w+)$', BlogListByCategoryView.as_view(), name='category'),
                url(r'^tags$', TagListView.as_view(), name='tag_list'),
                url(r'^archives', ArchiveView.as_view(), name='archives'),
                url(r'^$', IndexView.as_view(), name="home"),
