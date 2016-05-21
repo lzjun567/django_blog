@@ -47,7 +47,7 @@ def submit_row(context):
 
 
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('title', 'is_public', 'status', 'publish', 'access_count')
+    list_display = ('title','category', 'is_public', 'status', 'publish', 'access_count')
     fields = (
         'title',
         'link',
