@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load myapp_markup %}
 {% block description %}Bloger,Enginner,Python{%endblock%}
 {% block head_title %}FooFish的笔录{% endblock %}
 {% load staticfiles %}
@@ -14,14 +13,15 @@
                 <br/>
                 {% endif %}
 
-                <p> {{blog.content | md1}}</p>
+                <p> {{blog.snippet}}</p>
                 <p class="text-right">
-                    <!--<a href="{{blog.get_absolute_url}}">-->
-                        <!--阅读全文...-->
-                    <!--</a>-->
+                    <a href="{{blog.get_absolute_url}}">
+                        阅读全文...
+                    </a>
                 </p>
 
             </article>
+            <hr>
             {% endfor %}
 
             {% if is_paginated %}

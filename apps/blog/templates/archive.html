@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load myapp_markup %}
+{% block description %}Bloger,Enginner,Python{%endblock%}
+{% block head_title %}FooFish的笔录{% endblock %}
+{% load staticfiles %}
+{% block content %}
+{% for blog in blog_list %}
+<article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+
+    <p>
+        <time class="post-time" itemprop="dateCreated" datetime="2015-03-23T12:52:58+08:00" content="2015-03-23">
+            {{blog.publish_time|date:"Y-m-d" }}
+        </time>
+        <a href="{{blog.get_absolute_url}}">{{blog.title}}</a></p>
+
+
+</article>
+
+{% endfor %}
+
+{% if is_paginated %}
+<nav class="pager" role="navigation">
+    {% if page_obj.has_previous %}
+    <a class="newer-posts" href="{% url 'blog:archives' %}?page={{page_obj.previous_page_number}}">上一页 </a>
+    {% endif %}
+    <span class="page-number">第 {{ page_obj.number }} 页, 共 {{ page_obj.paginator.num_pages }} 页</span>
+    {% if page_obj.has_next %}
+    <a class="older-posts" href="{% url 'blog:archives' %}?page={{ page_obj.next_page_number }}"> 下一页</a>
+    {% endif %}
+</nav>
+{% endif %}
+
+
+{% endblock %}
