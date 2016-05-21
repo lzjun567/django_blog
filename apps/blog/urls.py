@@ -10,7 +10,7 @@ from .views import ArchiveView
 from .views import IndexView
 
 urlpatterns = [url(r'^tag/(?P<tag_name>[\w,-]+)$', BlogListView.as_view(), name='tag'),
-               url(r'^category/(?P<cat_name>\w+)$', BlogListView.as_view(), name='category'),
+               url(r'^(?P<pk>\d+)/category/(?P<cat_name>\w+)$', BlogListView.as_view(), name='category'),
                url(r'^tags$', TagListView.as_view(), name='tag_list'),
                url(r'^archives', ArchiveView.as_view(), name='archives'),
                url(r'^$', IndexView.as_view(), name="home"),

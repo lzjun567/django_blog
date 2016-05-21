@@ -3,16 +3,17 @@
 __author__ = "liuzhijun"
 
 import random
+
 from django.conf import settings
-from django.views.generic.detail import DetailView
-from django.views.generic.list import ListView
 from django.contrib.syndication.views import Feed
-from .models import Blog, Tag
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
-from .libs.tag_cloud import TagCloud
-
 from django.views.generic.base import TemplateView
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
+
+from .libs.tag_cloud import TagCloud
+from .models import Blog, Tag
 
 
 class AboutView(TemplateView):
@@ -114,6 +115,31 @@ class BlogListView(ListView):
         elif 'cat_name' in self.kwargs:
             query_condition['category__title'] = self.kwargs['cat_name']
 
+        return Blog.objects.filter(**query_condition).order_by('-publish_time')
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogListView, self).get_context_data(**kwargs)
+        tag_name = self.kwargs.get('tag_name')
+        if tag_name:
+            context['tag_title'] = tag_name
+
+            context['tag_description'] = ''
+        else:
+            context['index_active'] = True
+
+        # 最近文章
+        return context
+
+
+class BlogListByCategoryView(ListView):
+    template_name = 'post_list.html'
+    paginate_by = settings.PAGE_SIZE
+    context_object_name = "blog_list"
+
+    def get_queryset(self):
+        # 只显示状态为发布且公开的文章列表
+        query_condition = dict({'status': 'p', 'is_public': True})
+        query_condition['category__id'] = self.kwargs['pk']
         return Blog.objects.filter(**query_condition).order_by('-publish_time')
 
     def get_context_data(self, **kwargs):

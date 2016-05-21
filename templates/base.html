@@ -106,7 +106,7 @@
                     <ul class="list-group">
                         {% for category in categories %}
                         <li class="list-group-item"><a
-                                href="{%url 'blog:category' category.title%}">{{category.title}}</a></li>
+                                href="{%url 'blog:category' category.id category.title%}">{{category.title}}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
