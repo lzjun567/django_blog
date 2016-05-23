@@ -33,7 +33,9 @@ def recent_blog_list(request):
     """
 
     # 最近发布的文章列表
-    recent_blogs = Blog.objects.order_by('-publish_time')[:10]
+    recent_blogs = Blog.objects.filter(status='p', is_public=True).order_by('-publish_time')[:10]
+    for item in recent_blogs:
+        print(item)
 
     # 分类
     categories = Category.objects.all()
