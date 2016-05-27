@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-__author__ = "liuzhijun"
-
 import random
 
 from django.conf import settings
@@ -14,6 +12,8 @@ from django.views.generic.list import ListView
 
 from .libs.tag_cloud import TagCloud
 from .models import Blog, Tag
+
+__author__ = "liuzhijun"
 
 
 class AboutView(TemplateView):
@@ -68,7 +68,7 @@ class ArchiveView(ListView):
 
 class IndexView(ListView):
     template_name = 'index.html'
-    paginate_by = 1
+    paginate_by = settings.PAGE_SIZE
     context_object_name = "blog_list"
 
     def get_queryset(self):

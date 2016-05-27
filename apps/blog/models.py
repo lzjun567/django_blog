@@ -3,13 +3,12 @@
 import datetime
 import re
 
-from django.db import models
 from django.contrib.auth.models import User
-from django.template.defaultfilters import slugify
-from django.core.urlresolvers import reverse
-
-from django.core import urlresolvers
 from django.contrib.contenttypes.models import ContentType
+from django.core import urlresolvers
+from django.core.urlresolvers import reverse
+from django.db import models
+from django.template.defaultfilters import slugify
 
 
 class Blog(models.Model):
