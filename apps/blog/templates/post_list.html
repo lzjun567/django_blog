@@ -27,11 +27,11 @@
             {% if is_paginated %}
             <nav class="pager" role="navigation">
                 {% if page_obj.has_previous %}
-                <a class="newer-posts" href="/?page={{page_obj.previous_page_number}}">上一页 </a>
+                <a class="newer-posts" href="/blog?page={{page_obj.previous_page_number}}">上一页 </a>
                 {% endif %}
                 <span class="page-number">第 {{ page_obj.number }} 页, 共 {{ page_obj.paginator.num_pages }} 页</span>
                 {% if page_obj.has_next %}
-                <a class="older-posts" href="/?page={{ page_obj.next_page_number }}"> 下一页</a>
+                <a class="older-posts" href="/blog?page={{ page_obj.next_page_number }}"> 下一页</a>
                 {% endif %}
             </nav>
             {% endif %}

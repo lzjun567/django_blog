@@ -59,43 +59,10 @@ class TagListView(ListView):
 
 class ArchiveView(ListView):
     template_name = "archive.html"
-    paginate_by = 30
     context_object_name = "blog_list"
 
     def get_queryset(self):
         return Blog.objects.filter(status='p', is_public=True).order_by('-publish_time')
-
-
-class IndexView(ListView):
-    template_name = 'index.html'
-    paginate_by = settings.PAGE_SIZE
-    context_object_name = "blog_list"
-
-    def get_queryset(self):
-        # 只显示状态为发布且公开的文章列表
-        query_condition = {
-            'status': 'p',
-            'is_public': True
-        }
-
-        if 'tag_name' in self.kwargs:
-            query_condition['tags__title'] = self.kwargs['tag_name']
-        elif 'cat_name' in self.kwargs:
-            query_condition['category__title'] = self.kwargs['cat_name']
-
-        return Blog.objects.filter(**query_condition).order_by('-publish_time')
-
-    def get_context_data(self, **kwargs):
-        context = super(BlogListView, self).get_context_data(**kwargs)
-        tag_name = self.kwargs.get('tag_name')
-        if tag_name:
-            context['tag_title'] = tag_name
-
-            context['tag_description'] = ''
-        else:
-            context['index_active'] = True
-        # 最近文章
-        return context
 
 
 class BlogListView(ListView):
