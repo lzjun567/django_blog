@@ -150,10 +150,14 @@ class BlogDetailView(DetailView):
 
         # 随机文章
         count = Blog.objects.filter(status='p', is_public=True).count()
-        randint = random.randint(0, count - 5)
+        range_count = 5
+        if count < range_count:
+            range_count = count
+
+        randint = random.randint(0, count - range_count)
         try:
             random_posts = Blog.objects.exclude(pk=current_post.id).filter(status='p', is_public=True)[
-                           randint:randint + 5]
+                           randint:randint + range_count]
         except IndexError:
             random_posts = None
         context['random_posts'] = random_posts
