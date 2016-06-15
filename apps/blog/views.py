@@ -41,8 +41,10 @@ class TagListView(ListView):
                 tag.blog_count = blog_count
                 tag_list_have_blog.append(tag)
 
-        max_count = max(tag_list_have_blog, key=lambda tag: tag.blog_count).blog_count
-        min_count = min(tag_list_have_blog, key=lambda tag: tag.blog_count).blog_count
+        max_count = min_count = 0
+        if len(tag_list_have_blog) > 0:
+            max_count = max(tag_list_have_blog, key=lambda tag: tag.blog_count).blog_count
+            min_count = min(tag_list_have_blog, key=lambda tag: tag.blog_count).blog_count
 
         tag_cloud = TagCloud(min_count, max_count)
 
