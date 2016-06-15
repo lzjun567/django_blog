@@ -41,8 +41,10 @@ class TagListView(ListView):
                 tag.blog_count = blog_count
                 tag_list_have_blog.append(tag)
 
-        max_count = max(tag_list_have_blog, key=lambda tag: tag.blog_count).blog_count
-        min_count = min(tag_list_have_blog, key=lambda tag: tag.blog_count).blog_count
+        max_count = min_count = 0
+        if len(tag_list_have_blog) > 0:
+            max_count = max(tag_list_have_blog, key=lambda tag: tag.blog_count).blog_count
+            min_count = min(tag_list_have_blog, key=lambda tag: tag.blog_count).blog_count
 
         tag_cloud = TagCloud(min_count, max_count)
 
@@ -148,10 +150,14 @@ class BlogDetailView(DetailView):
 
         # 随机文章
         count = Blog.objects.filter(status='p', is_public=True).count()
-        randint = random.randint(0, count - 5)
+        range_count = 5
+        if count < range_count:
+            range_count = count
+
+        randint = random.randint(0, count - range_count)
         try:
             random_posts = Blog.objects.exclude(pk=current_post.id).filter(status='p', is_public=True)[
-                           randint:randint + 5]
+                           randint:randint + range_count]
         except IndexError:
             random_posts = None
         context['random_posts'] = random_posts
