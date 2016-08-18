@@ -3,38 +3,38 @@
 {% block head_title %}FooFish的笔录{% endblock %}
 {% load staticfiles %}
 {% block content %}
-            {% for blog in blog_list %}
-            <article>
-                <h3><a href="{{blog.get_absolute_url}}">{{blog.title}}</a></h3>
+{% for blog in blog_list %}
+<article>
+    <h3><a href="{{blog.get_absolute_url}}">{{blog.title}}</a></h3>
 
 
-                {% if blog.cover %}
-                <img src="{{blog.cover}}" class="img-responsive">
-                <br/>
-                {% endif %}
+    {% if blog.cover %}
+    <img src="{{blog.cover}}" class="img-responsive">
+    <br/>
+    {% endif %}
 
-                <p> {{blog.snippet}}</p>
-                <p class="text-right">
-                    <a href="{{blog.get_absolute_url}}">
-                        阅读全文
-                    </a>
-                </p>
+    <p> {{blog.snippet}}</p>
+    <p class="text-right">
+        <a href="{{blog.get_absolute_url}}">
+            阅读全文
+        </a>
+    </p>
 
-            </article>
-            <hr>
-            {% endfor %}
+</article>
+<hr>
+{% endfor %}
 
-            {% if is_paginated %}
-            <nav class="pager" role="navigation">
-                {% if page_obj.has_previous %}
-                <a class="newer-posts" href="/blog?page={{page_obj.previous_page_number}}">上一页 </a>
-                {% endif %}
-                <span class="page-number">第 {{ page_obj.number }} 页, 共 {{ page_obj.paginator.num_pages }} 页</span>
-                {% if page_obj.has_next %}
-                <a class="older-posts" href="/blog?page={{ page_obj.next_page_number }}"> 下一页</a>
-                {% endif %}
-            </nav>
-            {% endif %}
+{% if is_paginated %}
+<nav class="pager" role="navigation">
+    {% if page_obj.has_previous %}
+    <a class="newer-posts" href="/blog?page={{page_obj.previous_page_number}}">上一页 </a>
+    {% endif %}
+    <span class="page-number">第 {{ page_obj.number }} 页, 共 {{ page_obj.paginator.num_pages }} 页</span>
+    {% if page_obj.has_next %}
+    <a class="older-posts" href="/blog?page={{ page_obj.next_page_number }}"> 下一页</a>
+    {% endif %}
+</nav>
+{% endif %}
 
 
 {% endblock %}

@@ -1,0 +1,7 @@
+{% if theme.swiftype_key %}
+  {% include 'search/swiftype.html' %}
+{% elseif theme.tinysou_Key %}
+  {% include 'search/tinysou.html' %}
+{% elseif config.search.path %}
+  {% include 'search/localsearch.html' %}
+{% endif %}

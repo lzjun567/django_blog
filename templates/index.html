@@ -1,0 +1,22 @@
+{% extends '_layout.html' %}
+
+{% include '_macro/sidebar.html' %}
+
+{% block title %} {{ config.title }} {% endblock %}
+
+{% block page_class %}
+  page-home
+{% endblock %}
+
+{% block content %}
+  <section id="posts" class="posts-expand">
+    {% for blog in blog_list %}
+        {% include '_macro/post.html' with blog=blog is_index=True%}
+    {% endfor %}
+  </section>
+
+  {% include '_partials/pagination.html' %}
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}

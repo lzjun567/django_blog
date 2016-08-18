@@ -66,7 +66,7 @@ class ArchiveView(ListView):
 
 
 class BlogListView(ListView):
-    template_name = 'post_list.html'
+    template_name = 'index.html'
     paginate_by = settings.PAGE_SIZE
     context_object_name = "blog_list"
 
@@ -128,7 +128,7 @@ class BlogDetailView(DetailView):
     文章详情
     """
     model = Blog
-    template_name = "post_detail.html"
+    template_name = "post.html"
 
     def get_object(self, queryset=None):
         blog = super(BlogDetailView, self).get_object(queryset)
