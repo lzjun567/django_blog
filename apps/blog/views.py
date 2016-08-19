@@ -149,12 +149,21 @@ class BlogDetailView(DetailView):
         # 随机文章
         count = Blog.objects.filter(status='p', is_public=True).count()
         randint = random.randint(0, count - 5)
+        random_posts = None
+        next_post = None
+        prev_post = None
         try:
             random_posts = Blog.objects.exclude(pk=current_post.id).filter(status='p', is_public=True)[
                            randint:randint + 5]
+            prev_post = Blog.objects.filter(status='p', is_public=True, pk__lt=current_post.id).order_by('-pk')[0]
+            next_post= Blog.objects.filter(status='p', is_public=True, pk__gt=current_post.id).order_by('pk')[0]
+
         except IndexError:
-            random_posts = None
+            pass
+
         context['random_posts'] = random_posts
+        context['next_post'] = next_post
+        context['prev_post'] = prev_post
         return context
 
 

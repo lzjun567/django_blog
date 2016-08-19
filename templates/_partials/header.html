@@ -1,122 +1,122 @@
-    <div class="site-meta ">
+<div class="site-meta ">
 
 
-        <div class="custom-logo-site-title">
-            <a href="/" class="brand" rel="start" style="opacity: 1;">
-                <span class="logo-line-before"><i></i></span>
-                <span class="site-title" style="opacity: 1; top: 0px;">FooFish's Notes</span>
-                <span class="logo-line-after"><i></i></span>
+    <div class="custom-logo-site-title">
+        <a href="/" class="brand" rel="start" style="opacity: 1;">
+            <span class="logo-line-before"><i></i></span>
+            <span class="site-title" style="opacity: 1; top: 0px;">FooFish's Notes</span>
+            <span class="logo-line-after"><i></i></span>
+        </a>
+    </div>
+    <p class="site-subtitle" style="opacity: 1; top: 0px;">Quick notes</p>
+</div>
+
+<div class="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<nav class="site-nav">
+
+
+    <ul id="menu" class="menu">
+
+
+        <li class="menu-item menu-item-home menu-item-active" style="opacity: 1; transform: translateY(0px);">
+            <a href="/" rel="section">
+
+                <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+
+                首页
             </a>
-        </div>
-        <p class="site-subtitle" style="opacity: 1; top: 0px;">Quick notes</p>
-    </div>
-
-    <div class="site-nav-toggle">
-        <button>
-            <span class="btn-bar"></span>
-            <span class="btn-bar"></span>
-            <span class="btn-bar"></span>
-        </button>
-    </div>
-
-    <nav class="site-nav">
+        </li>
 
 
-        <ul id="menu" class="menu">
+        <li class="menu-item menu-item-archives" style="opacity: 1; transform: translateY(0px);">
+            <a href="{% url 'blog:archives' %}" rel="section">
+
+                <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+
+                归档
+            </a>
+        </li>
 
 
-            <li class="menu-item menu-item-home menu-item-active" style="opacity: 1; transform: translateY(0px);">
-                <a href="/" rel="section">
+        <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);">
+            <a href="{% url 'blog:tag_list' %}" rel="section">
 
-                    <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+                <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
 
-                    首页
-                </a>
-            </li>
+                标签
+            </a>
+        </li>
 
+        <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);">
+            <a href="{% url 'about' %}" rel="section">
 
-            <li class="menu-item menu-item-archives" style="opacity: 1; transform: translateY(0px);">
-                <a href="{% url 'blog:archives' %}" rel="section">
+                <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
 
-                    <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-
-                    归档
-                </a>
-            </li>
-
-
-            <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);">
-                <a href="{% url 'blog:tag_list' %}" rel="section">
-
-                    <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-
-                    标签
-                </a>
-            </li>
-
-            <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);">
-                <a href="{% url 'about' %}" rel="section">
-
-                    <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-
-                    关于
-                </a>
-            </li>
+                关于
+            </a>
+        </li>
 
 
-            <li class="menu-item menu-item-search" style="opacity: 1; transform: translateY(0px);">
+        <li class="menu-item menu-item-search" style="opacity: 1; transform: translateY(0px);">
 
-                <a href="#" class="popup-trigger">
-
-
-                    <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
-
-                    搜索
-                </a>
-            </li>
-             {% if user.is_authenticated %}
-             <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);">
-                <a href="{% url 'admin:index' %}" rel="section">
-
-                    <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-
-                    管理
-                </a>
-            </li>
-             {% endif %}
+            <a href="#" class="popup-trigger">
 
 
-        </ul>
+                <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+
+                搜索
+            </a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);">
+            <a href="{% url 'admin:index' %}" rel="section">
+
+                <i class="menu-item-icon fa fa-fw fa-minus-circle"></i> <br>
+
+                管理
+            </a>
+        </li>
+        {% endif %}
 
 
-        <div class="site-search">
+    </ul>
 
 
-            <div class="algolia-popup popup">
-                <div class="algolia-search">
-                    <div class="algolia-search-input-icon">
-                        <i class="fa fa-search"></i>
-                    </div>
-                    <div class="algolia-search-input" id="algolia-search-input">
-                        <div class="ais-search-box"><input autocapitalize="off" autocomplete="off" autocorrect="off"
-                                                           placeholder="搜索" role="textbox" spellcheck="false"
-                                                           type="text" value="" class="ais-search-box--input"></div>
-                    </div>
+    <div class="site-search">
+
+
+        <div class="algolia-popup popup">
+            <div class="algolia-search">
+                <div class="algolia-search-input-icon">
+                    <i class="fa fa-search"></i>
                 </div>
-
-                <div class="algolia-results">
-                    <div id="algolia-stats"></div>
-                    <div id="algolia-hits"></div>
-                    <div id="algolia-pagination" class="algolia-pagination"></div>
+                <div class="algolia-search-input" id="algolia-search-input">
+                    <div class="ais-search-box"><input autocapitalize="off" autocomplete="off" autocorrect="off"
+                                                       placeholder="搜索" role="textbox" spellcheck="false"
+                                                       type="text" value="" class="ais-search-box--input"></div>
                 </div>
-
-                <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
             </div>
 
+            <div class="algolia-results">
+                <div id="algolia-stats"></div>
+                <div id="algolia-hits"></div>
+                <div id="algolia-pagination" class="algolia-pagination"></div>
+            </div>
 
+            <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
         </div>
 
-    </nav>
+
+    </div>
+
+</nav>
 

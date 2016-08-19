@@ -14,7 +14,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="{{blog.add_time}}" content="{{blog.add_time|date:" Y-m-d"}}">
+            <time itemprop="dateCreated" datetime="{{blog.add_time}}" content="{{blog.add_time|date:'Y-m-d'}}">
               {{blog.add_time|date:"Y-m-d"}}
               </time>
           </span>
@@ -28,7 +28,7 @@
               <span class="post-meta-item-text">分类于</span>
 
                 <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
-                  <a href="" itemprop="url" rel="index">
+                  <a href="{%url 'blog:category' blog.category.id blog.category.title%}" itemprop="url" rel="index">
                     <span itemprop="name">{{blog.category}}</span>
                   </a>
                 </span>
@@ -53,7 +53,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count">8910</span>
+               <span class="leancloud-visitors-count">{{blog.access_count}}</span>
               </span>
 
         </div>
@@ -73,12 +73,40 @@
         {{blog.content | md1}}
         {% endif %}
 
-
     </div>
 
     <footer class="post-footer">
-
+        {% if is_index %}
         <div class="post-eof"></div>
+        {% else %}
+        <div class="post-tags">
+
+             {% for tag in blog.tags.all %}
+                <a href="{%url 'blog:tag' tag%}" rel="tag"># {{tag }}</a>
+            {% endfor %}
+            {% if user.is_authenticated %}
+            <a href="{{blog.get_admin_url}}">编辑</a>
+            {% endif %}
+        </div>
+
+        <div class="post-nav">
+            {% if next_post %}
+            <div class="post-nav-next post-nav-item">
+                <a href="{{next_post.get_absolute_url}}" rel="next" title="{{next_post.title}}">
+                    <i class="fa fa-chevron-left"></i>{{next_post.title}}
+                </a>
+            </div>
+            {% endif %}
+            {% if prev_post %}
+            <span class="post-nav-divider"></span>
+            <div class="post-nav-prev post-nav-item">
+                 <a href="{{prev_post.get_absolute_url}}" rel="next" title="{{prev_post.title}}">
+                    <i class="fa fa-chevron-right"></i> {{prev_post.title}}
+                </a>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
 
     </footer>
 </article>
