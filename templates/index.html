@@ -11,7 +11,7 @@ page-home
     {% include '_macro/post.html' with blog=blog is_index=True next_post=next_post prev_post=prev_post %}
     {% endfor %}
 </section>
-{% include '_partials/pagination.html' %}
+{% include '_partials/pagination.html'  with url='/blog' %}
 {% endblock %}
 
 {% block sidebar %}

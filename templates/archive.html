@@ -1,4 +1,3 @@
-
 {% extends '_layout.html' %}
 {% load var_tag %}
 {% block title %} {{title.archive }} | {{ config.title }} {% endblock %}
@@ -7,28 +6,18 @@
 
 {% block content %}
 
-  <section id="posts" class="posts-collapse">
+<section id="posts" class="posts-collapse">
     <span class="archive-move-on"></span>
 
     {% for post in blog_list %}
-      {% set year = 1 %}
-      {% set post.year = date(post.date, 'YYYY') %}
 
-      {% if post.year != year %}
-        {% set year = post.year %}
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-{{ year }}">{{ year }}</h2>
-        </div>
-      {% endif %}
-      {# endshow #}
-
-      {% include '_macro/post-collapse.html' %}
+    {% include '_macro/post-collapse.html' %}
 
     {% endfor %}
 
-  </section>
+</section>
 
-  {% include '_partials/pagination.html' %}
+{% include '_partials/pagination.html' with url='/blog/archives' %}
 
 {% endblock %}
 
@@ -39,9 +28,10 @@
 
 
 {% block script_extra %}
-  {% if theme.use_motion %}
-    <script type="text/javascript" id="motion.page.archive">
+{% if theme.use_motion %}
+<script type="text/javascript" id="motion.page.archive">
       $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  {% endif %}
+
+</script>
+{% endif %}
 {% endblock %}

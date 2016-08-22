@@ -6,7 +6,6 @@
         {% if post.link %}{# Link posts #}
           <a class="post-title-link post-title-link-external" target="_blank" href="" itemprop="url">
             {{ post.title }}
-            <i class="fa fa-external-link"></i>
           </a>
         {% else %}
             <a class="post-title-link" href="" itemprop="url">
@@ -21,9 +20,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime=""
-              content="" >
-          {{post.date }}
+              datetime="{{post.add_time}}"
+              content="{{post.add_time|date:'Y-m-d'}}" >
+          {{post.add_time|date:'Y-m-d'}}
         </time>
       </div>
 

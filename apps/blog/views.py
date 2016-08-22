@@ -60,6 +60,7 @@ class TagListView(ListView):
 class ArchiveView(ListView):
     template_name = "archive.html"
     context_object_name = "blog_list"
+    paginate_by = 1
 
     def get_queryset(self):
         return Blog.objects.filter(status='p', is_public=True).order_by('-publish_time')

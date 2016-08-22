@@ -9,6 +9,9 @@ class SetVarNode(template.Node):
         self.var_name = var_name
         self.var_value = var_value
 
+        print(self.var_name, self.var_value)
+
+
     def render(self, context):
         try:
             value = template.Variable(self.var_value).resolve(context)
