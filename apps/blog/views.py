@@ -26,7 +26,7 @@ class AboutView(TemplateView):
 
 
 class TagListView(ListView):
-    template_name = 'tag_list.html'
+    template_name = 'page.html'
     context_object_name = 'tag_list'
     model = Tag
 
