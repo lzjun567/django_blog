@@ -1,8 +1,7 @@
-{% load staticfiles %}
 <!doctype html>
+{% load staticfiles %}
 
-
-<html class="theme-next pisces use-motion">
+<html class="theme-next {{theme.scheme|lower}} {{theme.use_motion}}">
 <head>
     {% include '_partials/head.html' %}
     <title>{% block title %}{% endblock %}</title>

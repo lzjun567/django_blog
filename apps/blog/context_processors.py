@@ -1,10 +1,31 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+上下文处理器，函数返回的字典对象会自动加入到Context对象中
+Context对象中的值可以使用在所有模版中
+"""
 from django.db import connection
 
 from .models import Blog
 from .models import Category
 from .models import Friend
+
+
+def theme(request):
+    """
+    加载博客主题模版配置
+    :param request:
+    :return:
+    """
+    from django.conf import settings
+
+    theme_data = dict()
+    theme_data['scheme'] = getattr(settings, "SCHEME", "")
+    theme_data['use_motion'] = "use-motion" if getattr(settings, "USE_MOTION") else ""
+    theme_data['google_site_verification'] = getattr(settings, "GOOGLE_SITE_VERIFICATION", "")
+    theme_data['baidu_site_verification'] = getattr(settings, "BAIDU_SITE_VERIFICATION", "")
+    theme_data['qihu_site_verification'] = getattr(settings, "QIHU_SITE_VERIFICATION", "")
+
+    return {"theme": theme_data}
 
 
 def tag_list(request):
