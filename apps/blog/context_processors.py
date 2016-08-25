@@ -24,6 +24,15 @@ def theme(request):
     theme_data['google_site_verification'] = getattr(settings, "GOOGLE_SITE_VERIFICATION", "")
     theme_data['baidu_site_verification'] = getattr(settings, "BAIDU_SITE_VERIFICATION", "")
     theme_data['qihu_site_verification'] = getattr(settings, "QIHU_SITE_VERIFICATION", "")
+    theme_data['fancybox'] = getattr(settings, "FANCYBOX", True)
+    theme_data['version'] = getattr(settings, "VERSION", '')
+    theme_data['keywords'] = getattr(settings, "KEYWORDS", '')
+    theme_data['rss'] = getattr(settings, "RSS", '')
+    theme_data['favicon'] = getattr(settings, "FAVICON", '')
+    theme_data['sidebar'] = getattr(settings, "SIDEBAR", {})
+    theme_data['menu'] = getattr(settings, "MENU", {})
+    theme_data['menu_icons'] = getattr(settings, "MENU_ICONS", {})
+    print(theme_data)
 
     return {"theme": theme_data}
 

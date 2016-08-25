@@ -7,12 +7,12 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="{{ config.language }}">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
 
 {% include '_scripts/third-party/analytics.html' %}
 
 
-<div class="container one-collumn sidebar-position-left page-home {% block page_class %}{% endblock %} ">
+<div class="container one-collumn sidebar-position-{{theme.sidebar.position}} {% block page_class %}{% endblock %} ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">

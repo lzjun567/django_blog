@@ -1,19 +1,20 @@
 # -*- coding:utf-8 -*-
+from collections import OrderedDict
 
 # ---------------------------------------------------------------
 # Site Information Settings
 # ---------------------------------------------------------------
 
 # Put your favicon.ico into `hexo-site/source/` directory.
-favicon = "/favicon.ico"
+FAVICON = "/favicon.ico"
 
 # Set default keywords (Use a comma to separate)
-keywords = "Hexo, NexT"
+KEYWORDS = "FooFish, Python"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
 # Set rss to specific value if you have burned your feed already.
-rss = ""
+RSS = True
 
 # Specify the date when the site was setup
 # since: 2015
@@ -28,7 +29,18 @@ canonical = True
 # ---------------------------------------------------------------
 
 # When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -> archives)
-# menu:
+
+
+MENU = OrderedDict(
+    sorted({
+               "home": {"label": u"首页", "path": "/", "icon": "home", "position": 1},
+               "categories": {"label": u"分类", "path": "/categories", "icon": "th", "position": 2},
+               "archives": {"label": u"归档", "path": "/archives", "icon": "archive", "position": 3},
+               "about": {"label": u"关于", "about": "/archives", "icon": "user", "position": 5},
+               "tags": {"label": u"标签", "path": "/tags", "icon": "tags", "position": 4},
+               "commonweal": {"label": u"公益", "path": "/404.html", "icon": "heartbeat", "position": 6},
+
+           }.items(), key=lambda t: t[1]['position']))
 #   home: /
 #   #categories: /categories
 #   #about: /about
@@ -42,7 +54,15 @@ canonical = True
 # #   Map a menu item to a specific FontAwesome icon name.
 # #   Key is the name of menu item and value is the name of FontAwsome icon. Key is case-senstive.
 # #   When an question mask icon presenting up means that the item has no mapping icon.
-# menu_icons:
+MENU_ICONS = {
+    "enable": True,
+    "home": "home",
+    "about": "user",
+    "categories": "th",
+    "tags": "tags",
+    "archives": "archive",
+    "commonweal": "heartbeat",
+}
 #   enable: true
 #   #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome
 #   home: home
@@ -159,8 +179,6 @@ SCHEME = "Pisces"
 # #creative_commons: by-nc-sa
 # #creative_commons:
 #
-#
-# sidebar:
 #   # Sidebar Position, available value: left | right
 #   position: left
 #   #position: right
@@ -174,6 +192,10 @@ SCHEME = "Pisces"
 #   #display: always
 #   #display: hide
 #   #display: remove
+SIDEBAR = {
+    "position": "left",
+    "display": "post"
+}
 #
 #
 # # Blogrolls
@@ -338,10 +360,10 @@ SCHEME = "Pisces"
 # #! ---------------------------------------------------------------
 #
 # # Motion
-USE_MOTION=True
+USE_MOTION = True
 #
 # # Fancybox
-# fancybox: true
+FANCYBOX = True
 #
 #
 # # Script Vendors.
@@ -392,4 +414,4 @@ USE_MOTION=True
 # images: images
 #
 # # Theme version
-# version: 5.0.1
+VERSION = '5.0.1'

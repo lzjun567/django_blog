@@ -1,14 +1,21 @@
-<div class="site-meta ">
-
+<div class="site-meta {% if theme.custom_logo.enabled %}custom-logo{% endif %}">
+    {% if theme.custom_logo.image and theme.scheme == 'Muse' %}
+    <div class="site-meta-headline">
+        <a>
+            <img class="custom-logo-image" src="{{ theme.custom_logo.image }}"
+                 alt="{{ config.title }}"/>
+        </a>
+    </div>
+    {% endif %}
 
     <div class="custom-logo-site-title">
-        <a href="/" class="brand" rel="start" style="opacity: 1;">
+        <a href="/" class="brand" rel="start">
             <span class="logo-line-before"><i></i></span>
-            <span class="site-title" style="opacity: 1; top: 0px;">FooFish's Notes</span>
+            <span class="site-title">FooFish's Notes</span>
             <span class="logo-line-after"><i></i></span>
         </a>
     </div>
-    <p class="site-subtitle" style="opacity: 1; top: 0px;">Quick notes</p>
+    <p class="site-subtitle">Quick notes</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -21,91 +28,22 @@
 
 <nav class="site-nav">
 
-
+    {% if theme.menu %}
     <ul id="menu" class="menu">
-
-
-        <li class="menu-item menu-item-home menu-item-active" style="opacity: 1; transform: translateY(0px);">
-            <a href="/" rel="section">
-
-                <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-
-                首页
+        {% for name, value in theme.menu.items %}
+        <li class="menu-item menu-item-{{ name }}">
+            <a href="{{value.path}}" rel="section">
+                {% if theme.menu_icons.enable %}
+                <i class="menu-item-icon fa fa-fw fa-{{value.icon | default:'question-circle' | lower }}"></i>
+                <br/>
+                {% endif %}
+                {{value.label}}
             </a>
         </li>
-
-
-        <li class="menu-item menu-item-archives" style="opacity: 1; transform: translateY(0px);">
-            <a href="{% url 'blog:archives' %}" rel="section">
-
-                <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-
-                归档
-            </a>
-        </li>
-
-
-        <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);">
-            <a href="{% url 'blog:tag_list' %}" rel="section">
-
-                <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-
-                标签
-            </a>
-        </li>
-
-        <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);">
-            <a href="{% url 'about' %}" rel="section">
-
-                <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-
-                关于
-            </a>
-        </li>
-
-        {% if user.is_authenticated %}
-        <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);">
-            <a href="{% url 'admin:index' %}" rel="section">
-
-                <i class="menu-item-icon fa fa-fw fa-minus-circle"></i> <br>
-
-                管理
-            </a>
-        </li>
-        {% endif %}
+        {% endfor %}
 
 
     </ul>
-
-
-    <div class="site-search">
-
-
-        <div class="algolia-popup popup">
-            <div class="algolia-search">
-                <div class="algolia-search-input-icon">
-                    <i class="fa fa-search"></i>
-                </div>
-                <div class="algolia-search-input" id="algolia-search-input">
-                    <div class="ais-search-box"><input autocapitalize="off" autocomplete="off" autocorrect="off"
-                                                       placeholder="搜索" role="textbox" spellcheck="false"
-                                                       type="text" value="" class="ais-search-box--input"></div>
-                </div>
-            </div>
-
-            <div class="algolia-results">
-                <div id="algolia-stats"></div>
-                <div id="algolia-hits"></div>
-                <div id="algolia-pagination" class="algolia-pagination"></div>
-            </div>
-
-            <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-        </div>
-
-
-    </div>
-
+    {% endif %}
 </nav>
 
