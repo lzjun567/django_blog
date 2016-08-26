@@ -146,6 +146,16 @@ class BlogDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(BlogDetailView, self).get_context_data(**kwargs)
         current_post = context.get("object")
+        from django.contrib.sites.models import Site
+
+        current_site = Site.objects.get_current()
+        print(current_site.domain)
+        page = dict()
+        page['comments'] = True
+        page['title'] = current_post.title
+        page['permalink'] = "http://"+current_site.domain+current_post.get_absolute_url()
+        page['path'] = current_post.get_absolute_url
+        context['page'] = page
 
         # 随机文章
         count = Blog.objects.filter(status='p', is_public=True).count()
@@ -157,7 +167,7 @@ class BlogDetailView(DetailView):
             random_posts = Blog.objects.exclude(pk=current_post.id).filter(status='p', is_public=True)[
                            randint:randint + 5]
             prev_post = Blog.objects.filter(status='p', is_public=True, pk__lt=current_post.id).order_by('-pk')[0]
-            next_post= Blog.objects.filter(status='p', is_public=True, pk__gt=current_post.id).order_by('pk')[0]
+            next_post = Blog.objects.filter(status='p', is_public=True, pk__gt=current_post.id).order_by('pk')[0]
 
         except IndexError:
             pass

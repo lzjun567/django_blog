@@ -1,7 +1,7 @@
 {% extends '_layout.html' %}
 
 
-{% block title %} {{ page.title }} | {{ config.title }} {% endblock %}
+{% block title %} {{ page.title }} {% endblock %}
 
 {% block page_class %}page-post-detail{% endblock %}
 
@@ -29,6 +29,9 @@
 {% endblock %}
 
 
+{% block sidebar %}
+{% include '_macro/sidebar.html' %}
+{% endblock %}
 
 
 {% block script_extra %}

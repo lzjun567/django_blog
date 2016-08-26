@@ -32,6 +32,8 @@ def theme(request):
     theme_data['sidebar'] = getattr(settings, "SIDEBAR", {})
     theme_data['menu'] = getattr(settings, "MENU", {})
     theme_data['menu_icons'] = getattr(settings, "MENU_ICONS", {})
+    theme_data['duoshuo_shortname'] = getattr(settings, "DUOSHUO_SHORTNAME", '')
+    theme_data['social'] = getattr(settings, "SOCIAL", {})
     print(theme_data)
 
     return {"theme": theme_data}

@@ -1,7 +1,5 @@
-
-
-
-  <script type="text/javascript">
+{% load staticfiles %}
+<script type="text/javascript">
     var duoshuoQuery = {short_name:"foofish"};
     (function() {
       var ds = document.createElement('script');
@@ -12,7 +10,9 @@
       (document.getElementsByTagName('head')[0]
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
-  </script>
 
+</script>
+<script type="text/javascript" src="{% static 'vendors/ua-parser-js/dist/ua-parser.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/src/hook-duoshuo.js' %}"></script>
 
 

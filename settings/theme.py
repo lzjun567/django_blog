@@ -14,7 +14,7 @@ KEYWORDS = "FooFish, Python"
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
 # Set rss to specific value if you have burned your feed already.
-RSS = True
+RSS = "/rss/"
 
 # Specify the date when the site was setup
 # since: 2015
@@ -143,7 +143,14 @@ SCHEME = "Pisces"
 # # Value is the target link (E.g. GitHub: https://github.com/iissnan)
 # #social:
 #   #LinkLabel: Link
-#
+SOCIAL = OrderedDict(
+    sorted({
+               "GitHub": {"label": u"GitHub", "link": "https://github.com/lzjun567", "social_icons": "github", "position": 1},
+               "Twitter": {"label": u"Twitter", "link": "https://twitter.com/lzjun1", "social_icons": "twitter", "position": 2},
+               "Weibo": {"label": u"微博", "link": "http://weibo.com/lzjun567 ", "social_icons": "weibo", "position": 3},
+               "Zhihu": {"label": u"知乎", "link": "https://www.zhihu.com/people/zhijun-liu", "social_icons": "", "position": 5},
+
+           }.items(), key=lambda t: t[1]['position']))
 #
 # # Social Links Icons
 # # Icon Mapping:
@@ -264,7 +271,7 @@ SIDEBAR = {
 # #baidu_analytics:
 #
 # # Duoshuo ShortName
-# #duoshuo_shortname:
+DUOSHUO_SHORTNAME = "foofish"
 #
 # # Disqus
 # #disqus_shortname:
