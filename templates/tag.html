@@ -1,27 +1,30 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post-collapse.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+{% extends '_layout.html' %}
 
 {% block title %} {{ page.tag }} | {{ config.title }} {% endblock %}
 
 {% block content %}
 
-  <div id="posts" class="posts-collapse">
+<div id="posts" class="posts-collapse">
     <div class="collection-title">
-      <h2 >
-        {{ page.tag }}
-        <small>{{  __('title.tag')  }}</small>
-      </h2>
+        <h2>
+            {{ page.tag }}
+            <small>标签</small>
+        </h2>
     </div>
+    {% for post in blog_list %}
 
-    {% for post in page.posts %}
-      {{ post_template.render(post) }}
+    {% include '_macro/post-collapse.html' %}
+
     {% endfor %}
-  </div>
 
-  {% include '_partials/pagination.swig' %}
+
+</div>
+
+
+{% include '_partials/pagination.html' with url=path.url %}
+
 {% endblock %}
 
 {% block sidebar %}
-  {{ sidebar_template.render(false) }}
+{% include '_macro/sidebar.html' %}
 {% endblock %}

@@ -19,6 +19,8 @@ def theme(request):
     from django.conf import settings
 
     theme_data = dict()
+    theme_data['site_title'] = getattr(settings, "SITE_TITLE")
+    theme_data['site_subtitle'] = getattr(settings, "SITE_SUBTITLE")
     theme_data['scheme'] = getattr(settings, "SCHEME", "")
     theme_data['use_motion'] = "use-motion" if getattr(settings, "USE_MOTION") else ""
     theme_data['google_site_verification'] = getattr(settings, "GOOGLE_SITE_VERIFICATION", "")

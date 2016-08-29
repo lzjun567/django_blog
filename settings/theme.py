@@ -5,6 +5,10 @@ from collections import OrderedDict
 # Site Information Settings
 # ---------------------------------------------------------------
 
+SITE_TITLE = "FooFish's Notes"
+
+SITE_SUBTITLE = u"不一样的烟火"
+
 # Put your favicon.ico into `hexo-site/source/` directory.
 FAVICON = "/favicon.ico"
 
@@ -38,8 +42,6 @@ MENU = OrderedDict(
                "archives": {"label": u"归档", "path": "/archives", "icon": "archive", "position": 3},
                "about": {"label": u"关于", "about": "/archives", "icon": "user", "position": 5},
                "tags": {"label": u"标签", "path": "/tags", "icon": "tags", "position": 4},
-               "commonweal": {"label": u"公益", "path": "/404.html", "icon": "heartbeat", "position": 6},
-
            }.items(), key=lambda t: t[1]['position']))
 #   home: /
 #   #categories: /categories
@@ -61,7 +63,6 @@ MENU_ICONS = {
     "categories": "th",
     "tags": "tags",
     "archives": "archive",
-    "commonweal": "heartbeat",
 }
 #   enable: true
 #   #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome
@@ -145,10 +146,13 @@ SCHEME = "Pisces"
 #   #LinkLabel: Link
 SOCIAL = OrderedDict(
     sorted({
-               "GitHub": {"label": u"GitHub", "link": "https://github.com/lzjun567", "social_icons": "github", "position": 1},
-               "Twitter": {"label": u"Twitter", "link": "https://twitter.com/lzjun1", "social_icons": "twitter", "position": 2},
+               "GitHub": {"label": u"GitHub", "link": "https://github.com/lzjun567", "social_icons": "github",
+                          "position": 1},
+               "Twitter": {"label": u"Twitter", "link": "https://twitter.com/lzjun1", "social_icons": "twitter",
+                           "position": 2},
                "Weibo": {"label": u"微博", "link": "http://weibo.com/lzjun567 ", "social_icons": "weibo", "position": 3},
-               "Zhihu": {"label": u"知乎", "link": "https://www.zhihu.com/people/zhijun-liu", "social_icons": "", "position": 5},
+               "Zhihu": {"label": u"知乎", "link": "https://www.zhihu.com/people/zhijun-liu", "social_icons": "",
+                         "position": 5},
 
            }.items(), key=lambda t: t[1]['position']))
 #

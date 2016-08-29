@@ -7,10 +7,11 @@ from .views import ArchiveView
 from .views import BlogDetailView
 from .views import BlogListByCategoryView
 from .views import BlogListView
+from .views import BlogListByTagView
 from .views import CategoryListView
 from .views import TagListView
 
-urlpatterns = [url(r"^tag/(?P<tag_name>[\w,-]+)$", BlogListView.as_view(), name="tag"),
+urlpatterns = [url(r"^tag/(?P<tag_name>[\w,-]+)$", BlogListByTagView.as_view(), name="tag"),
                url(r"^category/(?P<pk>\d+)/(?P<cat_name>\w+)$", BlogListByCategoryView.as_view(), name="category"),
                url(r"^tags$", TagListView.as_view(), name="tag_list"),
                url(r"^categories$", CategoryListView.as_view(), name="category_list"),

@@ -85,9 +85,16 @@ class CategoryListView(ListView):
 class ArchiveView(ListView):
     template_name = "archive.html"
     context_object_name = "blog_list"
+    paginate_by = 2
 
     def get_queryset(self):
-        return Blog.objects.filter(status='p', is_public=True).order_by('-publish_time')
+        posts = Blog.objects.filter(status='p', is_public=True).order_by('-publish_time')
+        year = None
+        for post in posts:
+            if post.add_time.year != year:
+                post.year = post.add_time.year
+                year = post.year
+        return posts
 
 
 class BlogListView(ListView):
@@ -145,6 +152,23 @@ class BlogListByCategoryView(ListView):
             context['index_active'] = True
 
         # 最近文章
+        return context
+
+
+class BlogListByTagView(ListView):
+    template_name = "tag.html"
+    paginate_by = 2
+    context_object_name = "blog_list"
+
+    def get_queryset(self):
+        return Blog.objects.filter(tags__title=self.kwargs['tag_name']).order_by('-publish_time')
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogListByTagView, self).get_context_data(**kwargs)
+        page = dict()
+        page['tag'] = self.kwargs['tag_name']
+        page['url'] = self.request.path
+        context['page'] = page
         return context
 
 
