@@ -9,6 +9,7 @@ from apps.blog.views import BlogListByCategoryView
 from apps.blog.views import BlogListView
 from apps.blog.views import LatestPosts
 from apps.blog.views import TagListView
+from apps.blog.views import CategoryListView
 from django_blog.sitemaps import BlogSitemap, IndexSitemap
 
 admin.autodiscover()
@@ -29,6 +30,7 @@ urlpatterns = [
     url(r"^tag/(?P<tag_name>[\w,-]+)$", BlogListView.as_view(), name="tag"),
     url(r"^category/(?P<pk>\d+)/(?P<cat_name>\w+)$", BlogListByCategoryView.as_view(), name="category"),
     url(r"^tags$", TagListView.as_view(), name="tag_list"),
+    url(r"^categories$", CategoryListView.as_view(), name="category_list"),
     url(r"^archives", ArchiveView.as_view(), name="archives"),
 
     url(r'^robots.txt$', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),

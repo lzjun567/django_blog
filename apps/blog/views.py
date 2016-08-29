@@ -11,7 +11,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
 from .libs.tag_cloud import TagCloud
-from .models import Blog, Tag
+from .models import Blog, Tag, Category
 
 __author__ = "liuzhijun"
 
@@ -54,13 +54,37 @@ class TagListView(ListView):
 
         context['tag_list'] = tag_list_have_blog
         context['tag_active'] = True
+
+        page = dict()
+        page['type'] = 'tags'
+        page['title'] = u"分类"
+        context['page'] = page
+        return context
+
+
+class CategoryListView(ListView):
+    template_name = "page.html"
+    context_object_name = "categories"
+    model = Category
+
+    def get_context_data(self, **kwargs):
+        context = super(CategoryListView, self).get_context_data(**kwargs)
+        categories = context.get("categories")
+        for c in categories:
+            blog_count = Blog.objects.filter(category__pk=c.id).count()
+            print(blog_count)
+            c.blog_count = blog_count
+
+        page = dict()
+        page['type'] = 'categories'
+        page['title'] = u"标签"
+        context['page'] = page
         return context
 
 
 class ArchiveView(ListView):
     template_name = "archive.html"
     context_object_name = "blog_list"
-    paginate_by = 1
 
     def get_queryset(self):
         return Blog.objects.filter(status='p', is_public=True).order_by('-publish_time')
@@ -100,7 +124,7 @@ class BlogListView(ListView):
 
 
 class BlogListByCategoryView(ListView):
-    template_name = 'post_list.html'
+    template_name = 'category.html'
     paginate_by = settings.PAGE_SIZE
     context_object_name = "blog_list"
 
@@ -153,7 +177,7 @@ class BlogDetailView(DetailView):
         page = dict()
         page['comments'] = True
         page['title'] = current_post.title
-        page['permalink'] = "http://"+current_site.domain+current_post.get_absolute_url()
+        page['permalink'] = "http://" + current_site.domain + current_post.get_absolute_url()
         page['path'] = current_post.get_absolute_url
         context['page'] = page
 
