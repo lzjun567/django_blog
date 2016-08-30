@@ -90,8 +90,8 @@ class ArchiveView(ListView):
         posts = Blog.objects.filter(status='p', is_public=True).order_by('-publish_time')
         year = None
         for post in posts:
-            if post.add_time.year != year:
-                post.year = post.add_time.year
+            if post.publish_time.year != year:
+                post.year = post.publish_time.year
                 year = post.year
         return posts
 

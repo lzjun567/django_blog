@@ -4,11 +4,11 @@
 
       <h1 class="post-title">
         {% if post.link %}{# Link posts #}
-          <a class="post-title-link post-title-link-external" target="_blank" href="" itemprop="url">
+          <a class="post-title-link post-title-link-external" target="_blank" href="{{post.get_absolute_url}}" itemprop="url">
             {{ post.title }}
           </a>
         {% else %}
-            <a class="post-title-link" href="" itemprop="url">
+            <a class="post-title-link" href="{{post.get_absolute_url}}" itemprop="url">
               {% if post.type == 'picture' %}
                 {{ post.content }}
               {% else %}
