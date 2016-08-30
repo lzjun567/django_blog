@@ -3,6 +3,7 @@
 import random
 
 from django.conf import settings
+from django.contrib.sites.models import Site
 from django.contrib.syndication.views import Feed
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
@@ -21,7 +22,13 @@ class AboutView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(AboutView, self).get_context_data(**kwargs)
-        context['about_active'] = True
+        page = dict()
+        page['comments'] = True
+        page['path'] = self.request.path
+        page['title'] = u"关于"
+        current_site = Site.objects.get_current()
+        page['permalink'] = "".join(["http://", current_site.domain, "/about"])
+        context['page'] = page
         return context
 
 
@@ -195,9 +202,7 @@ class BlogDetailView(DetailView):
         context = super(BlogDetailView, self).get_context_data(**kwargs)
         current_post = context.get("object")
         from django.contrib.sites.models import Site
-
         current_site = Site.objects.get_current()
-        print(current_site.domain)
         page = dict()
         page['comments'] = True
         page['title'] = current_post.title

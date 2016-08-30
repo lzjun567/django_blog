@@ -36,6 +36,8 @@ def theme(request):
     theme_data['menu_icons'] = getattr(settings, "MENU_ICONS", {})
     theme_data['duoshuo_shortname'] = getattr(settings, "DUOSHUO_SHORTNAME", '')
     theme_data['social'] = getattr(settings, "SOCIAL", {})
+    theme_data['alipay'] = getattr(settings, "ALIPAY", None)
+    theme_data['wechatpay'] = getattr(settings, "WECHATPAY", None)
     print(theme_data)
 
     return {"theme": theme_data}

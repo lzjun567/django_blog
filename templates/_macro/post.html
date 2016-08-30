@@ -1,6 +1,5 @@
 {% load myapp_markup %}
-<article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article"
-         style="opacity: 1; display: block; transform: translateY(0px);">
+<article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             <a class="post-title-link" href="{{blog.get_absolute_url}}" itemprop="url">
@@ -46,8 +45,8 @@
               </span>
 
 
-            <span id="/2016/publishing-github-pages-with-travis-ci/" class="leancloud_visitors"
-                  data-flag-title="使用 Travis CI 自动更新 GitHub Pages">
+            <span id="" class="leancloud_visitors"
+                  data-flag-title="{{blog.title}}">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -75,14 +74,26 @@
 
     </div>
 
+     <div>
+      {% if not is_index %}
+        {% include '_macro/wechat-subscriber.html' %}
+      {% endif %}
+    </div>
+
+    <div>
+      {% if not is_index %}
+        {% include '_macro/reward.html' %}
+      {% endif %}
+    </div>
+
     <footer class="post-footer">
         {% if is_index %}
         <div class="post-eof"></div>
         {% else %}
         <div class="post-tags">
 
-             {% for tag in blog.tags.all %}
-                <a href="{%url 'blog:tag' tag%}" rel="tag"># {{tag }}</a>
+            {% for tag in blog.tags.all %}
+            <a href="{%url 'blog:tag' tag%}" rel="tag"># {{tag }}</a>
             {% endfor %}
             {% if user.is_authenticated %}
             <a href="{{blog.get_admin_url}}">编辑</a>
@@ -100,7 +111,7 @@
             {% if prev_post %}
             <span class="post-nav-divider"></span>
             <div class="post-nav-prev post-nav-item">
-                 <a href="{{prev_post.get_absolute_url}}" rel="next" title="{{prev_post.title}}">
+                <a href="{{prev_post.get_absolute_url}}" rel="next" title="{{prev_post.title}}">
                     <i class="fa fa-chevron-right"></i> {{prev_post.title}}
                 </a>
             </div>

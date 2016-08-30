@@ -35,14 +35,14 @@ canonical = True
 # When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -> archives)
 
 
-MENU = OrderedDict(
-    sorted({
-               "home": {"label": u"首页", "path": "/", "icon": "home", "position": 1},
-               "categories": {"label": u"分类", "path": "/categories", "icon": "th", "position": 2},
-               "archives": {"label": u"归档", "path": "/archives", "icon": "archive", "position": 3},
-               "about": {"label": u"关于", "about": "/archives", "icon": "user", "position": 5},
-               "tags": {"label": u"标签", "path": "/tags", "icon": "tags", "position": 4},
-           }.items(), key=lambda t: t[1]['position']))
+MENU = OrderedDict(sorted({
+                              "home": {"label": u"首页", "path": "/", "icon": "home", "position": 1},
+                              "categories": {"label": u"分类", "path": "/categories", "icon": "th", "position": 2},
+                              "archives": {"label": u"归档", "path": "/archives", "icon": "archive", "position": 3},
+                              "tags": {"label": u"标签", "path": "/tags", "icon": "tags", "position": 4},
+                              "about": {"label": u"关于", "path": "/about", "icon": "user", "position": 5},
+
+                          }.items(), key=lambda t: t[1]['position']))
 #   home: /
 #   #categories: /categories
 #   #about: /about
@@ -56,14 +56,7 @@ MENU = OrderedDict(
 # #   Map a menu item to a specific FontAwesome icon name.
 # #   Key is the name of menu item and value is the name of FontAwsome icon. Key is case-senstive.
 # #   When an question mask icon presenting up means that the item has no mapping icon.
-MENU_ICONS = {
-    "enable": True,
-    "home": "home",
-    "about": "user",
-    "categories": "th",
-    "tags": "tags",
-    "archives": "archive",
-}
+
 #   enable: true
 #   #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome
 #   home: home
@@ -391,7 +384,7 @@ FANCYBOX = True
 #
 #   # Internal version: 2.1.5
 #   # http://fancyapps.com/fancybox/
-#   fancybox:
+FANCYBOX = True
 #   fancybox_css:
 #
 #   # Internal version: 1.0.6
@@ -426,3 +419,6 @@ FANCYBOX = True
 #
 # # Theme version
 VERSION = '5.0.1'
+
+ALIPAY = ""
+WECHATPAY = ""
