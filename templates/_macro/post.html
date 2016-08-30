@@ -1,0 +1,123 @@
+{% load myapp_markup %}
+<article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            <a class="post-title-link" href="{{blog.get_absolute_url}}" itemprop="url">
+                {{blog.title}}
+            </a>
+        </h1>
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="{{blog.add_time}}" content="{{blog.add_time|date:'Y-m-d'}}">
+              {{blog.add_time|date:"Y-m-d"}}
+              </time>
+          </span>
+
+
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
+                  <a href="{%url 'blog:category' blog.category.id blog.category.title%}" itemprop="url" rel="index">
+                    <span itemprop="name">{{blog.category}}</span>
+                  </a>
+                </span>
+
+            </span>
+
+
+            <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="{{blog.get_absolute_url}}#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count"
+                        data-thread-key="{{blog.get_absolute_url}}"
+                        itemprop="commentsCount"></span>
+                </a>
+              </span>
+
+
+            <span id="" class="leancloud_visitors"
+                  data-flag-title="{{blog.title}}">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count">{{blog.access_count}}</span>
+              </span>
+
+        </div>
+    </header>
+
+
+    <div class="post-body" itemprop="articleBody">
+        {% if is_index %}
+        {{blog.content|slice:"0:300" | md1}}
+
+        <div class="post-more-link text-center">
+            <a class="btn" href="{{blog.get_absolute_url}}" rel="contents">
+                阅读全文 »
+            </a>
+        </div>
+        {% else %}
+        {{blog.content | md1}}
+        {% endif %}
+
+    </div>
+
+     <div>
+      {% if not is_index %}
+        {% include '_macro/wechat-subscriber.html' %}
+      {% endif %}
+    </div>
+
+    <div>
+      {% if not is_index %}
+        {% include '_macro/reward.html' %}
+      {% endif %}
+    </div>
+
+    <footer class="post-footer">
+        {% if is_index %}
+        <div class="post-eof"></div>
+        {% else %}
+        <div class="post-tags">
+
+            {% for tag in blog.tags.all %}
+            <a href="{%url 'blog:tag' tag%}" rel="tag"># {{tag }}</a>
+            {% endfor %}
+            {% if user.is_authenticated %}
+            <a href="{{blog.get_admin_url}}">编辑</a>
+            {% endif %}
+        </div>
+
+        <div class="post-nav">
+            {% if next_post %}
+            <div class="post-nav-next post-nav-item">
+                <a href="{{next_post.get_absolute_url}}" rel="next" title="{{next_post.title}}">
+                    <i class="fa fa-chevron-left"></i>{{next_post.title}}
+                </a>
+            </div>
+            {% endif %}
+            {% if prev_post %}
+            <span class="post-nav-divider"></span>
+            <div class="post-nav-prev post-nav-item">
+                <a href="{{prev_post.get_absolute_url}}" rel="next" title="{{prev_post.title}}">
+                    <i class="fa fa-chevron-right"></i> {{prev_post.title}}
+                </a>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+    </footer>
+</article>

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import os
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'xhcg42=d%md&1jcy$c8%#p5e+59!)25v$m$%uq*^1hfx%23i+p'
@@ -23,6 +22,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'apps.blog.context_processors.google_analytics',
                 'apps.blog.context_processors.recent_blog_list',
+                'apps.blog.context_processors.theme',
             ],
         },
     },
@@ -82,8 +82,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = False
 
-
-GOOGLE_ANALYTICS_ID='you google analytics id'
+GOOGLE_ANALYTICS_ID = 'you google analytics id'
 DISQUS_NAME = "YOU DISQUE SHORT NAME"
 
 SIMPLEMDE_OPTIONS = {
@@ -93,3 +92,8 @@ SIMPLEMDE_OPTIONS = {
         'enabled': True
     }
 }
+
+from .theme import *
+
+
+

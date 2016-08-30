@@ -1,0 +1,39 @@
+{% extends '_layout.html' %}
+
+
+{% block title %} {{ page.title }} {% endblock %}
+
+{% block page_class %}page-post-detail{% endblock %}
+
+
+{% block content %}
+
+  <div id="posts" class="posts-expand">
+
+    {% include '_macro/post.html' with blog=blog%}
+
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.html' %}
+      {% elif theme.baidushare %}
+        {% include '_partials/share/baidushare.html' %}
+      {% elif theme.add_this_id %}
+        {% include '_partials/share/add-this.html' %}
+      {% elif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.html' %}
+      {% endif %}
+      {% include '_partials/share/duoshuo_share.html' %}
+    </div>
+  </div>
+
+{% endblock %}
+
+
+{% block sidebar %}
+{% include '_macro/sidebar.html' %}
+{% endblock %}
+
+
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.html' %}
+{% endblock %}

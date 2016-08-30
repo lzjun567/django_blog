@@ -1,0 +1,42 @@
+{% if is_paginated %}
+
+<nav class="pagination">
+
+    {% if page_obj.number != 1 %}
+     <a class="extend prev" rel="prev" href="{{url}}?page={{ page_obj.prev_page_number }}">
+        <i class="fa fa-angle-left"></i>
+    </a>
+    <a class="page-number" href="{{url}}?page=1">1</a>
+    {% endif %}
+
+    {% if page_obj.number > 3 %}
+    <span class="space">…</span>
+    {% endif %}
+
+    {% if page_obj.number > 2 %}
+    <a class="page-number" href="{{url}}?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+    {% endif %}
+    <span class="page-number current">{{page_obj.number}}</span>
+
+
+
+    {% if page_obj.number < page_obj.paginator.num_pages|add:"-1" %}
+    <a class="page-number" href="{{url}}?page={{ page_obj.next_page_number }}">{{page_obj.next_page_number}}</a>
+    {% endif %}
+
+      {% if page_obj.number != page_obj.paginator.num_pages and page_obj.paginator.num_pages != page_obj.next_page_number and page_obj.paginator.num_pages != page_obj.number|add:"2" %}
+    <span class="space">…</span>
+    {% endif %}
+
+    {% if  page_obj.number != page_obj.paginator.num_pages %}
+    <a class="page-number" href="{{url}}?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+    {% endif %}
+
+
+     {% ifnotequal  page_obj.number page_obj.paginator.num_pages %}
+    <a class="extend next" rel="next" href="{{url}}?page={{ page_obj.next_page_number }}">
+        <i class="fa fa-angle-right"></i>
+    </a>
+    {% endifnotequal  %}
+</nav>
+{% endif %}

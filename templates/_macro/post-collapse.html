@@ -1,0 +1,31 @@
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        {% if post.link %}{# Link posts #}
+          <a class="post-title-link post-title-link-external" target="_blank" href="" itemprop="url">
+            {{ post.title }}
+          </a>
+        {% else %}
+            <a class="post-title-link" href="" itemprop="url">
+              {% if post.type == 'picture' %}
+                {{ post.content }}
+              {% else %}
+                <span itemprop="name">{{ post.title}}</span>
+              {% endif %}
+            </a>
+        {% endif %}
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="{{post.add_time}}"
+              content="{{post.add_time|date:'Y-m-d'}}" >
+          {{post.add_time|date:'Y-m-d'}}
+        </time>
+      </div>
+
+    </header>
+  </article>
+

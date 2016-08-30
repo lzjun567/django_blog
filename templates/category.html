@@ -1,0 +1,29 @@
+{% extends '_layout.html' %}
+
+{% block title %} 分类 | {{ config.title }} {% endblock %}
+
+{% block content %}
+
+<section id="posts" class="posts-collapse">
+    <div class="collection-title">
+        <h2>
+            {{ page.category }}
+            <small>分类</small>
+        </h2>
+    </div>
+
+    {% for post in blog_list %}
+
+    {% include '_macro/post-collapse.html' %}
+
+    {% endfor %}
+</section>
+
+{% include '_partials/pagination.html' with url='/blog/categories' %}
+
+{% endblock %}
+
+{% block sidebar %}
+{% include '_macro/sidebar.html' %}
+{% endblock %}
+

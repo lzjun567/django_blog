@@ -1,0 +1,62 @@
+<div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+        <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+        <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+        <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+</div>
+
+<aside id="sidebar" class="sidebar" style="margin-top: 294px; display: block;">
+    <div class="sidebar-inner">
+
+        <section class="site-overview sidebar-panel {% if not display_toc %} sidebar-panel-active {% endif %}">
+
+
+            {% if theme.rss %}
+            <div class="feed-link motion-element">
+                <a href="{{theme.rss }}" rel="alternate">
+                    <i class="fa fa-rss"></i>
+                    RSS
+                </a>
+            </div>
+            {% endif %}
+
+            <div class="links-of-author motion-element">
+                {% for name, value in theme.social.items %}
+                <span class="links-of-author-item">
+                <a href="{{ value.link }}" target="_blank" title="{{ value.label }}">
+                    <i class="fa fa-fw fa-{{ value.social_icons | default:'globe' | lower }}"></i>
+                  {{ value.label }}
+                </a>
+              </span>
+                {% endfor %}
+            </div>
+
+            {% if theme.creative_commons in cc %}
+            <div class="cc-license motion-element" itemprop="license">
+                <img src="{{d}}/cc-{{ theme.creative_commons }}.svg" alt="Creative Commons"/>
+            </div>
+            {% endif %}
+
+            {# Blogroll #}
+            {% if theme.links %}
+            <div class="links-of-blogroll motion-element {{ s }}">
+                <div class="links-of-blogroll-title">
+                    <i class="fa  fa-fw fa-{{ theme.links_icon | default:'globe' | lower }}"></i>
+                    {{ theme.links_title }}
+                </div>
+                <ul class="links-of-blogroll-list">
+                    {% for name, link in theme.links %}
+                    <li class="links-of-blogroll-item">
+                        <a href="{{ link }}" title="{{ name }}" target="_blank">{{ name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+        </section>
+
+
+    </div>
+</aside>

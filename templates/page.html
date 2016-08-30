@@ -1,0 +1,49 @@
+{% extends '_layout.html' %}
+
+{% block title %} {{ page.title }} {% endblock %}
+
+{% block content %}
+
+<div id="posts" class="posts-expand">
+    {# tagcloud page support #}
+    {% if page.type == 'tags' %}
+    <div class="tag-cloud">
+        <div class="tag-cloud-title">
+            {{ counter.tag_cloudsite.tags.length }}
+        </div>
+        <div class="tag-cloud-tags">
+            {% for tag in tag_list %}
+            <a href="{% url 'blog:tag' tag.title %}" style="font-size:{{tag.font_size}}px; color:{{tag.color}}">{{tag.title}}</a>
+            {% endfor %}
+        </div>
+    </div>
+    {% elif page.type == 'categories' %}
+    <div class="category-all-page">
+        <div class="category-all-title">
+            {{ counter.categories }}
+        </div>
+        <div class="category-all">
+            <ul class="category-list">
+                {% for category in categories %}
+                <li class="category-list-item"><a class="category-list-link"
+                                                  href="{%url 'blog:category' category.id category.title%}">{{category.title}}</a><span
+                        class="category-list-count">{{category.blog_count}}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% else %}
+    ddddd
+    {{ page.content }}
+    {% endif %}
+
+
+</div>
+
+{% endblock %}
+
+{% block sidebar %}
+{% include '_macro/sidebar.html' %}
+{% endblock %}
+
