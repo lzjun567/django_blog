@@ -3,7 +3,7 @@
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = 'xhcg42=d%md&1jcy$c8%#p5e+59!)25v$m$%uq*^1hfx%23i+p'
+SECRET_KEY = ''
 DEBUG = True
 
 STATIC_URL = '/static/'
