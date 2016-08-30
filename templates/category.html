@@ -5,7 +5,12 @@
 {% block content %}
 
 <section id="posts" class="posts-collapse">
-
+    <div class="collection-title">
+        <h2>
+            {{ page.category }}
+            <small>分类</small>
+        </h2>
+    </div>
 
     {% for post in blog_list %}
 

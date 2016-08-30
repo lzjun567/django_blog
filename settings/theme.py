@@ -37,8 +37,8 @@ canonical = True
 
 MENU = OrderedDict(sorted({
                               "home": {"label": u"首页", "path": "/", "icon": "home", "position": 1},
-                              "categories": {"label": u"分类", "path": "/categories", "icon": "th", "position": 2},
-                              "archives": {"label": u"归档", "path": "/archives", "icon": "archive", "position": 3},
+                              "categories": {"label": u"分类", "path": "/categories", "icon": "th", "position": 3},
+                              "archives": {"label": u"归档", "path": "/archives", "icon": "archive", "position": 2},
                               "tags": {"label": u"标签", "path": "/tags", "icon": "tags", "position": 4},
                               "about": {"label": u"关于", "path": "/about", "icon": "user", "position": 5},
 

@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import random
-
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.contrib.syndication.views import Feed
@@ -41,26 +39,20 @@ class TagListView(ListView):
         context = super(TagListView, self).get_context_data(**kwargs)
         tag_list = context.get("tag_list")
         # 有博文的tag
-        tag_list_have_blog = []
         for tag in tag_list:
             blog_count = Blog.objects.filter(tags__pk=tag.id).count()
-            if blog_count > 0:
-                tag.blog_count = blog_count
-                tag_list_have_blog.append(tag)
+            tag.blog_count = blog_count
 
-        max_count = max(tag_list_have_blog, key=lambda tag: tag.blog_count).blog_count
-        min_count = min(tag_list_have_blog, key=lambda tag: tag.blog_count).blog_count
+        max_count = max(tag_list, key=lambda tag: tag.blog_count).blog_count
+        min_count = min(tag_list, key=lambda tag: tag.blog_count).blog_count
 
         tag_cloud = TagCloud(min_count, max_count)
 
-        for tag in tag_list_have_blog:
+        for tag in tag_list:
             tag_font_size = tag_cloud.get_tag_font_size(tag.blog_count)
             color = tag_cloud.get_tag_color(tag.blog_count)
             tag.color = color
             tag.font_size = tag_font_size
-
-        context['tag_list'] = tag_list_have_blog
-        context['tag_active'] = True
 
         page = dict()
         page['type'] = 'tags'
@@ -79,7 +71,6 @@ class CategoryListView(ListView):
         categories = context.get("categories")
         for c in categories:
             blog_count = Blog.objects.filter(category__pk=c.id).count()
-            print(blog_count)
             c.blog_count = blog_count
 
         page = dict()
@@ -92,7 +83,6 @@ class CategoryListView(ListView):
 class ArchiveView(ListView):
     template_name = "archive.html"
     context_object_name = "blog_list"
-    paginate_by = 2
 
     def get_queryset(self):
         posts = Blog.objects.filter(status='p', is_public=True).order_by('-publish_time')
@@ -115,26 +105,7 @@ class BlogListView(ListView):
             'status': 'p',
             'is_public': True
         }
-
-        if 'tag_name' in self.kwargs:
-            query_condition['tags__title'] = self.kwargs['tag_name']
-        elif 'cat_name' in self.kwargs:
-            query_condition['category__title'] = self.kwargs['cat_name']
-
         return Blog.objects.filter(**query_condition).order_by('-publish_time')
-
-    def get_context_data(self, **kwargs):
-        context = super(BlogListView, self).get_context_data(**kwargs)
-        tag_name = self.kwargs.get('tag_name')
-        if tag_name:
-            context['tag_title'] = tag_name
-
-            context['tag_description'] = ''
-        else:
-            context['index_active'] = True
-
-        # 最近文章
-        return context
 
 
 class BlogListByCategoryView(ListView):
@@ -150,22 +121,16 @@ class BlogListByCategoryView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(BlogListByCategoryView, self).get_context_data(**kwargs)
-        tag_name = self.kwargs.get('tag_name')
-        if tag_name:
-            context['tag_title'] = tag_name
-
-            context['tag_description'] = ''
-        else:
-            context['index_active'] = True
-
-        # 最近文章
+        page = dict()
+        page['category'] = self.kwargs['cat_name']
+        context['page'] = page
         return context
 
 
 class BlogListByTagView(ListView):
     template_name = "tag.html"
-    paginate_by = 2
     context_object_name = "blog_list"
+    paginate_by = settings.PAGE_SIZE
 
     def get_queryset(self):
         return Blog.objects.filter(tags__title=self.kwargs['tag_name']).order_by('-publish_time')
@@ -210,22 +175,15 @@ class BlogDetailView(DetailView):
         page['path'] = current_post.get_absolute_url
         context['page'] = page
 
-        # 随机文章
-        count = Blog.objects.filter(status='p', is_public=True).count()
-        randint = random.randint(0, count - 5)
-        random_posts = None
         next_post = None
         prev_post = None
         try:
-            random_posts = Blog.objects.exclude(pk=current_post.id).filter(status='p', is_public=True)[
-                           randint:randint + 5]
             prev_post = Blog.objects.filter(status='p', is_public=True, pk__lt=current_post.id).order_by('-pk')[0]
             next_post = Blog.objects.filter(status='p', is_public=True, pk__gt=current_post.id).order_by('pk')[0]
 
         except IndexError:
             pass
 
-        context['random_posts'] = random_posts
         context['next_post'] = next_post
         context['prev_post'] = prev_post
         return context
