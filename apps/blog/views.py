@@ -43,8 +43,10 @@ class TagListView(ListView):
             blog_count = Blog.objects.filter(tags__pk=tag.id).count()
             tag.blog_count = blog_count
 
-        max_count = max(tag_list, key=lambda tag: tag.blog_count).blog_count
-        min_count = min(tag_list, key=lambda tag: tag.blog_count).blog_count
+        max_count = min_count = 0
+        if len(tag_list) > 0:
+            max_count = max(tag_list, key=lambda tag: tag.blog_count).blog_count
+            min_count = min(tag_list, key=lambda tag: tag.blog_count).blog_count
 
         tag_cloud = TagCloud(min_count, max_count)
 
@@ -166,7 +168,7 @@ class BlogDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(BlogDetailView, self).get_context_data(**kwargs)
         current_post = context.get("object")
-        from django.contrib.sites.models import Site
+
         current_site = Site.objects.get_current()
         page = dict()
         page['comments'] = True
@@ -193,6 +195,8 @@ class LatestPosts(Feed):
     """
     RSS 输出
     """
+    from django.utils.feedgenerator import Atom1Feed
+    feed_type = Atom1Feed
     title = "foofish 的笔录"
     link = "/"
 

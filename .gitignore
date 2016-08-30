@@ -6,3 +6,4 @@ collectstatic
 .DS_Store
 prod.py
 fabfile.py
+*.sqlite3
