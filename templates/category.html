@@ -12,14 +12,14 @@
         </h2>
     </div>
 
-    {% for post in blog_list %}
+    {% for post in posts %}
 
     {% include '_macro/post-collapse.html' %}
 
     {% endfor %}
 </section>
 
-{% include '_partials/pagination.html' with url='/blog/categories' %}
+{% include '_partials/pagination.html' with url=url%}
 
 {% endblock %}
 

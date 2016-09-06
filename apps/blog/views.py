@@ -20,25 +20,24 @@ class AboutView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(AboutView, self).get_context_data(**kwargs)
-        page = dict()
-        page['comments'] = True
-        page['path'] = self.request.path
-        page['title'] = u"关于"
         current_site = Site.objects.get_current()
-        page['permalink'] = "".join(["http://", current_site.domain, "/about"])
-        context['page'] = page
+        # 页面信息
+        context['page'] = dict(comments=True,
+                               path=self.request.path,
+                               title=u'关于',
+                               permalink="".join(["http://", current_site.domain, "/about"]))
         return context
 
 
-class TagListView(ListView):
+class TagsView(ListView):
     template_name = 'page.html'
     context_object_name = 'tag_list'
     model = Tag
 
     def get_context_data(self, **kwargs):
-        context = super(TagListView, self).get_context_data(**kwargs)
+        context = super(TagsView, self).get_context_data(**kwargs)
         tag_list = context.get("tag_list")
-        # 有博文的tag
+
         for tag in tag_list:
             blog_count = Blog.objects.filter(tags__pk=tag.id).count()
             tag.blog_count = blog_count
@@ -63,13 +62,13 @@ class TagListView(ListView):
         return context
 
 
-class CategoryListView(ListView):
+class CategoriesView(ListView):
     template_name = "page.html"
     context_object_name = "categories"
     model = Category
 
     def get_context_data(self, **kwargs):
-        context = super(CategoryListView, self).get_context_data(**kwargs)
+        context = super(CategoriesView, self).get_context_data(**kwargs)
         categories = context.get("categories")
         for c in categories:
             blog_count = Blog.objects.filter(category__pk=c.id).count()
@@ -82,12 +81,19 @@ class CategoryListView(ListView):
         return context
 
 
-class ArchiveView(ListView):
+class BasePostListView(ListView):
+    paginate_by = settings.PAGE_SIZE
+    context_object_name = "posts"
+
+
+class ArchiveView(BasePostListView):
+    """
+    文章归档
+    """
     template_name = "archive.html"
-    context_object_name = "blog_list"
 
     def get_queryset(self):
-        posts = Blog.objects.filter(status='p', is_public=True).order_by('-publish_time')
+        posts = Blog.objects.published().public()
         year = None
         for post in posts:
             if post.publish_time.year != year:
@@ -96,53 +102,41 @@ class ArchiveView(ListView):
         return posts
 
 
-class BlogListView(ListView):
+class BlogListView(BasePostListView):
+    """
+    首页
+    """
     template_name = 'index.html'
-    paginate_by = settings.PAGE_SIZE
-    context_object_name = "blog_list"
-
-    def get_queryset(self):
-        # 只显示状态为发布且公开的文章列表
-        query_condition = {
-            'status': 'p',
-            'is_public': True
-        }
-        return Blog.objects.filter(**query_condition).order_by('-publish_time')
+    queryset = Blog.objects.published().public()
 
 
-class BlogListByCategoryView(ListView):
+class BlogsWithCategoryView(BasePostListView):
+    """
+    指定分类的文章列表
+    """
     template_name = 'category.html'
-    paginate_by = settings.PAGE_SIZE
-    context_object_name = "blog_list"
 
     def get_queryset(self):
-        # 只显示状态为发布且公开的文章列表
-        query_condition = dict({'status': 'p', 'is_public': True})
-        query_condition['category__id'] = self.kwargs['pk']
-        return Blog.objects.filter(**query_condition).order_by('-publish_time')
+        return Blog.objects.published().public().filter(category__id=self.kwargs['pk'])
 
     def get_context_data(self, **kwargs):
-        context = super(BlogListByCategoryView, self).get_context_data(**kwargs)
-        page = dict()
-        page['category'] = self.kwargs['cat_name']
-        context['page'] = page
+        context = super(BlogsWithCategoryView, self).get_context_data(**kwargs)
+        context['page'] = dict(category=self.kwargs['cat_name'], url=self.request.path)
         return context
 
 
-class BlogListByTagView(ListView):
+class BlogsWithTagView(BasePostListView):
+    """
+    指定标签下的文章列表
+    """
     template_name = "tag.html"
-    context_object_name = "blog_list"
-    paginate_by = settings.PAGE_SIZE
 
     def get_queryset(self):
-        return Blog.objects.filter(tags__title=self.kwargs['tag_name']).order_by('-publish_time')
+        return Blog.objects.published().public().filter(tags__title=self.kwargs['tag_name'])
 
     def get_context_data(self, **kwargs):
-        context = super(BlogListByTagView, self).get_context_data(**kwargs)
-        page = dict()
-        page['tag'] = self.kwargs['tag_name']
-        page['url'] = self.request.path
-        context['page'] = page
+        context = super(BlogsWithTagView, self).get_context_data(**kwargs)
+        context['page'] = dict(tag=self.kwargs['tag_name'], url=self.request.path)
         return context
 
 

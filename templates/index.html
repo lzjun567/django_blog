@@ -4,8 +4,8 @@
 {% block page_class %} page-home {% endblock %}
 {% block content %}
 <section id="posts" class="posts-expand">
-    {% for blog in blog_list %}
-    {% include '_macro/post.html' with blog=blog is_index=True next_post=next_post prev_post=prev_post %}
+    {% for post in posts %}
+    {% include '_macro/post.html' with post=post is_index=True next_post=next_post prev_post=prev_post %}
     {% endfor %}
 </section>
 {% include '_partials/pagination.html'  with url='/blog' %}

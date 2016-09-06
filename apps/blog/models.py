@@ -11,6 +11,32 @@ from django.db import models
 from django.template.defaultfilters import slugify
 
 
+class BlogQuerySet(models.QuerySet):
+    def published(self):
+        """
+        已发布的文章
+        """
+        return self.filter(status='p')
+
+    def public(self):
+        """
+        公开的文章
+        :return:
+        """
+        return self.filter(is_public=True)
+
+
+class BlogManager(models.Manager):
+    def get_queryset(self):
+        return BlogQuerySet(self.model, using=self._db).order_by('-publish_time')
+
+    def published(self):
+        return self.get_queryset().published()
+
+    def public(self):
+        return self.get_queryset().public()
+
+
 class Blog(models.Model):
     STATUS_CHOICES = (
         ('d', "草稿"),
@@ -36,6 +62,7 @@ class Blog(models.Model):
     tags = models.ManyToManyField('Tag', verbose_name='标签集合', null=True, blank=True)
     tags.help_text = '标签'
     author = models.ForeignKey(User, verbose_name='作者')
+    objects = BlogManager()
 
     class Meta:
         verbose_name = '文章'

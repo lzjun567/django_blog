@@ -288,7 +288,7 @@ DUOSHUO_SHORTNAME = "foofish"
 #
 # # Google Webmaster tools verification setting
 # # See: https://www.google.com/webmasters/
-# #google_site_verification:
+GOOGLE_SITE_VERIFICATION = "your google site verification"
 #
 #
 # # Google Analytics
