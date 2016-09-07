@@ -146,6 +146,7 @@ class BlogDetailView(DetailView):
     """
     model = Blog
     template_name = "post.html"
+    context_object_name = "post"
 
     def get_object(self, queryset=None):
         blog = super(BlogDetailView, self).get_object(queryset)

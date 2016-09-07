@@ -28,8 +28,9 @@ urlpatterns = [
     url(r'^about$', AboutView.as_view(), name='about'),
     url(r'^404', TemplateView.as_view(template_name="404.html")),
 
+
     url(r"^tag/(?P<tag_name>[\w,-]+)$", BlogsWithTagView.as_view(), name="tag"),
-    url(r"^category/(?P<pk>\d+)/(?P<cat_name>\w+)$", BlogsWithCategoryView.as_view(), name="category"),
+    url(r"^category/(?P<pk>\d+)/(?P<cat_name>\w+)$", BlogsWithCategoryView.as_view()),
     url(r"^tags$", TagsView.as_view(), name="tag_list"),
     url(r"^categories$", CategoriesView.as_view(), name="category_list"),
     url(r"^archives", ArchiveView.as_view(), name="archives"),

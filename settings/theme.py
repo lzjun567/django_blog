@@ -31,10 +31,6 @@ canonical = True
 # ---------------------------------------------------------------
 # Menu Settings
 # ---------------------------------------------------------------
-
-# When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -> archives)
-
-
 MENU = OrderedDict(sorted({
                               "home": {"label": u"首页", "path": "/", "icon": "home", "position": 1},
                               "categories": {"label": u"分类", "path": "/categories", "icon": "th", "position": 3},
@@ -43,41 +39,11 @@ MENU = OrderedDict(sorted({
                               "about": {"label": u"关于", "path": "/about", "icon": "user", "position": 5},
 
                           }.items(), key=lambda t: t[1]['position']))
-#   home: /
-#   #categories: /categories
-#   #about: /about
-#   archives: /archives
-#   tags: /tags
-#   #commonweal: /404.html
 
-#
-# # Enable/Disable menu icons.
-# # Icon Mapping:
-# #   Map a menu item to a specific FontAwesome icon name.
-# #   Key is the name of menu item and value is the name of FontAwsome icon. Key is case-senstive.
-# #   When an question mask icon presenting up means that the item has no mapping icon.
-
-#   enable: true
-#   #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome
-#   home: home
-#   about: user
-#   categories: th
-#   tags: tags
-#   archives: archive
-#   commonweal: heartbeat
-#
-#
-#
-#
-# # ---------------------------------------------------------------
-# # Scheme Settings
-# # ---------------------------------------------------------------
-#
-# # Schemes
-# scheme: Muse
-# #scheme: Mist
+# ---------------------------------------------------------------
+# Scheme Settings
+# ---------------------------------------------------------------
 SCHEME = "Pisces"
-#
 #
 # # ---------------------------------------------------------------
 # # Font Settings
@@ -123,20 +89,15 @@ SCHEME = "Pisces"
 #   codes:
 #     external: true
 #     family:
-#
-#
-#
-#
-# # ---------------------------------------------------------------
-# # Sidebar Settings
-# # ---------------------------------------------------------------
-#
-#
-# # Social Links
-# # Key is the link label showing to end users.
-# # Value is the target link (E.g. GitHub: https://github.com/iissnan)
-# #social:
-#   #LinkLabel: Link
+
+# ---------------------------------------------------------------
+# Sidebar Settings
+# ---------------------------------------------------------------
+
+
+# Social Links
+# Key is the link label showing to end users.
+# Value is the target link (E.g. GitHub: https://github.com/iissnan)
 SOCIAL = OrderedDict(
     sorted({
                "GitHub": {"label": u"GitHub", "link": "https://github.com/lzjun567", "social_icons": "github",
@@ -292,7 +253,7 @@ GOOGLE_SITE_VERIFICATION = "your google site verification"
 #
 #
 # # Google Analytics
-# #google_analytics:
+GOOGLE_ANALYTICS = "you google analytics id"
 #
 # # CNZZ count
 # #cnzz_siteid:

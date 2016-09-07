@@ -20,8 +20,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'apps.blog.context_processors.google_analytics',
-                'apps.blog.context_processors.recent_blog_list',
                 'apps.blog.context_processors.theme',
             ],
         },
