@@ -9,7 +9,7 @@ DATABASES = {
     }
 }
 
-INSTALLED_APPS += ["debug_toolbar", ]
+# INSTALLED_APPS += ["debug_toolbar", ]
 
 ALLOWED_HOSTS = ['localhost', ]
 
@@ -18,7 +18,5 @@ MIDDLEWARE_CLASSES += (
 )
 
 PAGE_SIZE = 2
-
-JQUERY_URL = "https://code.jquery.com/jquery-2.1.4.min.js"
 
 SECRET_KEY = "you secret key"

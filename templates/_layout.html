@@ -1,6 +1,5 @@
 <!doctype html>
 {% load staticfiles %}
-
 <html class="theme-next {{theme.scheme|lower}} {{theme.use_motion}}">
 <head>
     {% include '_partials/head.html' %}
@@ -10,7 +9,6 @@
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh">
 
 {% include '_scripts/third-party/analytics.html' %}
-
 
 <div class="container one-collumn sidebar-position-{{theme.sidebar.position}} {% block page_class %}{% endblock %} ">
     <div class="headband"></div>
@@ -47,11 +45,8 @@
     </div>
 </div>
 
-{% include '_scripts/vendors.html' %}
 {% include '_scripts/commons.html' %}
-{% include '_scripts/schemes/pisces.html' %}
 {% block script_extra %}{% endblock %}
-{% include '_scripts/boostrap.html' %}
 
 {% include '_scripts/third-party/comments.html' %}
 {% include '_scripts/third-party/tinysou.html' %}

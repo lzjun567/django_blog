@@ -93,8 +93,9 @@ SIMPLEMDE_OPTIONS = {
     }
 }
 
+# ---------------------------------------------------------------
 # 主题配置
-
+# ---------------------------------------------------------------
 SITE_TITLE = "FooFish's Notes"
 SITE_SUBTITLE = u"不一样的烟火"
 KEYWORDS = "FooFish, Python"
@@ -106,12 +107,9 @@ MENU = OrderedDict(sorted({"home": {"label": u"首页", "path": "/", "icon": "ho
                            "categories": {"label": u"分类", "path": "/categories", "icon": "th", "position": 3},
                            "archives": {"label": u"归档", "path": "/archives", "icon": "archive", "position": 2},
                            "tags": {"label": u"标签", "path": "/tags", "icon": "tags", "position": 4},
-                           "about": {"label": u"关于", "path": "/about", "icon": "user", "position": 5},}.items(),
+                           "about": {"label": u"关于", "path": "/about", "icon": "user", "position": 5}, }.items(),
                           key=lambda t: t[1]['position']))
 
-# ---------------------------------------------------------------
-# Scheme Settings
-# ---------------------------------------------------------------
 SCHEME = "Pisces"
 
 SOCIAL = OrderedDict(
@@ -134,6 +132,8 @@ GOOGLE_SITE_VERIFICATION = "your google site verification"
 GOOGLE_ANALYTICS = "you google analytics id"
 USE_MOTION = True
 FANCYBOX = True
+RSS = '/rss'
 VERSION = '5.0.1'
 ALIPAY = ""
 WECHATPAY = ""
+
